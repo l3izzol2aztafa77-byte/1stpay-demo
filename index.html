@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1E3358">
+<title>1st Pay</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Lao:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F3EE;--card:#FFFFFF;--ink:#17243B;--soft:#566378;--line:#E2DDD2;--primary:#1E3358;--onPrimary:#FFFFFF;--accent:#1E3358;--gold:#C9A55A;--goldSoft:#F5EDDC;--goldInk:#7E5F1F;--ok:#2B7A4B;--okSoft:#E2F1E7;--err:#B3402F;--errSoft:#FBEAE6;--chip:#ECE8DF;--bgImg:url(assets/bg.jpg);--logoImg:url(assets/logo.png);color-scheme:light}
+:root[data-theme="dark"]{--bg:#0C1422;--card:#15203A;--ink:#EEF1F6;--soft:#A3AEC2;--line:#28344E;--primary:#D4B26A;--onPrimary:#111A2C;--accent:#E0C27E;--gold:#D4B26A;--goldSoft:#2C2616;--goldInk:#E6CB8C;--ok:#74CF98;--okSoft:#12291C;--err:#F0937F;--errSoft:#2E1612;--chip:#1C2842;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans','Noto Sans Thai','Noto Sans Lao','Noto Sans SC',sans-serif;-webkit-font-smoothing:antialiased}
+button,input{font-family:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed}
+.logo{aspect-ratio:650/589;flex-shrink:0;background-image:var(--logoImg);background-size:contain;background-repeat:no-repeat;background-position:center}
+.sora{font-family:Sora,sans-serif}
+.btn-p{height:60px;border-radius:18px;border:none;background:var(--primary);color:var(--onPrimary);font-size:19px;font-weight:700;width:100%}
+.btn-s{height:60px;border-radius:18px;border:2px solid var(--line);background:var(--card);color:var(--ink);font-size:19px;font-weight:700;width:100%}
+.btn-g{height:60px;border-radius:18px;border:none;background:var(--gold);color:#1B2640;font-size:19px;font-weight:700;width:100%}
+.btn-link{background:none;border:none;color:var(--accent);font-size:16px;font-weight:700;padding:10px 0}
+.circle{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.langbtn{height:44px;padding:0 14px;border-radius:22px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:15px;font-weight:700;display:flex;align-items:center;gap:6px;flex-shrink:0}
+.title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px}
+.sub{font-size:16px;color:var(--soft);line-height:1.6;margin-bottom:28px;text-wrap:pretty}
+.lbl{font-size:15px;font-weight:600;color:var(--soft);margin-bottom:8px}
+.field{display:flex;align-items:stretch;height:64px;border:2px solid var(--line);border-radius:18px;background:var(--card);overflow:hidden}
+.field:focus-within{border-color:var(--gold)}
+.field .pre{display:flex;align-items:center;padding:0 16px;background:var(--chip);font-family:Sora,sans-serif;font-weight:600;font-size:18px;color:var(--ink)}
+.field input{flex:1;min-width:0;border:none;background:transparent;padding:0 16px;font-size:20px;color:var(--ink);outline:none}
+.field input.num{font-family:Sora,sans-serif;font-size:22px;letter-spacing:1px}
+.err{color:var(--err);font-size:15px;font-weight:600;margin-top:10px;min-height:22px}
+.screen{display:flex;flex-direction:column;flex:1;padding:20px 24px 28px}
+.grow{flex:1;min-height:24px}
+.tabs2{display:grid;grid-template-columns:1fr 1fr;background:var(--chip);border-radius:18px;padding:5px;gap:5px;margin-bottom:20px}
+.tabs2 button{height:52px;border-radius:14px;border:none;background:transparent;color:var(--soft);font-size:17px;font-weight:700}
+.tabs2 button.on{background:var(--card);color:var(--ink)}
+.dev{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--goldSoft);color:var(--goldInk);border-radius:14px;padding:10px 14px;font-size:14px;font-weight:600}
+.dev button{border:none;background:var(--gold);color:#1B2640;border-radius:10px;padding:6px 12px;font-weight:700;font-size:14px}
+.sandbox{position:fixed;left:0;right:0;top:0;height:22px;z-index:60;background:var(--goldSoft);color:var(--goldInk);font-size:11.5px;font-weight:700;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;pointer-events:none}
+body.sb{padding-top:22px}body.sb aside{top:22px !important;height:calc(100vh - 22px) !important}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px}
+.rowbtn{display:flex;align-items:center;gap:14px;width:100%;min-height:64px;padding:0 18px;border:none;border-bottom:1px solid var(--line);background:none;color:var(--ink);font-size:17px;font-weight:600;text-align:left}
+.rowbtn:last-child{border-bottom:none}
+.rowbtn .v{color:var(--soft);font-size:16px}.rowbtn .ch{color:var(--soft);font-size:22px}
+.spin{display:inline-block;width:18px;height:18px;border:2.5px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-3px}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="mock-api.js"></script>
+<script>
+"use strict";
+const ENV = "demo";
+const API = location.protocol.startsWith("http") ? "" : "http://localhost:8000";
+
+/* ============================================================
+   ข้อความ 4 ภาษา — ส่วนหลักนำมาจากไฟล์ต้นแบบ 1st Pay ของผู้ออกแบบ
+   ============================================================ */
+const I18N = {
+th:{acctType:'ประเภทบัญชี',acctCustomer:'ผู้ใช้ทั่วไป',acctMerchant:'ร้านค้า',sideTitle:'ระบบชำระเงินที่ไว้ใจได้ สำหรับทุกคน',sideText:'1st Pay เชื่อมการชำระเงินระหว่างผู้ใช้และร้านค้าโดยตรงผ่านธนาคารพันธมิตร ใช้ได้ทั้งบนมือถือและคอมพิวเตอร์',tagline:'ชำระเงินง่าย ปลอดภัย ทุกที่ทุกเวลา',welcome:'ยินดีต้อนรับ',welcomeSub:'เลือกภาษาที่ถนัด แล้วเริ่มใช้งานได้เลย',register:'สมัครใช้งาน',login:'เข้าสู่ระบบ',phoneTitle:'กรอกเบอร์โทรศัพท์',phoneSub:'เราจะส่งรหัส OTP ไปยังเบอร์นี้เพื่อยืนยันว่าเป็นคุณ',phoneLabel:'หมายเลขโทรศัพท์',phoneHint:'ใส่เฉพาะตัวเลข ไม่ต้องใส่ 0 นำหน้า',getOtp:'ขอรหัส OTP',verifyTitle:'ยืนยันตัวตน',otpTitle:'กรอกรหัส OTP 6 หลัก',otpSentTo:'ส่งไปที่',resendIn:'ขอรหัสใหม่ได้ใน',resend:'ส่งรหัสอีกครั้ง',confirm:'ยืนยัน',pinTopbar:'ตั้งรหัส PIN',pinSet:'ตั้งรหัส PIN 6 หลัก',pinSetSub:'ใช้ PIN นี้ทุกครั้งที่เข้าสู่ระบบและยืนยันการชำระเงิน',pinConfirm:'กรอก PIN อีกครั้ง',pinConfirmSub:'กรอก PIN เดิมอีกครั้งเพื่อยืนยัน',pinMismatch:'PIN ไม่ตรงกัน กรุณาลองใหม่',del:'ลบ',doneTitle:'สมัครสำเร็จ',doneText:'บัญชีของคุณอยู่ระดับ Level 0 — ชำระเงินได้ไม่เกิน 500,000 กีบ/วัน',lvl1Title:'ยืนยันตัวตนเพิ่ม (Level 1)',recommended:'แนะนำ',lvl:['เพิ่มวงเงินการใช้งานต่อวัน','ใช้บัตรประชาชนหรือพาสปอร์ต + ถ่ายรูปใบหน้า','ตรวจสอบภายใน 1–3 วันทำการ'],verifyNow:'ยืนยันตัวตนตอนนี้',skip:'ข้ามไปก่อน เริ่มใช้งาน',loginSub:'กรอกเบอร์โทรศัพท์ที่ลงทะเบียนไว้',next:'ถัดไป',pinEnter:'กรอกรหัส PIN',pinEnterSub:'ยืนยันตัวตนด้วย PIN 6 หลักของคุณ',forgot:'ลืม PIN?',logout:'ออกจากระบบ',step:'ขั้นตอน {a} จาก {b}',light:'กลางวัน',dark:'กลางคืน',soon:'ฟีเจอร์นี้จะเชื่อมต่อในพาร์ทถัดไป',back:'ย้อนกลับ',langTitle:'เลือกภาษา',expired:'ขอรหัสใหม่ได้แล้ว',
+ hello:'สวัสดี',limitToday:'วงเงินใช้ได้วันนี้',limitOf:'จากวงเงินสูงสุด {m} กีบ/วัน',kip:'กีบ',scan:'สแกนจ่าย',receive:'รับเงิน',transfer:'โอนเงิน',history:'ประวัติ',bills:'จ่ายบิล',topup:'เติมเงินมือถือ',budget:'งบรายจ่าย',customize:'ปรับแต่ง',recent:'รายการล่าสุด',seeAll:'ดูทั้งหมด',home:'หน้าหลัก',myQr:'QR ของฉัน',profile:'โปรไฟล์',kycLevel:'ระดับบัญชี',language:'ภาษา',display:'โหมดหน้าจอ',upgrade:'ยกระดับบัญชี (Level 1)',security:'ความปลอดภัย / เปลี่ยน PIN',limits:'วงเงินการใช้งาน',help:'ศูนย์ช่วยเหลือ',
+ sales:'รายการขาย',payouts:'เงินเข้าบัญชี',shop:'ร้านของฉัน',open:'เปิดรับชำระ',todaySales:'ยอดขายวันนี้',avgTicket:'เฉลี่ยต่อบิล',nextPayout:'ยอดที่จะโอนเข้าบัญชี',receiveBig:'รับเงินจากลูกค้า',items:'{n} รายการ',
+ demoBanner:'DEMO · ข้อมูลเก็บในเครื่องของคุณเท่านั้น ไม่มีการส่ง SMS/เงินจริง', sandbox:'SANDBOX · โหมดทดสอบ ไม่มีการเคลื่อนไหวเงินจริง',useEmail:'ใช้อีเมลแทน',usePhone:'ใช้เบอร์โทรแทน',emailTitle:'กรอกอีเมล',emailSub:'เราจะส่งรหัส OTP ไปยังอีเมลนี้เพื่อยืนยันว่าเป็นคุณ',emailLabel:'อีเมล',emailLoginSub:'กรอกอีเมลที่ลงทะเบียนไว้',sandboxOtp:'โหมดทดสอบ: รหัสคือ',fill:'ใส่ให้',resetTitle:'ลืม PIN',resetSub:'กรอกเบอร์โทรที่ลงทะเบียนไว้ เราจะส่ง OTP เพื่อตั้ง PIN ใหม่',newPin:'ตั้ง PIN ใหม่ 6 หลัก',pinReset:'ตั้ง PIN ใหม่สำเร็จ กรุณาเข้าสู่ระบบ',addEmail:'เพิ่มอีเมล',addPhone:'เพิ่มเบอร์โทร',addTitle:'เพิ่มช่องทางติดต่อ',addSub:'ยืนยันด้วยรหัส OTP',added:'เพิ่มเรียบร้อยแล้ว',noTx:'ยังไม่มีรายการ',network:'เชื่อมต่อไม่ได้ กรุณาลองใหม่',
+ E:{ERR_PHONE_FORMAT:'เบอร์โทรไม่ถูกต้อง (รองรับ 20 หรือ 30)',ERR_EMAIL_FORMAT:'อีเมลไม่ถูกต้อง',ERR_ALREADY_REGISTERED:'เบอร์/อีเมลนี้ลงทะเบียนแล้ว',ERR_OTP_COOLDOWN:'กรุณารอ {s} วินาที',ERR_OTP_RATE_LIMIT:'ขอรหัสเกินกำหนด กรุณาลองใหม่ภายหลัง',ERR_OTP_INVALID:'รหัสไม่ถูกต้อง (เหลือ {n} ครั้ง)',ERR_OTP_EXPIRED:'รหัสหมดอายุ กรุณาขอใหม่',ERR_OTP_LOCKED:'กรอกผิดเกินกำหนด กรุณาขอรหัสใหม่',ERR_PIN_WEAK:'PIN ง่ายเกินไป ห้ามใช้เลขซ้ำหรือเลขเรียง',ERR_PIN_FORMAT:'PIN ต้องเป็นตัวเลข 6 หลัก',ERR_LOGIN_FAILED:'ข้อมูลเข้าสู่ระบบไม่ถูกต้อง',ERR_PIN_LOCKED:'PIN ถูกล็อกชั่วคราว 15 นาที',ERR_NOTIFY_FAILED:'ส่งรหัสไม่สำเร็จ กรุณาลองใหม่',ERR_TOKEN_USED:'กรุณาเริ่มใหม่อีกครั้ง',ERR_TOKEN_EXPIRED:'หมดเวลา กรุณาเริ่มใหม่',ERR_ACCOUNT_INACTIVE:'บัญชีถูกระงับ'}},
+en:{acctType:'Account type',acctCustomer:'Personal',acctMerchant:'Merchant',sideTitle:'Trusted payments for everyone',sideText:'1st Pay connects customers and merchants directly through partner banks — on your phone or computer.',tagline:'Pay easily and safely, anywhere',welcome:'Welcome',welcomeSub:'Choose your language to get started',register:'Create account',login:'Log in',phoneTitle:'Enter your phone number',phoneSub:'We’ll text a one-time code (OTP) to confirm it’s you',phoneLabel:'Phone number',phoneHint:'Numbers only — no leading 0',getOtp:'Send code',verifyTitle:'Verify identity',otpTitle:'Enter the 6-digit code',otpSentTo:'Sent to',resendIn:'Resend code in',resend:'Resend code',confirm:'Confirm',pinTopbar:'Set PIN',pinSet:'Create a 6-digit PIN',pinSetSub:'You’ll use this PIN to log in and confirm payments',pinConfirm:'Enter PIN again',pinConfirmSub:'Re-enter the same PIN to confirm',pinMismatch:'PINs don’t match. Please try again',del:'Delete',doneTitle:'You’re all set',doneText:'Your account is Level 0 — pay up to 500,000 kip per day',lvl1Title:'Verify further (Level 1)',recommended:'Recommended',lvl:['Higher daily limit','ID card or passport + a face photo','Reviewed within 1–3 business days'],verifyNow:'Verify now',skip:'Skip for now',loginSub:'Enter the phone number you registered with',next:'Next',pinEnter:'Enter your PIN',pinEnterSub:'Confirm it’s you with your 6-digit PIN',forgot:'Forgot PIN?',logout:'Log out',step:'Step {a} of {b}',light:'Day',dark:'Night',soon:'This connects in the next part',back:'Back',langTitle:'Choose language',expired:'You can request a new code',
+ hello:'Hello',limitToday:'Available today',limitOf:'of {m} kip daily limit',kip:'kip',scan:'Scan to pay',receive:'Receive',transfer:'Transfer',history:'History',bills:'Pay bills',topup:'Top up',budget:'Budget',customize:'Customize',recent:'Recent activity',seeAll:'See all',home:'Home',myQr:'My QR',profile:'Profile',kycLevel:'Account level',language:'Language',display:'Display mode',upgrade:'Upgrade account (Level 1)',security:'Security / change PIN',limits:'Spending limits',help:'Help centre',
+ sales:'Sales',payouts:'Payouts',shop:'My shop',open:'Accepting payments',todaySales:'Today’s sales',avgTicket:'Average sale',nextPayout:'Next payout',receiveBig:'Receive payment',items:'{n} sales',
+ demoBanner:'DEMO · data stays in your browser — no real SMS or money', sandbox:'SANDBOX · test mode, no real money movement',useEmail:'Use email instead',usePhone:'Use phone instead',emailTitle:'Enter your email',emailSub:'We’ll email a one-time code (OTP) to confirm it’s you',emailLabel:'Email',emailLoginSub:'Enter the email you registered with',sandboxOtp:'Sandbox: your code is',fill:'Fill in',resetTitle:'Forgot PIN',resetSub:'Enter your registered phone — we’ll send an OTP to reset your PIN',newPin:'Create a new 6-digit PIN',pinReset:'PIN updated — please log in',addEmail:'Add email',addPhone:'Add phone',addTitle:'Add contact',addSub:'Verify with a one-time code',added:'Added',noTx:'No transactions yet',network:'Connection failed, please try again',
+ E:{ERR_PHONE_FORMAT:'Invalid phone number (20 or 30)',ERR_EMAIL_FORMAT:'Invalid email',ERR_ALREADY_REGISTERED:'Already registered',ERR_OTP_COOLDOWN:'Please wait {s}s',ERR_OTP_RATE_LIMIT:'Too many requests, try again later',ERR_OTP_INVALID:'Wrong code ({n} tries left)',ERR_OTP_EXPIRED:'Code expired, request a new one',ERR_OTP_LOCKED:'Too many attempts, request a new code',ERR_PIN_WEAK:'PIN too easy — avoid repeated or sequential digits',ERR_PIN_FORMAT:'PIN must be 6 digits',ERR_LOGIN_FAILED:'Incorrect login details',ERR_PIN_LOCKED:'PIN locked for 15 minutes',ERR_NOTIFY_FAILED:'Could not send code, please retry',ERR_TOKEN_USED:'Please start again',ERR_TOKEN_EXPIRED:'Session expired, please start again',ERR_ACCOUNT_INACTIVE:'Account suspended'}},
+lo:{acctType:'ປະເພດບັນຊີ',acctCustomer:'ຜູ້ໃຊ້ທົ່ວໄປ',acctMerchant:'ຮ້ານຄ້າ',sideTitle:'ລະບົບຈ່າຍເງິນທີ່ໄວ້ໃຈໄດ້ ສຳລັບທຸກຄົນ',sideText:'1st Pay ເຊື່ອມການຈ່າຍເງິນລະຫວ່າງຜູ້ໃຊ້ ແລະ ຮ້ານຄ້າໂດຍກົງຜ່ານທະນາຄານຄູ່ຮ່ວມ ໃຊ້ໄດ້ທັງມືຖື ແລະ ຄອມພິວເຕີ',tagline:'ຈ່າຍງ່າຍ ປອດໄພ ທຸກທີ່ທຸກເວລາ',welcome:'ຍິນດີຕ້ອນຮັບ',welcomeSub:'ເລືອກພາສາ ແລ້ວເລີ່ມໃຊ້ງານໄດ້ເລີຍ',register:'ສະໝັກໃຊ້ງານ',login:'ເຂົ້າສູ່ລະບົບ',phoneTitle:'ປ້ອນເບີໂທລະສັບ',phoneSub:'ພວກເຮົາຈະສົ່ງລະຫັດ OTP ໄປຫາເບີນີ້ເພື່ອຢືນຢັນວ່າແມ່ນທ່ານ',phoneLabel:'ເບີໂທລະສັບ',phoneHint:'ໃສ່ສະເພາະຕົວເລກ ບໍ່ຕ້ອງໃສ່ 0 ທາງໜ້າ',getOtp:'ຂໍລະຫັດ OTP',verifyTitle:'ຢືນຢັນຕົວຕົນ',otpTitle:'ປ້ອນລະຫັດ OTP 6 ຕົວ',otpSentTo:'ສົ່ງໄປທີ່',resendIn:'ຂໍລະຫັດໃໝ່ໄດ້ໃນ',resend:'ສົ່ງລະຫັດອີກຄັ້ງ',confirm:'ຢືນຢັນ',pinTopbar:'ຕັ້ງລະຫັດ PIN',pinSet:'ຕັ້ງລະຫັດ PIN 6 ຕົວ',pinSetSub:'ໃຊ້ PIN ນີ້ທຸກຄັ້ງທີ່ເຂົ້າລະບົບ ແລະ ຢືນຢັນການຈ່າຍເງິນ',pinConfirm:'ປ້ອນ PIN ອີກຄັ້ງ',pinConfirmSub:'ປ້ອນ PIN ເດີມອີກຄັ້ງເພື່ອຢືນຢັນ',pinMismatch:'PIN ບໍ່ກົງກັນ ກະລຸນາລອງໃໝ່',del:'ລຶບ',doneTitle:'ສະໝັກສຳເລັດ',doneText:'ບັນຊີຂອງທ່ານຢູ່ລະດັບ Level 0 — ຈ່າຍໄດ້ບໍ່ເກີນ 500,000 ກີບ/ມື້',lvl1Title:'ຢືນຢັນຕົວຕົນເພີ່ມ (Level 1)',recommended:'ແນະນຳ',lvl:['ເພີ່ມວົງເງິນຕໍ່ມື້','ໃຊ້ບັດປະຈຳຕົວ ຫຼື ພາສປອດ + ຖ່າຍຮູບໜ້າ','ກວດສອບພາຍໃນ 1–3 ວັນລັດຖະການ'],verifyNow:'ຢືນຢັນຕົວຕົນດຽວນີ້',skip:'ຂ້າມໄປກ່ອນ',loginSub:'ປ້ອນເບີໂທທີ່ລົງທະບຽນໄວ້',next:'ຕໍ່ໄປ',pinEnter:'ປ້ອນລະຫັດ PIN',pinEnterSub:'ຢືນຢັນຕົວຕົນດ້ວຍ PIN 6 ຕົວຂອງທ່ານ',forgot:'ລືມ PIN?',logout:'ອອກຈາກລະບົບ',step:'ຂັ້ນຕອນ {a} ຈາກ {b}',light:'ກາງເວັນ',dark:'ກາງຄືນ',soon:'ຟັງຊັນນີ້ຈະເຊື່ອມຕໍ່ໃນພາກຕໍ່ໄປ',back:'ກັບຄືນ',langTitle:'ເລືອກພາສາ',expired:'ຂໍລະຫັດໃໝ່ໄດ້ແລ້ວ',
+ hello:'ສະບາຍດີ',limitToday:'ວົງເງິນໃຊ້ໄດ້ມື້ນີ້',limitOf:'ຈາກວົງເງິນສູງສຸດ {m} ກີບ/ມື້',kip:'ກີບ',scan:'ສະແກນຈ່າຍ',receive:'ຮັບເງິນ',transfer:'ໂອນເງິນ',history:'ປະຫວັດ',bills:'ຈ່າຍບິນ',topup:'ເຕີມເງິນມືຖື',budget:'ງົບລາຍຈ່າຍ',customize:'ປັບແຕ່ງ',recent:'ລາຍການລ່າສຸດ',seeAll:'ເບິ່ງທັງໝົດ',home:'ໜ້າຫຼັກ',myQr:'QR ຂອງຂ້ອຍ',profile:'ໂປຣໄຟລ໌',kycLevel:'ລະດັບບັນຊີ',language:'ພາສາ',display:'ໂໝດໜ້າຈໍ',upgrade:'ຍົກລະດັບບັນຊີ (Level 1)',security:'ຄວາມປອດໄພ / ປ່ຽນ PIN',limits:'ວົງເງິນການໃຊ້ງານ',help:'ສູນຊ່ວຍເຫຼືອ',
+ sales:'ລາຍການຂາຍ',payouts:'ເງິນເຂົ້າບັນຊີ',shop:'ຮ້ານຂອງຂ້ອຍ',open:'ເປີດຮັບຊຳລະ',todaySales:'ຍອດຂາຍມື້ນີ້',avgTicket:'ສະເລ່ຍຕໍ່ບິນ',nextPayout:'ຍອດທີ່ຈະໂອນເຂົ້າບັນຊີ',receiveBig:'ຮັບເງິນຈາກລູກຄ້າ',items:'{n} ລາຍການ',
+ demoBanner:'DEMO · ຂໍ້ມູນເກັບໄວ້ໃນເຄື່ອງຂອງທ່ານເທົ່ານັ້ນ ບໍ່ມີການສົ່ງ SMS/ເງິນແທ້', sandbox:'SANDBOX · ໂໝດທົດສອບ ບໍ່ມີການເຄື່ອນໄຫວເງິນແທ້',useEmail:'ໃຊ້ອີເມວແທນ',usePhone:'ໃຊ້ເບີໂທແທນ',emailTitle:'ປ້ອນອີເມວ',emailSub:'ພວກເຮົາຈະສົ່ງລະຫັດ OTP ໄປຫາອີເມວນີ້ເພື່ອຢືນຢັນວ່າແມ່ນທ່ານ',emailLabel:'ອີເມວ',emailLoginSub:'ປ້ອນອີເມວທີ່ລົງທະບຽນໄວ້',sandboxOtp:'ໂໝດທົດສອບ: ລະຫັດແມ່ນ',fill:'ໃສ່ໃຫ້',resetTitle:'ລືມ PIN',resetSub:'ປ້ອນເບີໂທທີ່ລົງທະບຽນໄວ້ ພວກເຮົາຈະສົ່ງ OTP ເພື່ອຕັ້ງ PIN ໃໝ່',newPin:'ຕັ້ງ PIN ໃໝ່ 6 ຕົວ',pinReset:'ຕັ້ງ PIN ໃໝ່ສຳເລັດ ກະລຸນາເຂົ້າສູ່ລະບົບ',addEmail:'ເພີ່ມອີເມວ',addPhone:'ເພີ່ມເບີໂທ',addTitle:'ເພີ່ມຊ່ອງທາງຕິດຕໍ່',addSub:'ຢືນຢັນດ້ວຍລະຫັດ OTP',added:'ເພີ່ມແລ້ວ',noTx:'ຍັງບໍ່ມີລາຍການ',network:'ເຊື່ອມຕໍ່ບໍ່ໄດ້ ກະລຸນາລອງໃໝ່',
+ E:{ERR_PHONE_FORMAT:'ເບີໂທບໍ່ຖືກຕ້ອງ (20 ຫຼື 30)',ERR_EMAIL_FORMAT:'ອີເມວບໍ່ຖືກຕ້ອງ',ERR_ALREADY_REGISTERED:'ເບີໂທ/ອີເມວນີ້ລົງທະບຽນແລ້ວ',ERR_OTP_COOLDOWN:'ກະລຸນາລໍຖ້າ {s} ວິນາທີ',ERR_OTP_RATE_LIMIT:'ຂໍລະຫັດເກີນກຳນົດ ກະລຸນາລອງໃໝ່ພາຍຫຼັງ',ERR_OTP_INVALID:'ລະຫັດບໍ່ຖືກຕ້ອງ (ເຫຼືອ {n} ຄັ້ງ)',ERR_OTP_EXPIRED:'ລະຫັດໝົດອາຍຸ ກະລຸນາຂໍໃໝ່',ERR_OTP_LOCKED:'ປ້ອນຜິດເກີນກຳນົດ ກະລຸນາຂໍລະຫັດໃໝ່',ERR_PIN_WEAK:'PIN ງ່າຍເກີນໄປ ຫ້າມໃຊ້ເລກຊ້ຳ ຫຼື ເລກລຽງກັນ',ERR_PIN_FORMAT:'PIN ຕ້ອງເປັນຕົວເລກ 6 ຕົວ',ERR_LOGIN_FAILED:'ຂໍ້ມູນເຂົ້າສູ່ລະບົບບໍ່ຖືກຕ້ອງ',ERR_PIN_LOCKED:'PIN ຖືກລັອກຊົ່ວຄາວ 15 ນາທີ',ERR_NOTIFY_FAILED:'ສົ່ງລະຫັດບໍ່ສຳເລັດ ກະລຸນາລອງໃໝ່',ERR_TOKEN_USED:'ກະລຸນາເລີ່ມຕົ້ນໃໝ່',ERR_TOKEN_EXPIRED:'ໝົດເວລາ ກະລຸນາເລີ່ມຕົ້ນໃໝ່',ERR_ACCOUNT_INACTIVE:'ບັນຊີຖືກລະງັບ'}},
+zh:{acctType:'账户类型',acctCustomer:'个人用户',acctMerchant:'商户',sideTitle:'值得信赖的支付，人人适用',sideText:'1st Pay 通过合作银行直接连接用户与商家，手机和电脑均可使用。',tagline:'支付简单安全，随时随地',welcome:'欢迎使用',welcomeSub:'请选择语言，然后开始使用',register:'注册',login:'登录',phoneTitle:'输入手机号码',phoneSub:'我们将向此号码发送 OTP 验证码以确认您的身份',phoneLabel:'手机号码',phoneHint:'仅输入数字，开头无需加 0',getOtp:'获取验证码',verifyTitle:'身份验证',otpTitle:'输入 6 位验证码',otpSentTo:'已发送至',resendIn:'重新发送倒计时',resend:'重新发送',confirm:'确认',pinTopbar:'设置 PIN 码',pinSet:'设置 6 位 PIN 码',pinSetSub:'每次登录和付款时都需使用此 PIN 码',pinConfirm:'再次输入 PIN 码',pinConfirmSub:'请再次输入相同的 PIN 码以确认',pinMismatch:'两次 PIN 码不一致，请重试',del:'删除',doneTitle:'注册成功',doneText:'您的账户为 Level 0 — 每日付款上限 500,000 基普',lvl1Title:'进一步验证身份 (Level 1)',recommended:'推荐',lvl:['提高每日限额','身份证或护照 + 人脸照片','1–3 个工作日内完成审核'],verifyNow:'立即验证',skip:'稍后再说，先开始使用',loginSub:'请输入已注册的手机号码',next:'下一步',pinEnter:'输入 PIN 码',pinEnterSub:'请用 6 位 PIN 码确认身份',forgot:'忘记 PIN 码？',logout:'退出登录',step:'第 {a} 步，共 {b} 步',light:'日间',dark:'夜间',soon:'此功能将在下一部分接入',back:'返回',langTitle:'选择语言',expired:'现在可以重新获取验证码',
+ hello:'您好',limitToday:'今日可用额度',limitOf:'每日上限 {m} 基普',kip:'基普',scan:'扫码付款',receive:'收款',transfer:'转账',history:'记录',bills:'缴费',topup:'手机充值',budget:'预算',customize:'自定义',recent:'最近交易',seeAll:'查看全部',home:'首页',myQr:'我的二维码',profile:'我的',kycLevel:'账户等级',language:'语言',display:'显示模式',upgrade:'升级账户 (Level 1)',security:'安全 / 修改 PIN',limits:'使用额度',help:'帮助中心',
+ sales:'销售记录',payouts:'结算到账',shop:'我的店铺',open:'正在收款',todaySales:'今日销售额',avgTicket:'客单价',nextPayout:'下次结算金额',receiveBig:'向顾客收款',items:'{n} 笔',
+ demoBanner:'演示版 · 数据仅保存在您的浏览器中，不发送真实短信或资金', sandbox:'SANDBOX · 测试模式，无真实资金流动',useEmail:'改用电子邮箱',usePhone:'改用手机号码',emailTitle:'输入电子邮箱',emailSub:'我们将向此邮箱发送 OTP 验证码以确认您的身份',emailLabel:'电子邮箱',emailLoginSub:'请输入已注册的电子邮箱',sandboxOtp:'测试模式：验证码为',fill:'自动填写',resetTitle:'忘记 PIN 码',resetSub:'请输入已注册的手机号码，我们将发送验证码以重设 PIN 码',newPin:'设置新的 6 位 PIN 码',pinReset:'PIN 码已更新，请登录',addEmail:'添加电子邮箱',addPhone:'添加手机号码',addTitle:'添加联系方式',addSub:'通过验证码确认',added:'已添加',noTx:'暂无交易',network:'网络连接失败，请重试',
+ E:{ERR_PHONE_FORMAT:'手机号码格式不正确（20 或 30 开头）',ERR_EMAIL_FORMAT:'邮箱格式不正确',ERR_ALREADY_REGISTERED:'该号码/邮箱已注册',ERR_OTP_COOLDOWN:'请等待 {s} 秒',ERR_OTP_RATE_LIMIT:'请求过于频繁，请稍后再试',ERR_OTP_INVALID:'验证码错误（剩余 {n} 次）',ERR_OTP_EXPIRED:'验证码已过期，请重新获取',ERR_OTP_LOCKED:'错误次数过多，请重新获取验证码',ERR_PIN_WEAK:'PIN 码过于简单，请勿使用重复或连续数字',ERR_PIN_FORMAT:'PIN 码须为 6 位数字',ERR_LOGIN_FAILED:'登录信息不正确',ERR_PIN_LOCKED:'PIN 码已暂时锁定 15 分钟',ERR_NOTIFY_FAILED:'验证码发送失败，请重试',ERR_TOKEN_USED:'请重新开始',ERR_TOKEN_EXPIRED:'已超时，请重新开始',ERR_ACCOUNT_INACTIVE:'账户已被停用'}}
+};
+const LANGS = [{code:'th',short:'ไทย',name:'ภาษาไทย',en:'Thai'},{code:'en',short:'EN',name:'English',en:'English'},{code:'lo',short:'ລາວ',name:'ພາສາລາວ',en:'Lao'},{code:'zh',short:'中文',name:'简体中文',en:'Chinese'}];
+const API_LANG = { th:'th', en:'en', lo:'lo', zh:'en' };   // ภาษาอีเมล OTP (backend รองรับ lo/th/en)
+const store = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } };
+const ss = (k, v) => { try { if (v === undefined) return sessionStorage.getItem(k); if (v === null) sessionStorage.removeItem(k); else sessionStorage.setItem(k, v); } catch (e) { return null; } };
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt = n => Number(n).toLocaleString('en-US');
+
+/* ============================================================ icons (จากต้นแบบ) */
+const IC = {
+  back:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  caret:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>',
+  moon:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
+  sun:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+  check:c=>`<svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="${c}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  tick:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M5 13l4 4L19 7" stroke="var(--gold)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  home:'<path d="M4 11l8-7 8 7M6 10v9a1 1 0 001 1h3v-6h4v6h3a1 1 0 001-1v-9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>',
+  scan:'<path d="M3 7V4h3M21 7V4h-3M3 17v3h3M21 17v3h-3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 12h10" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>',
+  qr:'<rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.9"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.9"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.9"/><path d="M14 14h3v3h-3zM20 14v1M14 20h1M18 20h3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>',
+  hist:'<path d="M3 12a9 9 0 109-9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M3 5v5h5M12 7v5l3 3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>',
+  prof:'<circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.9"/><path d="M5 20c1.4-4 4.3-6 7-6s5.6 2 7 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>',
+  transfer:'<path d="M7 10l-4 4 4 4M17 6l4 4-4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14h11M10 10h11" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>',
+  bills:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9 8h6M9 12h6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>',
+  topup:'<rect x="7" y="2.5" width="10" height="19" rx="2.5" stroke="currentColor" stroke-width="1.9"/><path d="M11 18h2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>',
+  budget:'<path d="M12 3a9 9 0 109 9h-9V3z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M15 3.5A9 9 0 0120.5 9H15V3.5z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>',
+  edit:'<rect x="4" y="4" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.9"/><rect x="14" y="4" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.9"/><rect x="4" y="14" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.9"/><path d="M17 14v6M14 17h6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>',
+  bank:'<path d="M3 9l9-5 9 5M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>',
+  store:'<path d="M4 9l1.5-5h13L20 9M4 9v11h16V9M4 9h16M9 20v-6h6v6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>',
+  logout:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 17l5-5-5-5M20 12H9M12 19H6a2 2 0 01-2-2V7a2 2 0 012-2h6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+};
+const svg = (k, s = 24) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none">${IC[k]}</svg>`;
+
+/* ============================================================ state */
+const S = {
+  lang: store('1p_lang') || 'th',
+  theme: store('1p_theme') || (matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+  stack: ['splash'], wide: innerWidth >= 960,
+  flow: 'register',          // register | reset | add
+  ch: 'sms', acct: 'customer', dest: '', ref: null, devOtp: null, otp: '', sec: 0, vt: null,
+  pinStage: 1, pin1: '', pin2: '', pinErr: '', lpin: '', loginId: '', busy: false,
+  langOpen: false, toast: '', access: null, refresh: ss('1p_rt'), user: null, tab: 'home', err: ''
+};
+const t = () => I18N[S.lang] || I18N.th;
+const cur = () => S.stack[S.stack.length - 1];
+
+function go(v){ S.stack.push(v); S.err = ''; render(); scrollTo(0, 0); }
+function reset(v){ S.stack = [v]; S.err = ''; render(); scrollTo(0, 0); }
+function back(){ if (S.stack.length > 1) S.stack.pop(); S.pinStage = 1; S.pin1 = S.pin2 = S.lpin = ''; S.pinErr = ''; S.err = ''; render(); }
+let toastT; function toast(m){ clearTimeout(toastT); S.toast = m; render(); toastT = setTimeout(() => { S.toast = ''; render(); }, 2200); }
+function setLang(c){ S.lang = c; store('1p_lang', c); S.langOpen = false; render(); }
+function toggleTheme(){ S.theme = S.theme === 'dark' ? 'light' : 'dark'; store('1p_theme', S.theme); render(); }
+
+/* ============================================================ API */
+async function api(method, path, body, auth){
+  const h = { 'Content-Type': 'application/json' };
+  if (auth && S.access) h.Authorization = 'Bearer ' + S.access;
+  let r;
+  try { r = await fetch(API + path, { method, headers: h, body: body ? JSON.stringify(body) : undefined }); }
+  catch (e) { throw { code: 'NETWORK' }; }
+  if (r.status === 401 && auth && S.refresh && await refresh()) return api(method, path, body, auth);
+  const data = r.status === 204 ? null : await r.json().catch(() => null);
+  if (!r.ok) throw (data && data.error) || { code: 'HTTP_' + r.status };
+  return data;
+}
+async function refresh(){
+  try {
+    const r = await fetch(API + '/v1/auth/refresh', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ refresh_token: S.refresh }) });
+    if (!r.ok) { endSession(); return false; }
+    saveTokens(await r.json()); return true;
+  } catch (e) { return false; }
+}
+function saveTokens(tk){ S.access = tk.access_token; S.refresh = tk.refresh_token; ss('1p_rt', S.refresh); }
+function endSession(){ S.access = S.refresh = S.user = null; ss('1p_rt', null); }
+function errMsg(e){
+  const T = t();
+  if (e.code === 'NETWORK') return T.network;
+  const m = T.E[e.code] || I18N.en.E[e.code];
+  return m ? m.replace('{s}', e.retry_after ?? '').replace('{n}', e.attempts_left ?? '') : (e.message || e.code);
+}
+
+/* ============================================================ flows */
+const digits = v => v.replace(/\D/g, '');
+function destValid(){ return S.ch === 'sms' ? /^(20\d{8}|30\d{7})$/.test(digits(S.dest).replace(/^0/, '')) : /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(S.dest.trim()); }
+function destValue(){ return S.ch === 'sms' ? digits(S.dest).replace(/^0/, '') : S.dest.trim(); }
+function startFlow(flow){
+  S.flow = flow; S.dest = ''; S.otp = ''; S.err = '';
+  S.ch = flow === 'add' ? (S.user && S.user.phone ? 'email' : 'sms') : 'sms';
+  go('contact');
+}
+async function sendOtp(resend){
+  if (S.busy) return;
+  S.busy = true; S.err = ''; render();
+  try {
+    const purpose = { register: 'register', reset: 'reset_pin', add: 'add_contact' }[S.flow];
+    const d = await api('POST', '/v1/auth/otp/request', { channel: S.ch, destination: destValue(), purpose, lang: API_LANG[S.lang] });
+    S.ref = d.otp_ref; S.devOtp = d.dev_otp || null; S.sentTo = d.sent_to; S.otp = ''; S.sec = d.resend_after;
+    S.busy = false;
+    if (resend === true) render(); else go('otp');
+  } catch (e) { S.busy = false; S.err = errMsg(e); render(); }
+}
+async function checkOtp(){
+  if (S.busy || S.otp.length < 6) return;
+  S.busy = true; S.err = ''; render();
+  try {
+    const d = await api('POST', '/v1/auth/otp/verify', { otp_ref: S.ref, code: S.otp });
+    S.vt = d.verification_token; S.busy = false;
+    if (S.flow === 'add') {
+      S.user = await api('POST', '/v1/me/contact', { verification_token: S.vt }, true);
+      S.tab = 'profile'; reset('shell'); toast(t().added); return;
+    }
+    S.pinStage = 1; S.pin1 = S.pin2 = ''; S.pinErr = ''; go('setPin');
+  } catch (e) { S.busy = false; S.otp = ''; S.err = errMsg(e); render(); }
+}
+function pressSet(k){
+  if (S.busy) return;
+  if (S.pinStage === 1) {
+    S.pin1 = k === 'del' ? S.pin1.slice(0, -1) : (S.pin1 + k).slice(0, 6); S.pinErr = ''; render();
+    if (S.pin1.length === 6) setTimeout(() => { S.pinStage = 2; render(); }, 220);
+  } else {
+    S.pin2 = k === 'del' ? S.pin2.slice(0, -1) : (S.pin2 + k).slice(0, 6); render();
+    if (S.pin2.length === 6) setTimeout(submitPin, 220);
+  }
+}
+async function submitPin(){
+  if (S.pin1 !== S.pin2) { S.pinErr = t().pinMismatch; S.pinStage = 1; S.pin1 = S.pin2 = ''; render(); return; }
+  S.busy = true; render();
+  try {
+    if (S.flow === 'register') {
+      const d = await api('POST', '/v1/auth/register', { verification_token: S.vt, pin: S.pin1, account_type: S.acct, lang: API_LANG[S.lang] });
+      saveTokens(d.tokens); S.user = d.user; S.busy = false; S.pin1 = S.pin2 = ''; S.pinStage = 1;
+      reset('regDone');
+    } else {
+      await api('POST', '/v1/auth/pin/reset', { verification_token: S.vt, new_pin: S.pin1 });
+      S.busy = false; S.loginId = S.ch === 'sms' ? destValue() : S.dest.trim(); S.lpin = '';
+      S.stack = ['splash', 'loginPin']; render(); toast(t().pinReset);
+    }
+  } catch (e) {
+    S.busy = false; S.pinErr = errMsg(e); S.pinStage = 1; S.pin1 = S.pin2 = ''; render();
+    if (['ERR_TOKEN_USED', 'ERR_TOKEN_EXPIRED'].includes(e.code)) setTimeout(() => { S.stack = ['splash', 'contact']; render(); }, 1600);
+  }
+}
+function pressLogin(k){
+  if (S.busy) return;
+  S.lpin = k === 'del' ? S.lpin.slice(0, -1) : (S.lpin + k).slice(0, 6); S.pinErr = ''; render();
+  if (S.lpin.length === 6) setTimeout(doLogin, 200);
+}
+async function doLogin(){
+  S.busy = true; render();
+  try {
+    const d = await api('POST', '/v1/auth/login', { identifier: S.loginId, pin: S.lpin });
+    saveTokens(d.tokens); S.user = d.user; S.busy = false; S.lpin = ''; S.tab = 'home'; reset('shell');
+  } catch (e) { S.busy = false; S.lpin = ''; S.pinErr = errMsg(e); render(); }
+}
+async function logout(){
+  try { await api('POST', '/v1/auth/logout', { refresh_token: S.refresh }); } catch (e) {}
+  endSession(); S.tab = 'home'; reset('splash');
+}
+
+/* ============================================================ shared UI parts */
+const logoBox = (box, img, r, extra = '') => `<div style="width:${box}px;height:${box}px;border-radius:${r}px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;${extra}"><div class="logo" role="img" aria-label="1st Pay" style="width:${img}px"></div></div>`;
+const themeIcon = () => S.theme === 'dark' ? IC.moon : IC.sun;
+const langShort = () => (LANGS.find(l => l.code === S.lang) || LANGS[0]).short;
+const headerBtns = () => `<button class="langbtn" data-act="openLang">${langShort()}${IC.caret}</button><button class="circle" data-act="toggleTheme" aria-label="${S.theme === 'dark' ? t().dark : t().light}">${themeIcon()}</button>`;
+const keypad = (act) => `<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">${['1','2','3','4','5','6','7','8','9','','0','del'].map(k => {
+  const del = k === 'del';
+  return `<button data-act="${act}" data-arg="${k}" aria-label="${del ? t().del : k}" ${S.busy ? 'disabled' : ''} style="height:66px;border-radius:20px;border:${del ? 'none' : '1.5px solid var(--line)'};background:${del ? 'transparent' : 'var(--card)'};color:var(--ink);font-family:${del ? 'inherit' : 'Sora,sans-serif'};font-size:${del ? '17px' : '28px'};font-weight:600;visibility:${k === '' ? 'hidden' : 'visible'}">${del ? t().del : k}</button>`;
+}).join('')}</div>`;
+const dots = n => `<div style="display:flex;gap:16px;justify-content:center">${[0,1,2,3,4,5].map(i => `<div style="width:20px;height:20px;border-radius:50%;border:2px solid ${i < n ? 'var(--primary)' : 'var(--soft)'};background:${i < n ? 'var(--primary)' : 'transparent'}"></div>`).join('')}</div>`;
+const langSheet = () => !S.langOpen ? '' : `<div data-act="closeLang" style="position:fixed;inset:0;background:rgba(8,14,28,.5);display:flex;align-items:flex-end;justify-content:center;z-index:40">
+  <div data-stop style="width:100%;max-width:520px;background:var(--card);border-radius:28px 28px 0 0;padding:12px 20px calc(28px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:10px">
+    <div style="width:44px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 8px"></div>
+    <div style="font-size:20px;font-weight:700;margin-bottom:6px">${t().langTitle}</div>
+    ${LANGS.map(l => { const a = l.code === S.lang; return `<button data-act="setLang" data-arg="${l.code}" style="height:64px;border-radius:18px;border:2px solid ${a ? 'var(--primary)' : 'var(--line)'};background:${a ? 'var(--primary)' : 'var(--card)'};color:${a ? 'var(--onPrimary)' : 'var(--ink)'};display:flex;align-items:center;justify-content:space-between;padding:0 20px"><span style="font-size:18px;font-weight:700">${l.name}</span><span style="font-size:15px;font-weight:600;opacity:.8">${l.en}</span></button>`; }).join('')}
+  </div></div>`;
+const toastEl = () => !S.toast ? '' : `<div style="position:fixed;left:50%;transform:translateX(-50%);bottom:${cur() === 'shell' && !S.wide ? '104px' : '28px'};width:calc(100% - 40px);max-width:440px;background:var(--ink);color:var(--bg);border-radius:16px;padding:16px 18px;font-size:15px;font-weight:600;text-align:center;z-index:50;box-shadow:0 10px 30px rgba(0,0,0,.25)">${esc(S.toast)}</div>`;
+const sandbox = () => ENV === 'prod' ? '' : `<div class="sandbox">${ENV === 'demo' ? t().demoBanner : t().sandbox}</div>`;
+const btnLabel = (label) => S.busy ? '<span class="spin"></span>' : label;
+
+/* ============================================================ AUTH screens */
+function authView(){
+  const T = t(), v = cur();
+  const stepIdx = S.flow === 'register' ? ({ contact: 1, otp: 2, setPin: 3 }[v] || 0) : 0;
+  const titles = { contact: S.flow === 'register' ? T.register : S.flow === 'reset' ? T.resetTitle : T.addTitle, otp: T.verifyTitle, setPin: T.pinTopbar, loginPhone: T.login, loginPin: T.login };
+  const hasHeader = v !== 'splash' || S.wide;
+  const side = !S.wide ? '' : `<aside style="flex:1.2 1 0;min-width:0;position:sticky;top:0;height:100vh;background:#1E3358 var(--bgImg) center/cover;display:flex;flex-direction:column;justify-content:space-between;padding:48px 56px;overflow:hidden">
+    <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(18,30,55,.05) 0%,rgba(18,30,55,.75) 100%)"></div>
+    <div style="position:relative;display:flex;align-items:center;gap:14px">${logoBox(64, 48, 18, 'box-shadow:0 10px 30px rgba(10,20,40,.3)')}<span class="sora" style="font-size:24px;font-weight:700;color:#FFFFFF">1st Pay</span></div>
+    <div style="position:relative;max-width:520px;display:flex;flex-direction:column;gap:16px;color:#FFFFFF"><div style="font-size:40px;font-weight:700;line-height:1.25;text-wrap:pretty;text-shadow:0 2px 16px rgba(0,0,0,.25)">${T.sideTitle}</div><div style="font-size:18px;line-height:1.65;opacity:.9;text-wrap:pretty">${T.sideText}</div></div>
+    <div style="position:relative;font-size:13px;color:rgba(255,255,255,.75);letter-spacing:.3px">PLUS ONE BIZ CO., LTD. — Payment Facilitator</div></aside>`;
+  const header = !hasHeader ? '' : `<div style="display:flex;align-items:center;gap:12px;padding:16px 20px 8px;min-height:72px">
+    ${v !== 'splash' ? `<button class="circle" data-act="back" aria-label="${T.back}" style="width:48px;height:48px">${IC.back}</button>` : ''}
+    <div style="flex:1;min-width:0;font-size:18px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${titles[v] || ''}</div>${headerBtns()}</div>`;
+  const steps = !stepIdx ? '' : `<div style="padding:4px 24px 0;display:flex;flex-direction:column;gap:8px"><div style="display:flex;gap:6px">${[1,2,3].map(i => `<div style="flex:1;height:6px;border-radius:3px;background:${i <= stepIdx ? 'var(--gold)' : 'var(--line)'}"></div>`).join('')}</div><div style="font-size:14px;font-weight:600;color:var(--soft)">${T.step.replace('{a}', stepIdx).replace('{b}', 3)}</div></div>`;
+  return `<div style="min-height:100vh;min-height:100dvh;display:flex;background:var(--bg)">${side}
+    <div style="flex:1 1 0;min-width:0;display:flex;justify-content:center;background:var(--bg)">
+    <div style="width:100%;max-width:480px;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);position:relative;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)">
+    ${header}${steps}${SCREENS[v]()}
+    </div></div></div>`;
+}
+
+const SCREENS = {
+splash(){
+  const T = t();
+  const hero = S.wide ? '' : `<div style="position:relative;min-height:340px;height:42vh;background:#1E3358 var(--bgImg) center/cover;border-radius:0 0 36px 36px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:24px">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,30,55,.05) 0%,rgba(18,30,55,.7) 100%)"></div>
+    <button data-act="toggleTheme" style="position:absolute;top:18px;right:18px;height:44px;padding:0 16px;border-radius:22px;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.18);color:#fff;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;backdrop-filter:blur(8px)">${themeIcon()}${S.theme === 'dark' ? T.dark : T.light}</button>
+    <div style="position:relative">${logoBox(150, 112, 40, 'box-shadow:0 18px 40px rgba(10,20,40,.35)')}</div>
+    <div style="position:relative;color:#FFFFFF;font-size:18px;font-weight:600;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,.3)">${T.tagline}</div></div>`;
+  return `<div style="display:flex;flex-direction:column;flex:1">${hero}
+    <div style="display:flex;flex-direction:column;flex:1;padding:${S.wide ? '48px 32px 32px' : '28px 24px 24px'};gap:20px">
+      <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:28px;font-weight:700;line-height:1.3">${T.welcome}</div><div style="font-size:16px;color:var(--soft);line-height:1.6">${T.welcomeSub}</div></div>
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">${LANGS.map(l => { const a = l.code === S.lang; return `<button data-act="setLang" data-arg="${l.code}" style="height:56px;border-radius:16px;border:2px solid ${a ? 'var(--primary)' : 'var(--line)'};background:${a ? 'var(--primary)' : 'var(--card)'};color:${a ? 'var(--onPrimary)' : 'var(--ink)'};font-size:17px;font-weight:700">${l.short}</button>`; }).join('')}</div>
+      <div style="flex:1;min-height:8px"></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><button class="btn-p" data-act="goRegister">${T.register}</button><button class="btn-s" data-act="goLogin">${T.login}</button></div>
+      <div style="text-align:center;font-size:13px;color:var(--soft);padding:6px 12px">1st Pay · v0.3</div>
+    </div></div>`;
+},
+contact(){
+  const T = t(), sms = S.ch === 'sms';
+  const title = S.flow === 'reset' ? T.resetTitle : S.flow === 'add' ? T.addTitle : (sms ? T.phoneTitle : T.emailTitle);
+  const sub = S.flow === 'reset' ? T.resetSub : S.flow === 'add' ? T.addSub : (sms ? T.phoneSub : T.emailSub);
+  const acct = S.flow !== 'register' ? '' : `<span class="lbl">${T.acctType}</span><div class="tabs2">${[['customer', T.acctCustomer], ['merchant', T.acctMerchant]].map(([k, l]) => `<button data-act="setAcct" data-arg="${k}" class="${S.acct === k ? 'on' : ''}">${l}</button>`).join('')}</div>`;
+  const toggle = S.flow === 'add' ? '' : `<button class="btn-link" data-act="toggleCh" style="align-self:flex-start;font-size:15px">${sms ? T.useEmail : T.usePhone}</button>`;
+  return `<div class="screen"><div class="title">${title}</div><div class="sub" style="margin-bottom:24px">${sub}</div>${acct}
+    <label class="lbl" for="dest">${sms ? T.phoneLabel : T.emailLabel}</label>
+    <div class="field">${sms ? '<div class="pre">+856</div>' : ''}<input id="dest" data-input="dest" value="${esc(S.dest)}" ${sms ? 'class="num" inputmode="numeric" placeholder="20 xx xxx xxx" autocomplete="tel-national"' : 'type="email" inputmode="email" placeholder="name@email.com" autocomplete="email"'}></div>
+    ${sms ? `<div style="font-size:14px;color:var(--soft);margin-top:10px">${T.phoneHint}</div>` : ''}${toggle}
+    <div class="err">${esc(S.err)}</div><div class="grow"></div>
+    <button class="btn-p" data-act="sendOtp" id="primary" ${!destValid() || S.busy ? 'disabled' : ''} style="opacity:${destValid() ? 1 : .4}">${btnLabel(T.getOtp)}</button></div>`;
+},
+otp(){
+  const T = t(), mm = Math.floor(S.sec / 60), sc = String(S.sec % 60).padStart(2, '0');
+  return `<div class="screen"><div class="title">${T.otpTitle}</div>
+    <div class="sub">${T.otpSentTo} <strong class="sora" style="color:var(--ink)">${esc(S.sentTo || '')}</strong></div>
+    <div style="position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px" id="otpboxes">${otpBoxes()}
+      <input id="otp" data-input="otp" value="${esc(S.otp)}" inputmode="numeric" autocomplete="one-time-code" maxlength="6" aria-label="OTP" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;border:none;font-size:16px;cursor:text"></div>
+    ${S.devOtp ? `<div class="dev"><span>${T.sandboxOtp} <b class="sora">${esc(S.devOtp)}</b></span><button data-act="fillOtp">${T.fill}</button></div>` : ''}
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap">
+      <span style="font-size:15px;color:var(--soft)" id="timer">${S.sec > 0 ? `${T.resendIn} ${mm}:${sc}` : T.expired}</span>
+      <button class="btn-link" data-act="resend" id="resendBtn" ${S.sec > 0 || S.busy ? 'disabled' : ''} style="opacity:${S.sec > 0 ? .4 : 1}">${T.resend}</button></div>
+    <div class="err">${esc(S.err)}</div><div class="grow"></div>
+    <button class="btn-p" data-act="checkOtp" id="primary" ${S.otp.length < 6 || S.busy ? 'disabled' : ''} style="opacity:${S.otp.length < 6 ? .4 : 1}">${btnLabel(T.confirm)}</button></div>`;
+},
+setPin(){
+  const T = t(), reset = S.flow === 'reset';
+  const title = S.pinStage === 1 ? (reset ? T.newPin : T.pinSet) : T.pinConfirm, sub = S.pinStage === 1 ? T.pinSetSub : T.pinConfirmSub;
+  return pinScreen(title, sub, S.pinStage === 1 ? S.pin1.length : S.pin2.length, 'pressSet', false);
+},
+loginPhone(){
+  const T = t(), sms = S.ch === 'sms';
+  return `<div class="screen"><div class="title">${T.login}</div><div class="sub" style="margin-bottom:20px">${sms ? T.loginSub : T.emailLoginSub}</div>
+    <span class="lbl">${T.acctType}</span><div class="tabs2">${[['customer', T.acctCustomer], ['merchant', T.acctMerchant]].map(([k, l]) => `<button data-act="setAcct" data-arg="${k}" class="${S.acct === k ? 'on' : ''}">${l}</button>`).join('')}</div>
+    <label class="lbl" for="dest">${sms ? T.phoneLabel : T.emailLabel}</label>
+    <div class="field">${sms ? '<div class="pre">+856</div>' : ''}<input id="dest" data-input="dest" value="${esc(S.dest)}" ${sms ? 'class="num" inputmode="numeric" placeholder="20 xx xxx xxx" autocomplete="username"' : 'type="email" inputmode="email" placeholder="name@email.com" autocomplete="username"'}></div>
+    <button class="btn-link" data-act="toggleCh" style="align-self:flex-start;font-size:15px">${sms ? T.useEmail : T.usePhone}</button>
+    <div class="grow"></div>
+    <button class="btn-p" data-act="goLoginPin" id="primary" ${!destValid() ? 'disabled' : ''} style="opacity:${destValid() ? 1 : .4}">${T.next}</button></div>`;
+},
+loginPin(){ const T = t(); return pinScreen(T.pinEnter, T.pinEnterSub, S.lpin.length, 'pressLogin', true); },
+regDone(){
+  const T = t();
+  return `<div style="display:flex;flex-direction:column;flex:1;padding:32px 24px 28px">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;margin-bottom:28px">
+      <div style="width:96px;height:96px;border-radius:50%;background:var(--okSoft);display:flex;align-items:center;justify-content:center;margin-bottom:8px">${IC.check('var(--ok)')}</div>
+      <div style="font-size:26px;font-weight:700">${T.doneTitle}</div><div style="font-size:16px;color:var(--soft);line-height:1.6;max-width:340px;text-wrap:pretty">${T.doneText}</div></div>
+    <div style="border:2px solid var(--gold);border-radius:20px;background:var(--card);padding:20px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font-size:18px;font-weight:700">${T.lvl1Title}</span><span style="font-size:13px;font-weight:700;padding:5px 12px;border-radius:99px;background:var(--goldSoft);color:var(--goldInk);white-space:nowrap">${T.recommended}</span></div>
+      ${T.lvl.map(it => `<div style="display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--soft);line-height:1.5">${IC.tick}<span>${it}</span></div>`).join('')}</div>
+    <div class="grow"></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><button class="btn-g" data-act="soon">${T.verifyNow}</button><button class="btn-link" data-act="enterHome" style="height:52px;font-size:17px">${T.skip}</button></div></div>`;
+},
+shell(){ return ''; }
+};
+function otpBoxes(){ return [0,1,2,3,4,5].map(i => `<div style="aspect-ratio:4/5;border-radius:14px;border:2px solid ${i === S.otp.length ? 'var(--gold)' : (S.otp[i] ? 'var(--accent)' : 'var(--line)')};background:var(--card);display:flex;align-items:center;justify-content:center;font-family:Sora,sans-serif;font-size:28px;font-weight:600">${S.otp[i] || ''}</div>`).join(''); }
+function pinScreen(title, sub, n, act, login){
+  const T = t();
+  return `<div class="screen"><div style="text-align:center;font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px">${title}</div>
+    <div style="text-align:center;font-size:16px;color:var(--soft);line-height:1.6;margin-bottom:28px;text-wrap:pretty">${sub}</div>
+    ${dots(n)}<div style="text-align:center;min-height:28px;margin-top:16px;font-size:15px;font-weight:600;color:var(--err)">${S.busy ? '<span class="spin" style="color:var(--soft)"></span>' : esc(S.pinErr)}</div>
+    ${login ? `<div style="text-align:center"><button class="btn-link" data-act="forgot" style="padding:10px">${T.forgot}</button></div>` : ''}
+    <div style="flex:1;min-height:20px"></div>${keypad(act)}</div>`;
+}
+
+/* ============================================================ SHELL (หลังเข้าสู่ระบบ) */
+function shellView(){
+  const T = t(), u = S.user || {}, merchant = u.account_type === 'merchant';
+  const nav = merchant
+    ? [['home', T.home, 'home'], ['receive', T.receive, 'qr'], ['sales', T.sales, 'bills'], ['payouts', T.payouts, 'bank'], ['profile', T.shop, 'store']]
+    : [['home', T.home, 'home'], ['scan', T.scan, 'scan'], ['myqr', T.myQr, 'qr'], ['history', T.history, 'hist'], ['profile', T.profile, 'prof']];
+  const name = u.full_name || (u.phone ? '+856 ' + u.phone.slice(4) : u.email) || '';
+  const initial = u.full_name ? esc(Array.from(u.full_name)[0].toUpperCase()) : svg(merchant ? 'store' : 'prof', 26);
+  const titles = { scan: T.scan, myqr: T.myQr, history: T.history, profile: merchant ? T.shop : T.profile, receive: T.receive, sales: T.sales, payouts: T.payouts };
+  const home = S.tab === 'home';
+  const sidebar = !S.wide ? '' : `<aside style="width:260px;flex-shrink:0;position:sticky;top:0;height:100vh;background:var(--card);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:28px 18px;gap:28px">
+    <div style="display:flex;align-items:center;gap:12px;padding:0 8px">${logoBox(48, 36, 14, 'border:1px solid var(--line)')}<span class="sora" style="font-size:20px;font-weight:700">1st Pay</span></div>
+    <nav style="display:flex;flex-direction:column;gap:6px">${nav.map(([k, l, i]) => `<button data-act="tab" data-arg="${k}" style="display:flex;align-items:center;gap:14px;height:54px;padding:0 16px;border-radius:14px;border:none;background:${S.tab === k ? 'var(--goldSoft)' : 'transparent'};color:${S.tab === k ? 'var(--ink)' : 'var(--soft)'};font-size:17px;font-weight:600;text-align:left">${svg(i)}<span>${l}</span></button>`).join('')}</nav>
+    <div style="flex:1"></div>
+    <button data-act="logout" style="display:flex;align-items:center;gap:14px;height:54px;padding:0 16px;border-radius:14px;border:none;background:transparent;color:var(--soft);font-size:16px;font-weight:600">${IC.logout}${T.logout}</button></aside>`;
+  const avatar = merchant
+    ? `<button data-act="tab" data-arg="profile" style="width:52px;height:52px;border-radius:14px;border:2px solid var(--gold);background:var(--goldSoft);color:var(--goldInk);font-size:22px;font-weight:700;flex-shrink:0;display:flex;align-items:center;justify-content:center">${initial}</button>`
+    : `<button data-act="tab" data-arg="profile" style="width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);padding:0;background:var(--goldSoft);color:var(--goldInk);font-size:22px;font-weight:700;flex-shrink:0;display:flex;align-items:center;justify-content:center">${initial}</button>`;
+  const headLeft = home
+    ? `${avatar}<div style="flex:1;min-width:0;display:flex;flex-direction:column">${merchant
+        ? `<span style="font-size:20px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(name)}</span><span style="font-size:14px;color:var(--ok);font-weight:600;display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:var(--ok)"></span>${T.open}</span>`
+        : `<span style="font-size:15px;color:var(--soft)">${T.hello}</span><span style="font-size:22px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(name)}</span>`}</div>`
+    : `<div style="flex:1;min-width:0;font-size:20px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${titles[S.tab] || ''}</div>`;
+  const body = home ? (merchant ? merchantHome() : customerHome()) : S.tab === 'profile' ? profileView() : S.tab === 'history' || S.tab === 'sales' ? emptyList() : soonView();
+  const bottom = S.wide ? '' : `<nav style="position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--card);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(5,minmax(0,1fr))">${nav.map(([k, l, i]) => `<button data-act="tab" data-arg="${k}" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:60px;border:none;background:none;color:${S.tab === k ? 'var(--ink)' : 'var(--soft)'};padding:4px 2px"><div style="width:52px;height:30px;border-radius:15px;background:${S.tab === k ? 'var(--goldSoft)' : 'transparent'};display:flex;align-items:center;justify-content:center">${svg(i)}</div><span style="font-size:13px;font-weight:700;line-height:1.2;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">${l}</span></button>`).join('')}</nav>`;
+  return `<div style="min-height:100vh;min-height:100dvh;display:flex;background:var(--bg);color:var(--ink)">${sidebar}
+    <div style="flex:1 1 0;min-width:0;display:flex;justify-content:center"><div style="width:100%;max-width:${S.wide ? '640px' : '100%'};min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;position:relative;padding-top:env(safe-area-inset-top,0px);padding-bottom:${S.wide ? '24px' : 'calc(88px + env(safe-area-inset-bottom,0px))'}">
+    <div style="display:flex;align-items:center;gap:12px;padding:16px 20px 8px;min-height:76px">${headLeft}${headerBtns()}</div>${body}</div></div>${bottom}</div>`;
+}
+function customerHome(){
+  const T = t(), u = S.user, max = 500000, used = 0;
+  const shortcuts = [['scan', T.scan, true], ['qr', T.receive], ['transfer', T.transfer], ['bills', T.bills], ['topup', T.topup], ['budget', T.budget], ['hist', T.history, false, 'history'], ['edit', T.customize, false, null, true]];
+  return `<div style="display:flex;flex-direction:column;padding:8px 20px 28px;gap:24px">
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#1E3358 var(--bgImg) center/cover;padding:24px;color:#FFFFFF;display:flex;flex-direction:column;gap:10px;box-shadow:0 14px 34px rgba(20,34,62,.22)">
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(18,30,55,.35) 0%,rgba(18,30,55,.85) 100%)"></div>
+      <div style="position:relative;display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font-size:16px;font-weight:500;opacity:.92">${T.limitToday}</span><span style="font-size:13px;font-weight:700;background:rgba(255,255,255,.2);padding:5px 12px;border-radius:99px">Level ${u.kyc_level}</span></div>
+      <div style="position:relative;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span class="sora" style="font-size:36px;font-weight:700;letter-spacing:-.5px">${fmt(max - used)}</span><span style="font-size:18px;font-weight:600">${T.kip}</span></div>
+      <div style="position:relative;height:8px;border-radius:4px;background:rgba(255,255,255,.25);overflow:hidden"><div style="width:${Math.round((max - used) / max * 100)}%;height:100%;background:#D9B870;border-radius:4px"></div></div>
+      <div style="position:relative;font-size:14px;opacity:.9">${T.limitOf.replace('{m}', fmt(max))}</div></div>
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 10px">${shortcuts.map(([i, l, primary, tab, dashed]) => `<button data-act="${tab ? 'tab' : 'soon'}" data-arg="${tab || ''}" style="display:flex;flex-direction:column;align-items:center;gap:10px;background:none;border:none;color:var(--ink);padding:0"><div style="width:100%;max-width:76px;aspect-ratio:1/1;border-radius:22px;background:${primary ? 'var(--primary)' : dashed ? 'transparent' : 'var(--card)'};border:${primary ? 'none' : dashed ? '2px dashed var(--line)' : '1.5px solid var(--line)'};color:${primary ? 'var(--onPrimary)' : 'var(--accent)'};display:flex;align-items:center;justify-content:center">${svg(i, 30)}</div><span style="font-size:15px;font-weight:600;text-align:center;line-height:1.3">${l}</span></button>`).join('')}</div>
+    ${recentBlock(T.recent, 'history')}</div>`;
+}
+function merchantHome(){
+  const T = t();
+  return `<div style="display:flex;flex-direction:column;padding:8px 20px 28px;gap:18px">
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#1E3358 var(--bgImg) center/cover;padding:24px;color:#FFFFFF;display:flex;flex-direction:column;gap:12px;box-shadow:0 14px 34px rgba(20,34,62,.22)">
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(18,30,55,.35) 0%,rgba(18,30,55,.85) 100%)"></div>
+      <span style="position:relative;font-size:16px;font-weight:500;opacity:.92">${T.todaySales}</span>
+      <div style="position:relative;display:flex;align-items:baseline;gap:8px"><span class="sora" style="font-size:40px;font-weight:700;letter-spacing:-.5px">0</span><span style="font-size:18px;font-weight:600">${T.kip}</span></div>
+      <div style="position:relative;display:flex;gap:8px"><span style="font-size:13px;font-weight:700;background:rgba(255,255,255,.2);padding:6px 12px;border-radius:99px">${T.items.replace('{n}', 0)}</span></div></div>
+    <button data-act="soon" style="height:72px;border-radius:22px;border:none;background:var(--primary);color:var(--onPrimary);font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:14px">${svg('qr', 28)}${T.receiveBig}</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="card" style="padding:16px 18px"><div style="font-size:14px;color:var(--soft)">${T.avgTicket}</div><div class="sora" style="font-size:24px;font-weight:700;margin-top:4px">0</div></div>
+      <div class="card" style="padding:16px 18px"><div style="font-size:14px;color:var(--soft)">${T.nextPayout}</div><div class="sora" style="font-size:24px;font-weight:700;margin-top:4px;color:var(--ok)">0</div></div></div>
+    ${recentBlock(T.recent, 'sales')}</div>`;
+}
+function recentBlock(title, tab){
+  return `<div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:19px;font-weight:700">${title}</span><button class="btn-link" data-act="tab" data-arg="${tab}" style="padding:8px 0">${t().seeAll}</button></div>
+    <div class="card" style="padding:28px 16px;text-align:center;color:var(--soft);font-size:15px">${t().noTx}</div></div>`;
+}
+function emptyList(){ return `<div style="padding:8px 20px 28px"><div class="card" style="padding:40px 16px;text-align:center;color:var(--soft)">${t().noTx}</div></div>`; }
+function soonView(){ return `<div style="padding:8px 20px 28px"><div style="border:2px dashed var(--line);border-radius:20px;padding:28px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px">${logoBox(72, 52, 20, 'border:1px solid var(--line)')}<div style="font-size:16px;color:var(--soft);line-height:1.6">${t().soon}</div></div></div>`; }
+function profileView(){
+  const T = t(), u = S.user, merchant = u.account_type === 'merchant';
+  const name = u.full_name || (u.phone ? '+856 ' + u.phone.slice(4) : u.email);
+  const initial = u.full_name ? esc(Array.from(u.full_name)[0].toUpperCase()) : svg(merchant ? 'store' : 'prof', 44);
+  const missing = !u.email ? 'addEmail' : !u.phone ? 'addPhone' : null;
+  const menu = [T.upgrade, T.security, T.limits, T.help];
+  return `<div style="display:flex;flex-direction:column;padding:8px 20px 28px;gap:18px">
+    <div class="card" style="border-radius:24px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center">
+      <div style="width:96px;height:96px;border-radius:${merchant ? '26px' : '50%'};background:var(--goldSoft);color:var(--goldInk);display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:700;margin-bottom:6px">${initial}</div>
+      <div style="font-size:21px;font-weight:700">${esc(name)}</div>
+      ${u.phone && u.full_name ? `<div class="sora" style="font-size:15px;color:var(--soft)">+856 ${esc(u.phone.slice(4))}</div>` : ''}
+      ${u.email && (u.full_name || u.phone) ? `<div style="font-size:15px;color:var(--soft)">${esc(u.email)}</div>` : ''}
+      <span style="margin-top:8px;font-size:14px;font-weight:700;padding:6px 14px;border-radius:99px;background:var(--goldSoft);color:var(--goldInk)">${T.kycLevel}: Level ${u.kyc_level}</span>
+      ${missing ? `<button data-act="addContact" style="margin-top:10px;height:48px;padding:0 22px;border-radius:24px;border:2px solid var(--line);background:var(--card);color:var(--ink);font-size:16px;font-weight:700">+ ${T[missing]}</button>` : ''}</div>
+    <div class="card" style="overflow:hidden">
+      <button class="rowbtn" data-act="openLang"><span style="flex:1">${T.language}</span><span class="v">${(LANGS.find(l => l.code === S.lang) || LANGS[0]).name}</span><span class="ch">›</span></button>
+      <button class="rowbtn" data-act="toggleTheme"><span style="flex:1">${T.display}</span><span class="v">${S.theme === 'dark' ? T.dark : T.light}</span><div style="width:52px;height:32px;border-radius:16px;background:${S.theme === 'dark' ? 'var(--gold)' : 'var(--line)'};padding:3px;display:flex;justify-content:${S.theme === 'dark' ? 'flex-end' : 'flex-start'}"><div style="width:26px;height:26px;border-radius:50%;background:#FFFFFF"></div></div></button></div>
+    <div class="card" style="overflow:hidden">${menu.map(l => `<button class="rowbtn" data-act="soon"><span style="flex:1">${l}</span><span class="ch">›</span></button>`).join('')}</div>
+    <button class="btn-s" data-act="logout" style="color:var(--err);font-size:18px">${T.logout}</button></div>`;
+}
+
+/* ============================================================ render + events */
+const root = document.getElementById('root');
+function render(){
+  document.documentElement.dataset.theme = S.theme;
+  document.documentElement.lang = S.lang;
+  document.body.classList.toggle('sb', ENV !== 'prod');
+  const focusId = document.activeElement && document.activeElement.id;
+  const caret = focusId && document.activeElement.selectionStart;
+  root.innerHTML = (cur() === 'shell' ? shellView() : authView()) + langSheet() + toastEl() + sandbox();
+  if (focusId) { const el = document.getElementById(focusId); if (el) { el.focus(); try { el.setSelectionRange(caret, caret); } catch (e) {} } }
+}
+const ACT = {
+  back, toggleTheme, openLang: () => { S.langOpen = true; render(); }, closeLang: () => { S.langOpen = false; render(); }, setLang,
+  goRegister: () => { S.acct = 'customer'; startFlow('register'); },
+  goLogin: () => { S.ch = 'sms'; S.dest = ''; go('loginPhone'); },
+  setAcct: a => { S.acct = a; render(); },
+  toggleCh: () => { S.ch = S.ch === 'sms' ? 'email' : 'sms'; S.dest = ''; S.err = ''; render(); const el = document.getElementById('dest'); if (el) el.focus(); },
+  sendOtp: () => sendOtp(false), resend: () => sendOtp(true), checkOtp,
+  fillOtp: () => { S.otp = S.devOtp || ''; render(); checkOtp(); },
+  pressSet, pressLogin,
+  goLoginPin: () => { S.loginId = destValue(); S.lpin = ''; S.pinErr = ''; go('loginPin'); },
+  forgot: () => { S.flow = 'reset'; S.ch = 'sms'; S.dest = /^\d/.test(S.loginId) ? S.loginId : ''; S.err = ''; go('contact'); },
+  enterHome: () => { S.tab = 'home'; reset('shell'); },
+  soon: () => toast(t().soon),
+  tab: k => { S.tab = k || 'home'; render(); scrollTo(0, 0); },
+  addContact: () => startFlow('add'),
+  logout,
+};
+root.addEventListener('click', e => {
+  const stop = e.target.closest('[data-stop]'); const b = e.target.closest('[data-act]');
+  if (!b || (stop && !stop.contains(b))) return;
+  if (b.disabled) return;
+  const fn = ACT[b.dataset.act]; if (fn) fn(b.dataset.arg);
+});
+root.addEventListener('input', e => {
+  const k = e.target.dataset.input; if (!k) return;
+  if (k === 'dest') {
+    S.dest = S.ch === 'sms' ? digits(e.target.value).slice(0, 11) : e.target.value.slice(0, 254);
+    if (S.ch === 'sms' && e.target.value !== S.dest) e.target.value = S.dest;
+    const p = document.getElementById('primary'); if (p) { const ok = destValid(); p.disabled = !ok; p.style.opacity = ok ? 1 : .4; }
+  }
+  if (k === 'otp') {
+    S.otp = digits(e.target.value).slice(0, 6); e.target.value = S.otp;
+    const box = document.getElementById('otpboxes'); box.querySelectorAll('div').forEach(d => d.remove()); box.insertAdjacentHTML('afterbegin', otpBoxes());
+    const p = document.getElementById('primary'); if (p) { p.disabled = S.otp.length < 6; p.style.opacity = S.otp.length < 6 ? .4 : 1; }
+    if (S.otp.length === 6) checkOtp();
+  }
+});
+root.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  const p = document.getElementById('primary'); if (p && !p.disabled) p.click();
+});
+document.addEventListener('keydown', e => {   // พิมพ์ PIN ด้วยคีย์บอร์ดได้บนคอม
+  const v = cur(); if (v !== 'setPin' && v !== 'loginPin') return;
+  if (/^\d$/.test(e.key)) (v === 'setPin' ? pressSet : pressLogin)(e.key);
+  if (e.key === 'Backspace') (v === 'setPin' ? pressSet : pressLogin)('del');
+});
+addEventListener('resize', () => { const w = innerWidth >= 960; if (w !== S.wide) { S.wide = w; render(); } });
+setInterval(() => {
+  if (S.sec > 0) { S.sec--; if (cur() === 'otp') {
+    const T = t(), el = document.getElementById('timer'), b = document.getElementById('resendBtn');
+    if (el) el.textContent = S.sec > 0 ? `${T.resendIn} ${Math.floor(S.sec / 60)}:${String(S.sec % 60).padStart(2, '0')}` : T.expired;
+    if (b) { b.disabled = S.sec > 0; b.style.opacity = S.sec > 0 ? .4 : 1; }
+  } }
+}, 1000);
+
+(async function boot(){
+  if (S.refresh && await refresh()) {
+    try { S.user = await api('GET', '/v1/me', null, true); S.stack = ['shell']; } catch (e) { endSession(); }
+  }
+  render();
+})();
+</script>
+</body>
+</html>
