@@ -7,6 +7,7 @@
 <title>1st Pay</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script src="assets/qrcode.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Lao:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
@@ -67,24 +68,27 @@ const I18N = {
 th:{acctType:'ประเภทบัญชี',acctCustomer:'ผู้ใช้ทั่วไป',acctMerchant:'ร้านค้า',sideTitle:'ระบบชำระเงินที่ไว้ใจได้ สำหรับทุกคน',sideText:'1st Pay เชื่อมการชำระเงินระหว่างผู้ใช้และร้านค้าโดยตรงผ่านธนาคารพันธมิตร ใช้ได้ทั้งบนมือถือและคอมพิวเตอร์',tagline:'ชำระเงินง่าย ปลอดภัย ทุกที่ทุกเวลา',welcome:'ยินดีต้อนรับ',welcomeSub:'เลือกภาษาที่ถนัด แล้วเริ่มใช้งานได้เลย',register:'สมัครใช้งาน',login:'เข้าสู่ระบบ',phoneTitle:'กรอกเบอร์โทรศัพท์',phoneSub:'เราจะส่งรหัส OTP ไปยังเบอร์นี้เพื่อยืนยันว่าเป็นคุณ',phoneLabel:'หมายเลขโทรศัพท์',phoneHint:'ใส่เฉพาะตัวเลข ไม่ต้องใส่ 0 นำหน้า',getOtp:'ขอรหัส OTP',verifyTitle:'ยืนยันตัวตน',otpTitle:'กรอกรหัส OTP 6 หลัก',otpSentTo:'ส่งไปที่',resendIn:'ขอรหัสใหม่ได้ใน',resend:'ส่งรหัสอีกครั้ง',confirm:'ยืนยัน',pinTopbar:'ตั้งรหัส PIN',pinSet:'ตั้งรหัส PIN 6 หลัก',pinSetSub:'ใช้ PIN นี้ทุกครั้งที่เข้าสู่ระบบและยืนยันการชำระเงิน',pinConfirm:'กรอก PIN อีกครั้ง',pinConfirmSub:'กรอก PIN เดิมอีกครั้งเพื่อยืนยัน',pinMismatch:'PIN ไม่ตรงกัน กรุณาลองใหม่',del:'ลบ',doneTitle:'สมัครสำเร็จ',doneText:'บัญชีของคุณอยู่ระดับ Level 0 — ชำระเงินได้ไม่เกิน 500,000 กีบ/วัน',lvl1Title:'ยืนยันตัวตนเพิ่ม (Level 1)',recommended:'แนะนำ',lvl:['เพิ่มวงเงินการใช้งานต่อวัน','ใช้บัตรประชาชนหรือพาสปอร์ต + ถ่ายรูปใบหน้า','ตรวจสอบภายใน 1–3 วันทำการ'],verifyNow:'ยืนยันตัวตนตอนนี้',skip:'ข้ามไปก่อน เริ่มใช้งาน',loginSub:'กรอกเบอร์โทรศัพท์ที่ลงทะเบียนไว้',next:'ถัดไป',pinEnter:'กรอกรหัส PIN',pinEnterSub:'ยืนยันตัวตนด้วย PIN 6 หลักของคุณ',forgot:'ลืม PIN?',logout:'ออกจากระบบ',step:'ขั้นตอน {a} จาก {b}',light:'กลางวัน',dark:'กลางคืน',soon:'ฟีเจอร์นี้จะเชื่อมต่อในพาร์ทถัดไป',back:'ย้อนกลับ',langTitle:'เลือกภาษา',expired:'ขอรหัสใหม่ได้แล้ว',
  hello:'สวัสดี',limitToday:'วงเงินใช้ได้วันนี้',limitOf:'จากวงเงินสูงสุด {m} กีบ/วัน',kip:'กีบ',scan:'สแกนจ่าย',receive:'รับเงิน',transfer:'โอนเงิน',history:'ประวัติ',bills:'จ่ายบิล',topup:'เติมเงินมือถือ',budget:'งบรายจ่าย',customize:'ปรับแต่ง',recent:'รายการล่าสุด',seeAll:'ดูทั้งหมด',home:'หน้าหลัก',myQr:'QR ของฉัน',profile:'โปรไฟล์',kycLevel:'ระดับบัญชี',language:'ภาษา',display:'โหมดหน้าจอ',upgrade:'ยกระดับบัญชี (Level 1)',security:'ความปลอดภัย / เปลี่ยน PIN',limits:'วงเงินการใช้งาน',help:'ศูนย์ช่วยเหลือ',
  sales:'รายการขาย',payouts:'เงินเข้าบัญชี',shop:'ร้านของฉัน',open:'เปิดรับชำระ',todaySales:'ยอดขายวันนี้',avgTicket:'เฉลี่ยต่อบิล',nextPayout:'ยอดที่จะโอนเข้าบัญชี',receiveBig:'รับเงินจากลูกค้า',items:'{n} รายการ',
- demoBanner:'DEMO · ข้อมูลเก็บในเครื่องของคุณเท่านั้น ไม่มีการส่ง SMS/เงินจริง', sandbox:'SANDBOX · โหมดทดสอบ ไม่มีการเคลื่อนไหวเงินจริง',useEmail:'ใช้อีเมลแทน',usePhone:'ใช้เบอร์โทรแทน',emailTitle:'กรอกอีเมล',emailSub:'เราจะส่งรหัส OTP ไปยังอีเมลนี้เพื่อยืนยันว่าเป็นคุณ',emailLabel:'อีเมล',emailLoginSub:'กรอกอีเมลที่ลงทะเบียนไว้',sandboxOtp:'โหมดทดสอบ: รหัสคือ',fill:'ใส่ให้',resetTitle:'ลืม PIN',resetSub:'กรอกเบอร์โทรที่ลงทะเบียนไว้ เราจะส่ง OTP เพื่อตั้ง PIN ใหม่',newPin:'ตั้ง PIN ใหม่ 6 หลัก',pinReset:'ตั้ง PIN ใหม่สำเร็จ กรุณาเข้าสู่ระบบ',addEmail:'เพิ่มอีเมล',addPhone:'เพิ่มเบอร์โทร',addTitle:'เพิ่มช่องทางติดต่อ',addSub:'ยืนยันด้วยรหัส OTP',added:'เพิ่มเรียบร้อยแล้ว',noTx:'ยังไม่มีรายการ',network:'เชื่อมต่อไม่ได้ กรุณาลองใหม่',
- E:{ERR_PHONE_FORMAT:'เบอร์โทรไม่ถูกต้อง (รองรับ 20 หรือ 30)',ERR_EMAIL_FORMAT:'อีเมลไม่ถูกต้อง',ERR_ALREADY_REGISTERED:'เบอร์/อีเมลนี้ลงทะเบียนแล้ว',ERR_OTP_COOLDOWN:'กรุณารอ {s} วินาที',ERR_OTP_RATE_LIMIT:'ขอรหัสเกินกำหนด กรุณาลองใหม่ภายหลัง',ERR_OTP_INVALID:'รหัสไม่ถูกต้อง (เหลือ {n} ครั้ง)',ERR_OTP_EXPIRED:'รหัสหมดอายุ กรุณาขอใหม่',ERR_OTP_LOCKED:'กรอกผิดเกินกำหนด กรุณาขอรหัสใหม่',ERR_PIN_WEAK:'PIN ง่ายเกินไป ห้ามใช้เลขซ้ำหรือเลขเรียง',ERR_PIN_FORMAT:'PIN ต้องเป็นตัวเลข 6 หลัก',ERR_LOGIN_FAILED:'ข้อมูลเข้าสู่ระบบไม่ถูกต้อง',ERR_PIN_LOCKED:'PIN ถูกล็อกชั่วคราว 15 นาที',ERR_NOTIFY_FAILED:'ส่งรหัสไม่สำเร็จ กรุณาลองใหม่',ERR_TOKEN_USED:'กรุณาเริ่มใหม่อีกครั้ง',ERR_TOKEN_EXPIRED:'หมดเวลา กรุณาเริ่มใหม่',ERR_ACCOUNT_INACTIVE:'บัญชีถูกระงับ'}},
+ demoBanner:'DEMO · ข้อมูลเก็บในเครื่องของคุณเท่านั้น ไม่มีการส่ง SMS/เงินจริง', uploadTitle:'อัปโหลดเอกสาร',uploadSub:'ใช้บัตรประชาชนหรือพาสปอร์ตที่ยังไม่หมดอายุ ภาพต้องชัด ไม่มีแสงสะท้อน',idCard:'รูปบัตรประชาชน / พาสปอร์ต',idTap:'แตะเพื่ออัปโหลดรูป',selfie:'ถ่ายรูปใบหน้า',selfieTap:'แตะเพื่อเปิดกล้อง',uploaded:'อัปโหลดแล้ว',submit:'ส่งข้อมูลตรวจสอบ',pendingTitle:'อยู่ระหว่างตรวจสอบ',pendingText:'ทีมงานกำลังตรวจเอกสารของคุณ ใช้เวลาประมาณ 1–3 วันทำการ และจะแจ้งผลทาง SMS',backHome:'กลับหน้าหลัก',kycName:'ชื่อ-นามสกุลตามบัตร',kycDob:'วันเกิด',kycIdNo:'เลขบัตรประชาชน / พาสปอร์ต',kybTitle:'ยืนยันร้านค้า (KYB)',kybSub:'อัปโหลดทะเบียนการค้าและรูปหน้าร้าน ทีมงานจะตรวจภายใน 1–3 วันทำการ',bizName:'ชื่อร้าน / กิจการ',bizType:'ประเภทกิจการ',ownerName:'ชื่อ-นามสกุลเจ้าของ',docReg:'รูปทะเบียนการค้า',docShop:'รูปหน้าร้าน',kycPendingCard:'กำลังตรวจสอบเอกสาร',kycPendingSub:'ทีมงานจะแจ้งผลภายใน 1–3 วันทำการ',kycMore:'ทีมงานขอเอกสารเพิ่ม',kycRejected:'คำขอยืนยันตัวตนไม่ผ่าน',resubmit:'ส่งเอกสารใหม่',kycCardSub:'อัปโหลดบัตรและถ่ายรูปใบหน้า เพื่อเพิ่มวงเงิน', sandbox:'SANDBOX · โหมดทดสอบ ไม่มีการเคลื่อนไหวเงินจริง',useEmail:'ใช้อีเมลแทน',usePhone:'ใช้เบอร์โทรแทน',emailTitle:'กรอกอีเมล',emailSub:'เราจะส่งรหัส OTP ไปยังอีเมลนี้เพื่อยืนยันว่าเป็นคุณ',emailLabel:'อีเมล',emailLoginSub:'กรอกอีเมลที่ลงทะเบียนไว้',sandboxOtp:'โหมดทดสอบ: รหัสคือ',fill:'ใส่ให้',resetTitle:'ลืม PIN',resetSub:'กรอกเบอร์โทรที่ลงทะเบียนไว้ เราจะส่ง OTP เพื่อตั้ง PIN ใหม่',newPin:'ตั้ง PIN ใหม่ 6 หลัก',pinReset:'ตั้ง PIN ใหม่สำเร็จ กรุณาเข้าสู่ระบบ',addEmail:'เพิ่มอีเมล',addPhone:'เพิ่มเบอร์โทร',addTitle:'เพิ่มช่องทางติดต่อ',addSub:'ยืนยันด้วยรหัส OTP',added:'เพิ่มเรียบร้อยแล้ว',noTx:'ยังไม่มีรายการ',network:'เชื่อมต่อไม่ได้ กรุณาลองใหม่',
+ E:{ERR_FILE_TYPE:'รองรับเฉพาะรูป JPG, PNG หรือ WEBP',ERR_FILE_TOO_LARGE:'ไฟล์ใหญ่เกินไป',ERR_KYC_FIELD:'กรุณากรอกข้อมูลให้ครบและถูกต้อง',ERR_KYC_AGE:'ผู้สมัครต้องมีอายุตั้งแต่ 15 ปีขึ้นไป',ERR_KYC_PENDING:'มีคำขอที่รอตรวจอยู่แล้ว',ERR_PHONE_FORMAT:'เบอร์โทรไม่ถูกต้อง (รองรับ 20 หรือ 30)',ERR_EMAIL_FORMAT:'อีเมลไม่ถูกต้อง',ERR_ALREADY_REGISTERED:'เบอร์/อีเมลนี้ลงทะเบียนแล้ว',ERR_OTP_COOLDOWN:'กรุณารอ {s} วินาที',ERR_OTP_RATE_LIMIT:'ขอรหัสเกินกำหนด กรุณาลองใหม่ภายหลัง',ERR_OTP_INVALID:'รหัสไม่ถูกต้อง (เหลือ {n} ครั้ง)',ERR_OTP_EXPIRED:'รหัสหมดอายุ กรุณาขอใหม่',ERR_OTP_LOCKED:'กรอกผิดเกินกำหนด กรุณาขอรหัสใหม่',ERR_PIN_WEAK:'PIN ง่ายเกินไป ห้ามใช้เลขซ้ำหรือเลขเรียง',ERR_PIN_FORMAT:'PIN ต้องเป็นตัวเลข 6 หลัก',ERR_LOGIN_FAILED:'ข้อมูลเข้าสู่ระบบไม่ถูกต้อง',ERR_PIN_LOCKED:'PIN ถูกล็อกชั่วคราว 15 นาที',ERR_NOTIFY_FAILED:'ส่งรหัสไม่สำเร็จ กรุณาลองใหม่',ERR_TOKEN_USED:'กรุณาเริ่มใหม่อีกครั้ง',ERR_TOKEN_EXPIRED:'หมดเวลา กรุณาเริ่มใหม่',ERR_ACCOUNT_INACTIVE:'บัญชีถูกระงับ'}},
 en:{acctType:'Account type',acctCustomer:'Personal',acctMerchant:'Merchant',sideTitle:'Trusted payments for everyone',sideText:'1st Pay connects customers and merchants directly through partner banks — on your phone or computer.',tagline:'Pay easily and safely, anywhere',welcome:'Welcome',welcomeSub:'Choose your language to get started',register:'Create account',login:'Log in',phoneTitle:'Enter your phone number',phoneSub:'We’ll text a one-time code (OTP) to confirm it’s you',phoneLabel:'Phone number',phoneHint:'Numbers only — no leading 0',getOtp:'Send code',verifyTitle:'Verify identity',otpTitle:'Enter the 6-digit code',otpSentTo:'Sent to',resendIn:'Resend code in',resend:'Resend code',confirm:'Confirm',pinTopbar:'Set PIN',pinSet:'Create a 6-digit PIN',pinSetSub:'You’ll use this PIN to log in and confirm payments',pinConfirm:'Enter PIN again',pinConfirmSub:'Re-enter the same PIN to confirm',pinMismatch:'PINs don’t match. Please try again',del:'Delete',doneTitle:'You’re all set',doneText:'Your account is Level 0 — pay up to 500,000 kip per day',lvl1Title:'Verify further (Level 1)',recommended:'Recommended',lvl:['Higher daily limit','ID card or passport + a face photo','Reviewed within 1–3 business days'],verifyNow:'Verify now',skip:'Skip for now',loginSub:'Enter the phone number you registered with',next:'Next',pinEnter:'Enter your PIN',pinEnterSub:'Confirm it’s you with your 6-digit PIN',forgot:'Forgot PIN?',logout:'Log out',step:'Step {a} of {b}',light:'Day',dark:'Night',soon:'This connects in the next part',back:'Back',langTitle:'Choose language',expired:'You can request a new code',
  hello:'Hello',limitToday:'Available today',limitOf:'of {m} kip daily limit',kip:'kip',scan:'Scan to pay',receive:'Receive',transfer:'Transfer',history:'History',bills:'Pay bills',topup:'Top up',budget:'Budget',customize:'Customize',recent:'Recent activity',seeAll:'See all',home:'Home',myQr:'My QR',profile:'Profile',kycLevel:'Account level',language:'Language',display:'Display mode',upgrade:'Upgrade account (Level 1)',security:'Security / change PIN',limits:'Spending limits',help:'Help centre',
  sales:'Sales',payouts:'Payouts',shop:'My shop',open:'Accepting payments',todaySales:'Today’s sales',avgTicket:'Average sale',nextPayout:'Next payout',receiveBig:'Receive payment',items:'{n} sales',
- demoBanner:'DEMO · data stays in your browser — no real SMS or money', sandbox:'SANDBOX · test mode, no real money movement',useEmail:'Use email instead',usePhone:'Use phone instead',emailTitle:'Enter your email',emailSub:'We’ll email a one-time code (OTP) to confirm it’s you',emailLabel:'Email',emailLoginSub:'Enter the email you registered with',sandboxOtp:'Sandbox: your code is',fill:'Fill in',resetTitle:'Forgot PIN',resetSub:'Enter your registered phone — we’ll send an OTP to reset your PIN',newPin:'Create a new 6-digit PIN',pinReset:'PIN updated — please log in',addEmail:'Add email',addPhone:'Add phone',addTitle:'Add contact',addSub:'Verify with a one-time code',added:'Added',noTx:'No transactions yet',network:'Connection failed, please try again',
- E:{ERR_PHONE_FORMAT:'Invalid phone number (20 or 30)',ERR_EMAIL_FORMAT:'Invalid email',ERR_ALREADY_REGISTERED:'Already registered',ERR_OTP_COOLDOWN:'Please wait {s}s',ERR_OTP_RATE_LIMIT:'Too many requests, try again later',ERR_OTP_INVALID:'Wrong code ({n} tries left)',ERR_OTP_EXPIRED:'Code expired, request a new one',ERR_OTP_LOCKED:'Too many attempts, request a new code',ERR_PIN_WEAK:'PIN too easy — avoid repeated or sequential digits',ERR_PIN_FORMAT:'PIN must be 6 digits',ERR_LOGIN_FAILED:'Incorrect login details',ERR_PIN_LOCKED:'PIN locked for 15 minutes',ERR_NOTIFY_FAILED:'Could not send code, please retry',ERR_TOKEN_USED:'Please start again',ERR_TOKEN_EXPIRED:'Session expired, please start again',ERR_ACCOUNT_INACTIVE:'Account suspended'}},
+ demoBanner:'DEMO · data stays in your browser — no real SMS or money', uploadTitle:'Upload documents',uploadSub:'Use a valid ID card or passport. Photos must be clear with no glare',idCard:'ID card / passport photo',idTap:'Tap to upload',selfie:'Take a face photo',selfieTap:'Tap to open camera',uploaded:'Uploaded',submit:'Submit for review',pendingTitle:'Under review',pendingText:'Our team is checking your documents. This takes about 1–3 business days — we’ll let you know by SMS',backHome:'Back to home',kycName:'Full name as on ID',kycDob:'Date of birth',kycIdNo:'ID card / passport number',kybTitle:'Verify your business (KYB)',kybSub:'Upload your business licence and a shop photo. We review within 1–3 business days',bizName:'Shop / business name',bizType:'Business type',ownerName:'Owner full name',docReg:'Business licence photo',docShop:'Shop front photo',kycPendingCard:'Documents under review',kycPendingSub:'We’ll let you know within 1–3 business days',kycMore:'More documents needed',kycRejected:'Verification not approved',resubmit:'Submit again',kycCardSub:'Upload your ID and a face photo to raise your limit', sandbox:'SANDBOX · test mode, no real money movement',useEmail:'Use email instead',usePhone:'Use phone instead',emailTitle:'Enter your email',emailSub:'We’ll email a one-time code (OTP) to confirm it’s you',emailLabel:'Email',emailLoginSub:'Enter the email you registered with',sandboxOtp:'Sandbox: your code is',fill:'Fill in',resetTitle:'Forgot PIN',resetSub:'Enter your registered phone — we’ll send an OTP to reset your PIN',newPin:'Create a new 6-digit PIN',pinReset:'PIN updated — please log in',addEmail:'Add email',addPhone:'Add phone',addTitle:'Add contact',addSub:'Verify with a one-time code',added:'Added',noTx:'No transactions yet',network:'Connection failed, please try again',
+ E:{ERR_FILE_TYPE:'Only JPG, PNG or WEBP images',ERR_FILE_TOO_LARGE:'File is too large',ERR_KYC_FIELD:'Please complete all fields correctly',ERR_KYC_AGE:'Applicant must be 15 or older',ERR_KYC_PENDING:'A request is already under review',ERR_PHONE_FORMAT:'Invalid phone number (20 or 30)',ERR_EMAIL_FORMAT:'Invalid email',ERR_ALREADY_REGISTERED:'Already registered',ERR_OTP_COOLDOWN:'Please wait {s}s',ERR_OTP_RATE_LIMIT:'Too many requests, try again later',ERR_OTP_INVALID:'Wrong code ({n} tries left)',ERR_OTP_EXPIRED:'Code expired, request a new one',ERR_OTP_LOCKED:'Too many attempts, request a new code',ERR_PIN_WEAK:'PIN too easy — avoid repeated or sequential digits',ERR_PIN_FORMAT:'PIN must be 6 digits',ERR_LOGIN_FAILED:'Incorrect login details',ERR_PIN_LOCKED:'PIN locked for 15 minutes',ERR_NOTIFY_FAILED:'Could not send code, please retry',ERR_TOKEN_USED:'Please start again',ERR_TOKEN_EXPIRED:'Session expired, please start again',ERR_ACCOUNT_INACTIVE:'Account suspended'}},
 lo:{acctType:'ປະເພດບັນຊີ',acctCustomer:'ຜູ້ໃຊ້ທົ່ວໄປ',acctMerchant:'ຮ້ານຄ້າ',sideTitle:'ລະບົບຈ່າຍເງິນທີ່ໄວ້ໃຈໄດ້ ສຳລັບທຸກຄົນ',sideText:'1st Pay ເຊື່ອມການຈ່າຍເງິນລະຫວ່າງຜູ້ໃຊ້ ແລະ ຮ້ານຄ້າໂດຍກົງຜ່ານທະນາຄານຄູ່ຮ່ວມ ໃຊ້ໄດ້ທັງມືຖື ແລະ ຄອມພິວເຕີ',tagline:'ຈ່າຍງ່າຍ ປອດໄພ ທຸກທີ່ທຸກເວລາ',welcome:'ຍິນດີຕ້ອນຮັບ',welcomeSub:'ເລືອກພາສາ ແລ້ວເລີ່ມໃຊ້ງານໄດ້ເລີຍ',register:'ສະໝັກໃຊ້ງານ',login:'ເຂົ້າສູ່ລະບົບ',phoneTitle:'ປ້ອນເບີໂທລະສັບ',phoneSub:'ພວກເຮົາຈະສົ່ງລະຫັດ OTP ໄປຫາເບີນີ້ເພື່ອຢືນຢັນວ່າແມ່ນທ່ານ',phoneLabel:'ເບີໂທລະສັບ',phoneHint:'ໃສ່ສະເພາະຕົວເລກ ບໍ່ຕ້ອງໃສ່ 0 ທາງໜ້າ',getOtp:'ຂໍລະຫັດ OTP',verifyTitle:'ຢືນຢັນຕົວຕົນ',otpTitle:'ປ້ອນລະຫັດ OTP 6 ຕົວ',otpSentTo:'ສົ່ງໄປທີ່',resendIn:'ຂໍລະຫັດໃໝ່ໄດ້ໃນ',resend:'ສົ່ງລະຫັດອີກຄັ້ງ',confirm:'ຢືນຢັນ',pinTopbar:'ຕັ້ງລະຫັດ PIN',pinSet:'ຕັ້ງລະຫັດ PIN 6 ຕົວ',pinSetSub:'ໃຊ້ PIN ນີ້ທຸກຄັ້ງທີ່ເຂົ້າລະບົບ ແລະ ຢືນຢັນການຈ່າຍເງິນ',pinConfirm:'ປ້ອນ PIN ອີກຄັ້ງ',pinConfirmSub:'ປ້ອນ PIN ເດີມອີກຄັ້ງເພື່ອຢືນຢັນ',pinMismatch:'PIN ບໍ່ກົງກັນ ກະລຸນາລອງໃໝ່',del:'ລຶບ',doneTitle:'ສະໝັກສຳເລັດ',doneText:'ບັນຊີຂອງທ່ານຢູ່ລະດັບ Level 0 — ຈ່າຍໄດ້ບໍ່ເກີນ 500,000 ກີບ/ມື້',lvl1Title:'ຢືນຢັນຕົວຕົນເພີ່ມ (Level 1)',recommended:'ແນະນຳ',lvl:['ເພີ່ມວົງເງິນຕໍ່ມື້','ໃຊ້ບັດປະຈຳຕົວ ຫຼື ພາສປອດ + ຖ່າຍຮູບໜ້າ','ກວດສອບພາຍໃນ 1–3 ວັນລັດຖະການ'],verifyNow:'ຢືນຢັນຕົວຕົນດຽວນີ້',skip:'ຂ້າມໄປກ່ອນ',loginSub:'ປ້ອນເບີໂທທີ່ລົງທະບຽນໄວ້',next:'ຕໍ່ໄປ',pinEnter:'ປ້ອນລະຫັດ PIN',pinEnterSub:'ຢືນຢັນຕົວຕົນດ້ວຍ PIN 6 ຕົວຂອງທ່ານ',forgot:'ລືມ PIN?',logout:'ອອກຈາກລະບົບ',step:'ຂັ້ນຕອນ {a} ຈາກ {b}',light:'ກາງເວັນ',dark:'ກາງຄືນ',soon:'ຟັງຊັນນີ້ຈະເຊື່ອມຕໍ່ໃນພາກຕໍ່ໄປ',back:'ກັບຄືນ',langTitle:'ເລືອກພາສາ',expired:'ຂໍລະຫັດໃໝ່ໄດ້ແລ້ວ',
  hello:'ສະບາຍດີ',limitToday:'ວົງເງິນໃຊ້ໄດ້ມື້ນີ້',limitOf:'ຈາກວົງເງິນສູງສຸດ {m} ກີບ/ມື້',kip:'ກີບ',scan:'ສະແກນຈ່າຍ',receive:'ຮັບເງິນ',transfer:'ໂອນເງິນ',history:'ປະຫວັດ',bills:'ຈ່າຍບິນ',topup:'ເຕີມເງິນມືຖື',budget:'ງົບລາຍຈ່າຍ',customize:'ປັບແຕ່ງ',recent:'ລາຍການລ່າສຸດ',seeAll:'ເບິ່ງທັງໝົດ',home:'ໜ້າຫຼັກ',myQr:'QR ຂອງຂ້ອຍ',profile:'ໂປຣໄຟລ໌',kycLevel:'ລະດັບບັນຊີ',language:'ພາສາ',display:'ໂໝດໜ້າຈໍ',upgrade:'ຍົກລະດັບບັນຊີ (Level 1)',security:'ຄວາມປອດໄພ / ປ່ຽນ PIN',limits:'ວົງເງິນການໃຊ້ງານ',help:'ສູນຊ່ວຍເຫຼືອ',
  sales:'ລາຍການຂາຍ',payouts:'ເງິນເຂົ້າບັນຊີ',shop:'ຮ້ານຂອງຂ້ອຍ',open:'ເປີດຮັບຊຳລະ',todaySales:'ຍອດຂາຍມື້ນີ້',avgTicket:'ສະເລ່ຍຕໍ່ບິນ',nextPayout:'ຍອດທີ່ຈະໂອນເຂົ້າບັນຊີ',receiveBig:'ຮັບເງິນຈາກລູກຄ້າ',items:'{n} ລາຍການ',
- demoBanner:'DEMO · ຂໍ້ມູນເກັບໄວ້ໃນເຄື່ອງຂອງທ່ານເທົ່ານັ້ນ ບໍ່ມີການສົ່ງ SMS/ເງິນແທ້', sandbox:'SANDBOX · ໂໝດທົດສອບ ບໍ່ມີການເຄື່ອນໄຫວເງິນແທ້',useEmail:'ໃຊ້ອີເມວແທນ',usePhone:'ໃຊ້ເບີໂທແທນ',emailTitle:'ປ້ອນອີເມວ',emailSub:'ພວກເຮົາຈະສົ່ງລະຫັດ OTP ໄປຫາອີເມວນີ້ເພື່ອຢືນຢັນວ່າແມ່ນທ່ານ',emailLabel:'ອີເມວ',emailLoginSub:'ປ້ອນອີເມວທີ່ລົງທະບຽນໄວ້',sandboxOtp:'ໂໝດທົດສອບ: ລະຫັດແມ່ນ',fill:'ໃສ່ໃຫ້',resetTitle:'ລືມ PIN',resetSub:'ປ້ອນເບີໂທທີ່ລົງທະບຽນໄວ້ ພວກເຮົາຈະສົ່ງ OTP ເພື່ອຕັ້ງ PIN ໃໝ່',newPin:'ຕັ້ງ PIN ໃໝ່ 6 ຕົວ',pinReset:'ຕັ້ງ PIN ໃໝ່ສຳເລັດ ກະລຸນາເຂົ້າສູ່ລະບົບ',addEmail:'ເພີ່ມອີເມວ',addPhone:'ເພີ່ມເບີໂທ',addTitle:'ເພີ່ມຊ່ອງທາງຕິດຕໍ່',addSub:'ຢືນຢັນດ້ວຍລະຫັດ OTP',added:'ເພີ່ມແລ້ວ',noTx:'ຍັງບໍ່ມີລາຍການ',network:'ເຊື່ອມຕໍ່ບໍ່ໄດ້ ກະລຸນາລອງໃໝ່',
- E:{ERR_PHONE_FORMAT:'ເບີໂທບໍ່ຖືກຕ້ອງ (20 ຫຼື 30)',ERR_EMAIL_FORMAT:'ອີເມວບໍ່ຖືກຕ້ອງ',ERR_ALREADY_REGISTERED:'ເບີໂທ/ອີເມວນີ້ລົງທະບຽນແລ້ວ',ERR_OTP_COOLDOWN:'ກະລຸນາລໍຖ້າ {s} ວິນາທີ',ERR_OTP_RATE_LIMIT:'ຂໍລະຫັດເກີນກຳນົດ ກະລຸນາລອງໃໝ່ພາຍຫຼັງ',ERR_OTP_INVALID:'ລະຫັດບໍ່ຖືກຕ້ອງ (ເຫຼືອ {n} ຄັ້ງ)',ERR_OTP_EXPIRED:'ລະຫັດໝົດອາຍຸ ກະລຸນາຂໍໃໝ່',ERR_OTP_LOCKED:'ປ້ອນຜິດເກີນກຳນົດ ກະລຸນາຂໍລະຫັດໃໝ່',ERR_PIN_WEAK:'PIN ງ່າຍເກີນໄປ ຫ້າມໃຊ້ເລກຊ້ຳ ຫຼື ເລກລຽງກັນ',ERR_PIN_FORMAT:'PIN ຕ້ອງເປັນຕົວເລກ 6 ຕົວ',ERR_LOGIN_FAILED:'ຂໍ້ມູນເຂົ້າສູ່ລະບົບບໍ່ຖືກຕ້ອງ',ERR_PIN_LOCKED:'PIN ຖືກລັອກຊົ່ວຄາວ 15 ນາທີ',ERR_NOTIFY_FAILED:'ສົ່ງລະຫັດບໍ່ສຳເລັດ ກະລຸນາລອງໃໝ່',ERR_TOKEN_USED:'ກະລຸນາເລີ່ມຕົ້ນໃໝ່',ERR_TOKEN_EXPIRED:'ໝົດເວລາ ກະລຸນາເລີ່ມຕົ້ນໃໝ່',ERR_ACCOUNT_INACTIVE:'ບັນຊີຖືກລະງັບ'}},
+ demoBanner:'DEMO · ຂໍ້ມູນເກັບໄວ້ໃນເຄື່ອງຂອງທ່ານເທົ່ານັ້ນ ບໍ່ມີການສົ່ງ SMS/ເງິນແທ້', uploadTitle:'ອັບໂຫຼດເອກະສານ',uploadSub:'ໃຊ້ບັດປະຈຳຕົວ ຫຼື ພາສປອດທີ່ຍັງບໍ່ໝົດອາຍຸ ຮູບຕ້ອງຊັດເຈນ',idCard:'ຮູບບັດປະຈຳຕົວ / ພາສປອດ',idTap:'ແຕະເພື່ອອັບໂຫຼດ',selfie:'ຖ່າຍຮູບໜ້າ',selfieTap:'ແຕະເພື່ອເປີດກ້ອງ',uploaded:'ອັບໂຫຼດແລ້ວ',submit:'ສົ່ງຂໍ້ມູນກວດສອບ',pendingTitle:'ກຳລັງກວດສອບ',pendingText:'ທີມງານກຳລັງກວດເອກະສານຂອງທ່ານ ໃຊ້ເວລາປະມານ 1–3 ວັນລັດຖະການ ແລະ ຈະແຈ້ງຜົນທາງ SMS',backHome:'ກັບໜ້າຫຼັກ',kycName:'ຊື່ ແລະ ນາມສະກຸນຕາມບັດ',kycDob:'ວັນເກີດ',kycIdNo:'ເລກບັດປະຈຳຕົວ / ພາສປອດ',kybTitle:'ຢືນຢັນຮ້ານຄ້າ (KYB)',kybSub:'ອັບໂຫຼດທະບຽນການຄ້າ ແລະ ຮູບໜ້າຮ້ານ ທີມງານຈະກວດພາຍໃນ 1–3 ວັນລັດຖະການ',bizName:'ຊື່ຮ້ານ / ກິດຈະການ',bizType:'ປະເພດກິດຈະການ',ownerName:'ຊື່ ແລະ ນາມສະກຸນເຈົ້າຂອງ',docReg:'ຮູບທະບຽນການຄ້າ',docShop:'ຮູບໜ້າຮ້ານ',kycPendingCard:'ກຳລັງກວດສອບເອກະສານ',kycPendingSub:'ທີມງານຈະແຈ້ງຜົນພາຍໃນ 1–3 ວັນລັດຖະການ',kycMore:'ທີມງານຂໍເອກະສານເພີ່ມ',kycRejected:'ຄຳຂໍຢືນຢັນຕົວຕົນບໍ່ຜ່ານ',resubmit:'ສົ່ງເອກະສານໃໝ່',kycCardSub:'ອັບໂຫຼດບັດ ແລະ ຖ່າຍຮູບໜ້າ ເພື່ອເພີ່ມວົງເງິນ', sandbox:'SANDBOX · ໂໝດທົດສອບ ບໍ່ມີການເຄື່ອນໄຫວເງິນແທ້',useEmail:'ໃຊ້ອີເມວແທນ',usePhone:'ໃຊ້ເບີໂທແທນ',emailTitle:'ປ້ອນອີເມວ',emailSub:'ພວກເຮົາຈະສົ່ງລະຫັດ OTP ໄປຫາອີເມວນີ້ເພື່ອຢືນຢັນວ່າແມ່ນທ່ານ',emailLabel:'ອີເມວ',emailLoginSub:'ປ້ອນອີເມວທີ່ລົງທະບຽນໄວ້',sandboxOtp:'ໂໝດທົດສອບ: ລະຫັດແມ່ນ',fill:'ໃສ່ໃຫ້',resetTitle:'ລືມ PIN',resetSub:'ປ້ອນເບີໂທທີ່ລົງທະບຽນໄວ້ ພວກເຮົາຈະສົ່ງ OTP ເພື່ອຕັ້ງ PIN ໃໝ່',newPin:'ຕັ້ງ PIN ໃໝ່ 6 ຕົວ',pinReset:'ຕັ້ງ PIN ໃໝ່ສຳເລັດ ກະລຸນາເຂົ້າສູ່ລະບົບ',addEmail:'ເພີ່ມອີເມວ',addPhone:'ເພີ່ມເບີໂທ',addTitle:'ເພີ່ມຊ່ອງທາງຕິດຕໍ່',addSub:'ຢືນຢັນດ້ວຍລະຫັດ OTP',added:'ເພີ່ມແລ້ວ',noTx:'ຍັງບໍ່ມີລາຍການ',network:'ເຊື່ອມຕໍ່ບໍ່ໄດ້ ກະລຸນາລອງໃໝ່',
+ E:{ERR_FILE_TYPE:'ຮອງຮັບສະເພາະຮູບ JPG, PNG ຫຼື WEBP',ERR_FILE_TOO_LARGE:'ໄຟລ໌ໃຫຍ່ເກີນໄປ',ERR_KYC_FIELD:'ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ ແລະ ຖືກຕ້ອງ',ERR_KYC_AGE:'ຜູ້ສະໝັກຕ້ອງມີອາຍຸ 15 ປີຂຶ້ນໄປ',ERR_KYC_PENDING:'ມີຄຳຂໍທີ່ລໍຖ້າກວດຢູ່ແລ້ວ',ERR_PHONE_FORMAT:'ເບີໂທບໍ່ຖືກຕ້ອງ (20 ຫຼື 30)',ERR_EMAIL_FORMAT:'ອີເມວບໍ່ຖືກຕ້ອງ',ERR_ALREADY_REGISTERED:'ເບີໂທ/ອີເມວນີ້ລົງທະບຽນແລ້ວ',ERR_OTP_COOLDOWN:'ກະລຸນາລໍຖ້າ {s} ວິນາທີ',ERR_OTP_RATE_LIMIT:'ຂໍລະຫັດເກີນກຳນົດ ກະລຸນາລອງໃໝ່ພາຍຫຼັງ',ERR_OTP_INVALID:'ລະຫັດບໍ່ຖືກຕ້ອງ (ເຫຼືອ {n} ຄັ້ງ)',ERR_OTP_EXPIRED:'ລະຫັດໝົດອາຍຸ ກະລຸນາຂໍໃໝ່',ERR_OTP_LOCKED:'ປ້ອນຜິດເກີນກຳນົດ ກະລຸນາຂໍລະຫັດໃໝ່',ERR_PIN_WEAK:'PIN ງ່າຍເກີນໄປ ຫ້າມໃຊ້ເລກຊ້ຳ ຫຼື ເລກລຽງກັນ',ERR_PIN_FORMAT:'PIN ຕ້ອງເປັນຕົວເລກ 6 ຕົວ',ERR_LOGIN_FAILED:'ຂໍ້ມູນເຂົ້າສູ່ລະບົບບໍ່ຖືກຕ້ອງ',ERR_PIN_LOCKED:'PIN ຖືກລັອກຊົ່ວຄາວ 15 ນາທີ',ERR_NOTIFY_FAILED:'ສົ່ງລະຫັດບໍ່ສຳເລັດ ກະລຸນາລອງໃໝ່',ERR_TOKEN_USED:'ກະລຸນາເລີ່ມຕົ້ນໃໝ່',ERR_TOKEN_EXPIRED:'ໝົດເວລາ ກະລຸນາເລີ່ມຕົ້ນໃໝ່',ERR_ACCOUNT_INACTIVE:'ບັນຊີຖືກລະງັບ'}},
 zh:{acctType:'账户类型',acctCustomer:'个人用户',acctMerchant:'商户',sideTitle:'值得信赖的支付，人人适用',sideText:'1st Pay 通过合作银行直接连接用户与商家，手机和电脑均可使用。',tagline:'支付简单安全，随时随地',welcome:'欢迎使用',welcomeSub:'请选择语言，然后开始使用',register:'注册',login:'登录',phoneTitle:'输入手机号码',phoneSub:'我们将向此号码发送 OTP 验证码以确认您的身份',phoneLabel:'手机号码',phoneHint:'仅输入数字，开头无需加 0',getOtp:'获取验证码',verifyTitle:'身份验证',otpTitle:'输入 6 位验证码',otpSentTo:'已发送至',resendIn:'重新发送倒计时',resend:'重新发送',confirm:'确认',pinTopbar:'设置 PIN 码',pinSet:'设置 6 位 PIN 码',pinSetSub:'每次登录和付款时都需使用此 PIN 码',pinConfirm:'再次输入 PIN 码',pinConfirmSub:'请再次输入相同的 PIN 码以确认',pinMismatch:'两次 PIN 码不一致，请重试',del:'删除',doneTitle:'注册成功',doneText:'您的账户为 Level 0 — 每日付款上限 500,000 基普',lvl1Title:'进一步验证身份 (Level 1)',recommended:'推荐',lvl:['提高每日限额','身份证或护照 + 人脸照片','1–3 个工作日内完成审核'],verifyNow:'立即验证',skip:'稍后再说，先开始使用',loginSub:'请输入已注册的手机号码',next:'下一步',pinEnter:'输入 PIN 码',pinEnterSub:'请用 6 位 PIN 码确认身份',forgot:'忘记 PIN 码？',logout:'退出登录',step:'第 {a} 步，共 {b} 步',light:'日间',dark:'夜间',soon:'此功能将在下一部分接入',back:'返回',langTitle:'选择语言',expired:'现在可以重新获取验证码',
  hello:'您好',limitToday:'今日可用额度',limitOf:'每日上限 {m} 基普',kip:'基普',scan:'扫码付款',receive:'收款',transfer:'转账',history:'记录',bills:'缴费',topup:'手机充值',budget:'预算',customize:'自定义',recent:'最近交易',seeAll:'查看全部',home:'首页',myQr:'我的二维码',profile:'我的',kycLevel:'账户等级',language:'语言',display:'显示模式',upgrade:'升级账户 (Level 1)',security:'安全 / 修改 PIN',limits:'使用额度',help:'帮助中心',
  sales:'销售记录',payouts:'结算到账',shop:'我的店铺',open:'正在收款',todaySales:'今日销售额',avgTicket:'客单价',nextPayout:'下次结算金额',receiveBig:'向顾客收款',items:'{n} 笔',
- demoBanner:'演示版 · 数据仅保存在您的浏览器中，不发送真实短信或资金', sandbox:'SANDBOX · 测试模式，无真实资金流动',useEmail:'改用电子邮箱',usePhone:'改用手机号码',emailTitle:'输入电子邮箱',emailSub:'我们将向此邮箱发送 OTP 验证码以确认您的身份',emailLabel:'电子邮箱',emailLoginSub:'请输入已注册的电子邮箱',sandboxOtp:'测试模式：验证码为',fill:'自动填写',resetTitle:'忘记 PIN 码',resetSub:'请输入已注册的手机号码，我们将发送验证码以重设 PIN 码',newPin:'设置新的 6 位 PIN 码',pinReset:'PIN 码已更新，请登录',addEmail:'添加电子邮箱',addPhone:'添加手机号码',addTitle:'添加联系方式',addSub:'通过验证码确认',added:'已添加',noTx:'暂无交易',network:'网络连接失败，请重试',
- E:{ERR_PHONE_FORMAT:'手机号码格式不正确（20 或 30 开头）',ERR_EMAIL_FORMAT:'邮箱格式不正确',ERR_ALREADY_REGISTERED:'该号码/邮箱已注册',ERR_OTP_COOLDOWN:'请等待 {s} 秒',ERR_OTP_RATE_LIMIT:'请求过于频繁，请稍后再试',ERR_OTP_INVALID:'验证码错误（剩余 {n} 次）',ERR_OTP_EXPIRED:'验证码已过期，请重新获取',ERR_OTP_LOCKED:'错误次数过多，请重新获取验证码',ERR_PIN_WEAK:'PIN 码过于简单，请勿使用重复或连续数字',ERR_PIN_FORMAT:'PIN 码须为 6 位数字',ERR_LOGIN_FAILED:'登录信息不正确',ERR_PIN_LOCKED:'PIN 码已暂时锁定 15 分钟',ERR_NOTIFY_FAILED:'验证码发送失败，请重试',ERR_TOKEN_USED:'请重新开始',ERR_TOKEN_EXPIRED:'已超时，请重新开始',ERR_ACCOUNT_INACTIVE:'账户已被停用'}}
+ demoBanner:'演示版 · 数据仅保存在您的浏览器中，不发送真实短信或资金', uploadTitle:'上传证件',uploadSub:'请使用有效期内的身份证或护照，照片需清晰、无反光',idCard:'身份证 / 护照照片',idTap:'点击上传照片',selfie:'拍摄人脸照片',selfieTap:'点击打开相机',uploaded:'已上传',submit:'提交审核',pendingTitle:'审核中',pendingText:'工作人员正在审核您的资料，约需 1–3 个工作日，结果将通过短信通知您',backHome:'返回首页',kycName:'证件上的姓名',kycDob:'出生日期',kycIdNo:'身份证 / 护照号码',kybTitle:'商户认证 (KYB)',kybSub:'请上传营业执照和门店照片，1–3 个工作日内完成审核',bizName:'店铺 / 企业名称',bizType:'经营类型',ownerName:'负责人姓名',docReg:'营业执照照片',docShop:'门店照片',kycPendingCard:'资料审核中',kycPendingSub:'1–3 个工作日内通知结果',kycMore:'需要补充材料',kycRejected:'身份验证未通过',resubmit:'重新提交',kycCardSub:'上传证件并拍摄人脸照片以提高额度', sandbox:'SANDBOX · 测试模式，无真实资金流动',useEmail:'改用电子邮箱',usePhone:'改用手机号码',emailTitle:'输入电子邮箱',emailSub:'我们将向此邮箱发送 OTP 验证码以确认您的身份',emailLabel:'电子邮箱',emailLoginSub:'请输入已注册的电子邮箱',sandboxOtp:'测试模式：验证码为',fill:'自动填写',resetTitle:'忘记 PIN 码',resetSub:'请输入已注册的手机号码，我们将发送验证码以重设 PIN 码',newPin:'设置新的 6 位 PIN 码',pinReset:'PIN 码已更新，请登录',addEmail:'添加电子邮箱',addPhone:'添加手机号码',addTitle:'添加联系方式',addSub:'通过验证码确认',added:'已添加',noTx:'暂无交易',network:'网络连接失败，请重试',
+ E:{ERR_FILE_TYPE:'仅支持 JPG、PNG 或 WEBP 图片',ERR_FILE_TOO_LARGE:'文件过大',ERR_KYC_FIELD:'请完整正确填写信息',ERR_KYC_AGE:'申请人须年满 15 岁',ERR_KYC_PENDING:'已有申请正在审核中',ERR_PHONE_FORMAT:'手机号码格式不正确（20 或 30 开头）',ERR_EMAIL_FORMAT:'邮箱格式不正确',ERR_ALREADY_REGISTERED:'该号码/邮箱已注册',ERR_OTP_COOLDOWN:'请等待 {s} 秒',ERR_OTP_RATE_LIMIT:'请求过于频繁，请稍后再试',ERR_OTP_INVALID:'验证码错误（剩余 {n} 次）',ERR_OTP_EXPIRED:'验证码已过期，请重新获取',ERR_OTP_LOCKED:'错误次数过多，请重新获取验证码',ERR_PIN_WEAK:'PIN 码过于简单，请勿使用重复或连续数字',ERR_PIN_FORMAT:'PIN 码须为 6 位数字',ERR_LOGIN_FAILED:'登录信息不正确',ERR_PIN_LOCKED:'PIN 码已暂时锁定 15 分钟',ERR_NOTIFY_FAILED:'验证码发送失败，请重试',ERR_TOKEN_USED:'请重新开始',ERR_TOKEN_EXPIRED:'已超时，请重新开始',ERR_ACCOUNT_INACTIVE:'账户已被停用'}}
 };
+/* ข้อความส่วนชำระเงิน (Part 4) — คีย์หลักนำมาจากไฟล์ต้นแบบลูกค้า/ร้านค้า · ข้อความใหม่ภาษาลาว/จีนต้องให้เจ้าหน้าที่ตรวจทาน */
+const I18N_PAY = {"th":{"enterAmount":"ระบุจำนวนเงิน","createQr":"สร้าง QR รับเงิน","showCustomer":"ให้ลูกค้าสแกน QR นี้เพื่อจ่ายเงิน","waiting":"กำลังรอลูกค้าชำระเงิน…","cancel":"ยกเลิก","received":"ได้รับเงินแล้ว","from":"จาก","to":"ถึง","newSale":"รับเงินรายการใหม่","payTitle":"ชำระเงิน","confirmTitle":"ยืนยันการชำระ","pinPayFor":"กรอก PIN เพื่อยืนยันการชำระ","paid":"ชำระเงินสำเร็จ","ref":"เลขอ้างอิง","dateTime":"วันเวลา","type":"ประเภท","status":"สถานะ","ok":"สำเร็จ","pending":"รอดำเนินการ","fail":"ไม่สำเร็จ","amount":"จำนวนเงิน","scanHint":"เล็งกล้องไปที่ QR ของร้านค้า","or":"หรือ","merchantCode":"กรอกรหัสร้านค้า","tScan":"สแกนจ่าย","fee":"ค่าธรรมเนียม","free":"ฟรี","share":"แชร์ใบเสร็จ","all":"ทั้งหมด","empty":"ไม่มีรายการในหมวดนี้","detail":"รายละเอียด","category":"หมวดหมู่รายจ่าย","simulate":"จำลองการสแกนสำเร็จ","simulatePaid":"จำลองลูกค้าจ่ายแล้ว","verify":"สแกนเพื่อตรวจสอบสลิป","qrStatic":"รับเงินทั่วไป","qrDynamic":"ระบุจำนวนเงิน","qrScanTo":"ให้ผู้จ่ายสแกน QR นี้เพื่อโอนเงินให้คุณ","payer":"ผู้จ่าย","receiveTitle":"รับเงิน","method":"ช่องทาง","methodQr":"สแกน QR","count":"{n} รายการ","shopQr":"QR ประจำร้าน","shopQrHint":"พิมพ์ติดหน้าร้าน ลูกค้าสแกนแล้วใส่ยอดเงินเอง","download":"ดาวน์โหลด","recentSales":"รายการล่าสุด","today":"วันนี้","save":"บันทึกรูป","scanImage":"สแกนจากรูปภาพ","camOff":"เปิดกล้องไม่ได้ — ใช้รูปภาพหรือกรอกรหัสแทน (กล้องต้องใช้ HTTPS)","expiresIn":"หมดอายุใน {t}","qrExpired":"QR หมดอายุแล้ว","payFail":"ชำระเงินไม่สำเร็จ","kybFirst":"ยืนยันร้านค้า (KYB) ก่อนจึงจะรับเงินได้","refCode":"รหัสรายการ","cancelled":"ยกเลิกแล้ว","stExpired":"หมดอายุ","payPending":"กำลังดำเนินการ — อย่าสแกนจ่ายซ้ำ","saleTitle":"รายละเอียดการขาย","sandboxPayer":"ลูกค้าทดสอบ (Sandbox)","copied":"คัดลอกแล้ว","PE":{"ERR_PIN_INVALID":"PIN ไม่ถูกต้อง (เหลือ {n} ครั้ง)","ERR_KYC_REQUIRED":"เกินวงเงิน Level 0 — ยืนยันตัวตนเพื่อเพิ่มวงเงิน","ERR_LIMIT_EXCEEDED":"เกินวงเงินที่ใช้ได้วันนี้","ERR_VELOCITY_EXCEEDED":"ทำรายการถี่เกินกำหนด กรุณาลองใหม่ภายหลัง","ERR_QR_INVALID":"QR หรือรหัสไม่ถูกต้อง","ERR_QR_UNSUPPORTED":"QR นี้ไม่ใช่ของ 1st Pay","ERR_QR_EXPIRED":"QR หมดอายุแล้ว","ERR_QR_USED":"QR นี้ถูกใช้ไปแล้ว","ERR_TX_NOT_FOUND":"ไม่พบรายการ","ERR_MERCHANT_NOT_FOUND":"ไม่พบร้านค้า","ERR_MERCHANT_SUSPENDED":"ร้านค้านี้ถูกระงับการรับชำระ","ERR_MERCHANT_KYB_REQUIRED":"ร้านค้ายังไม่ผ่านการยืนยัน (KYB)","ERR_MERCHANT_LIMIT":"เกินวงเงินของร้านค้า","ERR_SELF_PAY":"ไม่สามารถจ่ายให้ร้านของตัวเองได้","ERR_BANK_DECLINED":"ธนาคารปฏิเสธรายการ","ERR_AMOUNT_INVALID":"จำนวนเงินไม่ถูกต้อง","ERR_PROVIDER_NOT_READY":"ยังไม่ได้เชื่อมต่อธนาคาร"}},"en":{"enterAmount":"Enter amount","createQr":"Create payment QR","showCustomer":"Ask the customer to scan this QR","waiting":"Waiting for payment…","cancel":"Cancel","received":"Payment received","from":"From","to":"To","newSale":"New sale","payTitle":"Pay","confirmTitle":"Confirm payment","pinPayFor":"Enter your PIN to pay","paid":"Payment successful","ref":"Reference","dateTime":"Date & time","type":"Type","status":"Status","ok":"Successful","pending":"Pending","fail":"Failed","amount":"Amount","scanHint":"Point your camera at the shop’s QR code","or":"or","merchantCode":"Enter shop code","tScan":"QR payment","fee":"Fee","free":"Free","share":"Share receipt","all":"All","empty":"Nothing here yet","detail":"Details","category":"Spending category","simulate":"Simulate a scan","simulatePaid":"Simulate customer paid","verify":"Scan to verify this slip","qrStatic":"Any amount","qrDynamic":"Set amount","qrScanTo":"Let the payer scan this QR to send you money","payer":"Payer","receiveTitle":"Receive","method":"Method","methodQr":"QR scan","count":"{n} sales","shopQr":"Shop QR","shopQrHint":"Print and display at your counter — customers scan and enter the amount","download":"Download","recentSales":"Recent sales","today":"Today","save":"Save image","scanImage":"Scan from image","camOff":"Camera unavailable — use an image or enter a code (camera needs HTTPS)","expiresIn":"Expires in {t}","qrExpired":"QR expired","payFail":"Payment failed","kybFirst":"Verify your shop (KYB) to start receiving payments","refCode":"Payment code","cancelled":"Cancelled","stExpired":"Expired","payPending":"Processing — do not pay again","saleTitle":"Sale details","sandboxPayer":"Test customer (Sandbox)","copied":"Copied","PE":{"ERR_PIN_INVALID":"Wrong PIN ({n} tries left)","ERR_KYC_REQUIRED":"Over the Level 0 limit — verify your identity to raise it","ERR_LIMIT_EXCEEDED":"Daily limit reached","ERR_VELOCITY_EXCEEDED":"Too many payments — please try later","ERR_QR_INVALID":"Invalid QR or code","ERR_QR_UNSUPPORTED":"This is not a 1st Pay QR","ERR_QR_EXPIRED":"QR expired","ERR_QR_USED":"This QR has already been paid","ERR_TX_NOT_FOUND":"Not found","ERR_MERCHANT_NOT_FOUND":"Shop not found","ERR_MERCHANT_SUSPENDED":"This shop cannot accept payments","ERR_MERCHANT_KYB_REQUIRED":"Shop not yet verified (KYB)","ERR_MERCHANT_LIMIT":"Over the shop limit","ERR_SELF_PAY":"You cannot pay your own shop","ERR_BANK_DECLINED":"Declined by the bank","ERR_AMOUNT_INVALID":"Invalid amount","ERR_PROVIDER_NOT_READY":"Bank not connected yet"}},"lo":{"enterAmount":"ລະບຸຈຳນວນເງິນ","createQr":"ສ້າງ QR ຮັບເງິນ","showCustomer":"ໃຫ້ລູກຄ້າສະແກນ QR ນີ້ເພື່ອຈ່າຍເງິນ","waiting":"ກຳລັງລໍຖ້າລູກຄ້າຈ່າຍເງິນ…","cancel":"ຍົກເລີກ","received":"ໄດ້ຮັບເງິນແລ້ວ","from":"ຈາກ","to":"ເຖິງ","newSale":"ຮັບເງິນລາຍການໃໝ່","payTitle":"ຈ່າຍເງິນ","confirmTitle":"ຢືນຢັນການຈ່າຍ","pinPayFor":"ປ້ອນ PIN ເພື່ອຢືນຢັນການຈ່າຍ","paid":"ຈ່າຍເງິນສຳເລັດ","ref":"ເລກອ້າງອີງ","dateTime":"ວັນເວລາ","type":"ປະເພດ","status":"ສະຖານະ","ok":"ສຳເລັດ","pending":"ລໍຖ້າດຳເນີນການ","fail":"ບໍ່ສຳເລັດ","amount":"ຈຳນວນເງິນ","scanHint":"ສ່ອງກ້ອງໄປທີ່ QR ຂອງຮ້ານຄ້າ","or":"ຫຼື","merchantCode":"ປ້ອນລະຫັດຮ້ານຄ້າ","tScan":"ສະແກນຈ່າຍ","fee":"ຄ່າທຳນຽມ","free":"ຟຣີ","share":"ແບ່ງປັນໃບບິນ","all":"ທັງໝົດ","empty":"ບໍ່ມີລາຍການໃນໝວດນີ້","detail":"ລາຍລະອຽດ","category":"ໝວດໝູ່ລາຍຈ່າຍ","simulate":"ຈຳລອງການສະແກນ","simulatePaid":"ຈຳລອງລູກຄ້າຈ່າຍແລ້ວ","verify":"ສະແກນເພື່ອກວດສອບໃບບິນ","qrStatic":"ຮັບເງິນທົ່ວໄປ","qrDynamic":"ລະບຸຈຳນວນ","qrScanTo":"ໃຫ້ຜູ້ຈ່າຍສະແກນ QR ນີ້ເພື່ອໂອນເງິນໃຫ້ທ່ານ","payer":"ຜູ້ຈ່າຍ","receiveTitle":"ຮັບເງິນ","method":"ຊ່ອງທາງ","methodQr":"ສະແກນ QR","count":"{n} ລາຍການ","shopQr":"QR ປະຈຳຮ້ານ","shopQrHint":"ພິມຕິດໜ້າຮ້ານ ລູກຄ້າສະແກນແລ້ວໃສ່ຍອດເງິນເອງ","download":"ດາວໂຫຼດ","recentSales":"ລາຍການລ່າສຸດ","today":"ມື້ນີ້","save":"ບັນທຶກຮູບ","scanImage":"ສະແກນຈາກຮູບພາບ","camOff":"ເປີດກ້ອງບໍ່ໄດ້ — ໃຊ້ຮູບ ຫຼື ປ້ອນລະຫັດແທນ (ກ້ອງຕ້ອງໃຊ້ HTTPS)","expiresIn":"ໝົດອາຍຸໃນ {t}","qrExpired":"QR ໝົດອາຍຸແລ້ວ","payFail":"ຈ່າຍເງິນບໍ່ສຳເລັດ","kybFirst":"ຢືນຢັນຮ້ານຄ້າ (KYB) ກ່ອນຈຶ່ງຈະຮັບເງິນໄດ້","refCode":"ລະຫັດລາຍການ","cancelled":"ຍົກເລີກແລ້ວ","stExpired":"ໝົດອາຍຸ","payPending":"ກຳລັງດຳເນີນການ — ຢ່າສະແກນຈ່າຍຊ້ຳ","saleTitle":"ລາຍລະອຽດການຂາຍ","sandboxPayer":"ລູກຄ້າທົດສອບ (Sandbox)","copied":"ສຳເນົາແລ້ວ","PE":{"ERR_PIN_INVALID":"PIN ບໍ່ຖືກຕ້ອງ (ເຫຼືອ {n} ຄັ້ງ)","ERR_KYC_REQUIRED":"ເກີນວົງເງິນ Level 0 — ຢືນຢັນຕົວຕົນເພື່ອເພີ່ມວົງເງິນ","ERR_LIMIT_EXCEEDED":"ເກີນວົງເງິນທີ່ໃຊ້ໄດ້ມື້ນີ້","ERR_VELOCITY_EXCEEDED":"ເຮັດລາຍການຖີ່ເກີນກຳນົດ ກະລຸນາລອງໃໝ່ພາຍຫຼັງ","ERR_QR_INVALID":"QR ຫຼື ລະຫັດບໍ່ຖືກຕ້ອງ","ERR_QR_UNSUPPORTED":"QR ນີ້ບໍ່ແມ່ນຂອງ 1st Pay","ERR_QR_EXPIRED":"QR ໝົດອາຍຸແລ້ວ","ERR_QR_USED":"QR ນີ້ຖືກໃຊ້ແລ້ວ","ERR_TX_NOT_FOUND":"ບໍ່ພົບລາຍການ","ERR_MERCHANT_NOT_FOUND":"ບໍ່ພົບຮ້ານຄ້າ","ERR_MERCHANT_SUSPENDED":"ຮ້ານຄ້ານີ້ຖືກລະງັບການຮັບຊຳລະ","ERR_MERCHANT_KYB_REQUIRED":"ຮ້ານຄ້າຍັງບໍ່ຜ່ານການຢືນຢັນ (KYB)","ERR_MERCHANT_LIMIT":"ເກີນວົງເງິນຂອງຮ້ານຄ້າ","ERR_SELF_PAY":"ບໍ່ສາມາດຈ່າຍໃຫ້ຮ້ານຂອງຕົນເອງໄດ້","ERR_BANK_DECLINED":"ທະນາຄານປະຕິເສດລາຍການ","ERR_AMOUNT_INVALID":"ຈຳນວນເງິນບໍ່ຖືກຕ້ອງ","ERR_PROVIDER_NOT_READY":"ຍັງບໍ່ໄດ້ເຊື່ອມຕໍ່ທະນາຄານ"}},"zh":{"enterAmount":"输入金额","createQr":"生成收款二维码","showCustomer":"请顾客扫描此二维码付款","waiting":"等待顾客付款…","cancel":"取消","received":"收款成功","from":"付款方","to":"收款方","newSale":"继续收款","payTitle":"付款","confirmTitle":"确认付款","pinPayFor":"输入 PIN 码确认付款","paid":"付款成功","ref":"参考号","dateTime":"日期时间","type":"类型","status":"状态","ok":"成功","pending":"处理中","fail":"失败","amount":"金额","scanHint":"将相机对准商家二维码","or":"或","merchantCode":"输入商家编号","tScan":"扫码付款","fee":"手续费","free":"免费","share":"分享收据","all":"全部","empty":"暂无记录","detail":"交易详情","category":"支出类别","simulate":"模拟扫码成功","simulatePaid":"模拟顾客已付款","verify":"扫码验证此收据","qrStatic":"普通收款","qrDynamic":"指定金额","qrScanTo":"请付款人扫描此二维码向您转账","payer":"付款人","receiveTitle":"收款","method":"方式","methodQr":"扫码","count":"{n} 笔","shopQr":"店铺收款码","shopQrHint":"打印后贴在收银台，顾客扫码后自行输入金额","download":"下载","recentSales":"最近交易","today":"今天","save":"保存图片","scanImage":"从图片识别","camOff":"无法打开相机 — 请使用图片或输入编号（相机需要 HTTPS）","expiresIn":"{t} 后过期","qrExpired":"二维码已过期","payFail":"付款失败","kybFirst":"完成商户认证 (KYB) 后即可收款","refCode":"收款编号","cancelled":"已取消","stExpired":"已过期","payPending":"处理中 — 请勿重复付款","saleTitle":"销售详情","sandboxPayer":"测试顾客 (Sandbox)","copied":"已复制","PE":{"ERR_PIN_INVALID":"PIN 码错误（剩余 {n} 次）","ERR_KYC_REQUIRED":"超出 Level 0 限额 — 请完成身份验证以提高额度","ERR_LIMIT_EXCEEDED":"已达今日限额","ERR_VELOCITY_EXCEEDED":"交易过于频繁，请稍后再试","ERR_QR_INVALID":"二维码或编号无效","ERR_QR_UNSUPPORTED":"这不是 1st Pay 二维码","ERR_QR_EXPIRED":"二维码已过期","ERR_QR_USED":"此二维码已付款","ERR_TX_NOT_FOUND":"未找到记录","ERR_MERCHANT_NOT_FOUND":"未找到商户","ERR_MERCHANT_SUSPENDED":"该商户暂停收款","ERR_MERCHANT_KYB_REQUIRED":"商户尚未完成认证 (KYB)","ERR_MERCHANT_LIMIT":"超出商户限额","ERR_SELF_PAY":"不能向自己的店铺付款","ERR_BANK_DECLINED":"银行拒绝交易","ERR_AMOUNT_INVALID":"金额无效","ERR_PROVIDER_NOT_READY":"尚未连接银行"}}};
+for (const L in I18N_PAY) { const { PE, ...rest } = I18N_PAY[L]; Object.assign(I18N[L], rest); Object.assign(I18N[L].E, PE); }
 const LANGS = [{code:'th',short:'ไทย',name:'ภาษาไทย',en:'Thai'},{code:'en',short:'EN',name:'English',en:'English'},{code:'lo',short:'ລາວ',name:'ພາສາລາວ',en:'Lao'},{code:'zh',short:'中文',name:'简体中文',en:'Chinese'}];
 const API_LANG = { th:'th', en:'en', lo:'lo', zh:'en' };   // ภาษาอีเมล OTP (backend รองรับ lo/th/en)
 const store = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } };
@@ -124,7 +128,8 @@ const S = {
   flow: 'register',          // register | reset | add
   ch: 'sms', acct: 'customer', dest: '', ref: null, devOtp: null, otp: '', sec: 0, vt: null,
   pinStage: 1, pin1: '', pin2: '', pinErr: '', lpin: '', loginId: '', busy: false,
-  langOpen: false, toast: '', access: null, refresh: ss('1p_rt'), user: null, tab: 'home', err: ''
+  langOpen: false, toast: '', kyc: null, kf: {}, kfiles: {}, access: null, refresh: ss('1p_rt'), user: null, tab: 'home', err: '',
+  sub: null, amt: '0', cat: 'food', ppin: '', mcode: '', filter: 'all', list: null, recent: null, limits: null, summary: null, staticQr: null, pay: null, rc: null, sale: null, idem: null, camErr: false, rcFresh: false
 };
 const t = () => I18N[S.lang] || I18N.th;
 const cur = () => S.stack[S.stack.length - 1];
@@ -137,14 +142,15 @@ function setLang(c){ S.lang = c; store('1p_lang', c); S.langOpen = false; render
 function toggleTheme(){ S.theme = S.theme === 'dark' ? 'light' : 'dark'; store('1p_theme', S.theme); render(); }
 
 /* ============================================================ API */
-async function api(method, path, body, auth){
-  const h = { 'Content-Type': 'application/json' };
+async function api(method, path, body, auth, extra, retried){
+  const h = Object.assign({ 'Content-Type': 'application/json' }, extra || {});
   if (auth && S.access) h.Authorization = 'Bearer ' + S.access;
   let r;
   try { r = await fetch(API + path, { method, headers: h, body: body ? JSON.stringify(body) : undefined }); }
   catch (e) { throw { code: 'NETWORK' }; }
-  if (r.status === 401 && auth && S.refresh && await refresh()) return api(method, path, body, auth);
   const data = r.status === 204 ? null : await r.json().catch(() => null);
+  const code = data && data.error && data.error.code || '';
+  if (r.status === 401 && auth && S.refresh && !retried && /^ERR_(TOKEN|UNAUTHORIZED)/.test(code) && await refresh()) return api(method, path, body, auth, extra, true);
   if (!r.ok) throw (data && data.error) || { code: 'HTTP_' + r.status };
   return data;
 }
@@ -156,7 +162,8 @@ async function refresh(){
   } catch (e) { return false; }
 }
 function saveTokens(tk){ S.access = tk.access_token; S.refresh = tk.refresh_token; ss('1p_rt', S.refresh); }
-function endSession(){ S.access = S.refresh = S.user = null; ss('1p_rt', null); }
+function endSession(){ S.access = S.refresh = S.user = null; S.kyc = null; S.kf = {}; S.kfiles = {}; ss('1p_rt', null);
+  S.sub = null; S.subStack = []; S.recent = S.list = S.limits = S.summary = S.staticQr = S.pay = S.rc = S.sale = null; S.amt = '0'; if (typeof stopPoll === 'function') { stopPoll(); stopCam(); } }
 function errMsg(e){
   const T = t();
   if (e.code === 'NETWORK') return T.network;
@@ -234,12 +241,50 @@ async function doLogin(){
   S.busy = true; render();
   try {
     const d = await api('POST', '/v1/auth/login', { identifier: S.loginId, pin: S.lpin });
-    saveTokens(d.tokens); S.user = d.user; S.busy = false; S.lpin = ''; S.tab = 'home'; reset('shell');
+    saveTokens(d.tokens); S.user = d.user; S.busy = false; S.lpin = ''; S.tab = 'home'; await Promise.all([loadKyc(), loadHome()]); reset('shell');
   } catch (e) { S.busy = false; S.lpin = ''; S.pinErr = errMsg(e); render(); }
 }
 async function logout(){
   try { await api('POST', '/v1/auth/logout', { refresh_token: S.refresh }); } catch (e) {}
   endSession(); S.tab = 'home'; reset('splash');
+}
+
+
+/* ============================================================ KYC */
+function kycReady(){
+  const m = S.user && S.user.account_type === 'merchant', f = S.kf;
+  const need = m ? ['business_name', 'full_name'] : ['full_name', 'dob', 'id_number'];
+  return need.every(k => (f[k] || '').trim()) && S.kfiles.doc1 && S.kfiles.doc2;
+}
+async function loadKyc(){ try { S.kyc = await api('GET', '/v1/kyc', null, true); } catch (e) { S.kyc = null; } }
+function compress(file){    // ย่อรูปจากมือถือให้เหลือด้านยาวไม่เกิน 1600px (JPEG) ก่อนอัปโหลด
+  return new Promise(resolve => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      const k = Math.min(1, 1600 / Math.max(img.width, img.height)), c = document.createElement('canvas');
+      c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      c.toBlob(b => { URL.revokeObjectURL(url); resolve(b || file); }, 'image/jpeg', 0.85);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+    img.src = url;
+  });
+}
+async function submitKyc(){
+  if (S.busy || !kycReady()) return;
+  S.busy = true; S.err = ''; render();
+  const fd = new FormData();
+  Object.entries(S.kf).forEach(([k, v]) => v && fd.append(k, v.trim()));
+  fd.append('doc1', S.kfiles.doc1.blob, 'doc1.jpg'); fd.append('doc2', S.kfiles.doc2.blob, 'doc2.jpg');
+  const send = () => fetch(API + '/v1/kyc', { method: 'POST', headers: { Authorization: 'Bearer ' + S.access }, body: fd });
+  try {
+    let r = await send();
+    if (r.status === 401 && S.refresh && await refresh()) r = await send();
+    const d = await r.json().catch(() => null);
+    if (!r.ok) throw (d && d.error) || { code: 'HTTP_' + r.status };
+    S.kyc = { kyc_level: 0, case: d.case }; S.kf = {}; S.kfiles = {}; S.busy = false;
+    S.stack = ['shell', 'kycPending']; render(); scrollTo(0, 0);
+  } catch (e) { S.busy = false; S.err = errMsg(e); render(); }
 }
 
 /* ============================================================ shared UI parts */
@@ -266,7 +311,7 @@ const btnLabel = (label) => S.busy ? '<span class="spin"></span>' : label;
 function authView(){
   const T = t(), v = cur();
   const stepIdx = S.flow === 'register' ? ({ contact: 1, otp: 2, setPin: 3 }[v] || 0) : 0;
-  const titles = { contact: S.flow === 'register' ? T.register : S.flow === 'reset' ? T.resetTitle : T.addTitle, otp: T.verifyTitle, setPin: T.pinTopbar, loginPhone: T.login, loginPin: T.login };
+  const titles = { kycUpload: T.verifyTitle, kycPending: T.verifyTitle, contact: S.flow === 'register' ? T.register : S.flow === 'reset' ? T.resetTitle : T.addTitle, otp: T.verifyTitle, setPin: T.pinTopbar, loginPhone: T.login, loginPin: T.login };
   const hasHeader = v !== 'splash' || S.wide;
   const side = !S.wide ? '' : `<aside style="flex:1.2 1 0;min-width:0;position:sticky;top:0;height:100vh;background:#1E3358 var(--bgImg) center/cover;display:flex;flex-direction:column;justify-content:space-between;padding:48px 56px;overflow:hidden">
     <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(18,30,55,.05) 0%,rgba(18,30,55,.75) 100%)"></div>
@@ -298,7 +343,7 @@ splash(){
       <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">${LANGS.map(l => { const a = l.code === S.lang; return `<button data-act="setLang" data-arg="${l.code}" style="height:56px;border-radius:16px;border:2px solid ${a ? 'var(--primary)' : 'var(--line)'};background:${a ? 'var(--primary)' : 'var(--card)'};color:${a ? 'var(--onPrimary)' : 'var(--ink)'};font-size:17px;font-weight:700">${l.short}</button>`; }).join('')}</div>
       <div style="flex:1;min-height:8px"></div>
       <div style="display:flex;flex-direction:column;gap:12px"><button class="btn-p" data-act="goRegister">${T.register}</button><button class="btn-s" data-act="goLogin">${T.login}</button></div>
-      <div style="text-align:center;font-size:13px;color:var(--soft);padding:6px 12px">1st Pay · v0.3</div>
+      <div style="text-align:center;font-size:13px;color:var(--soft);padding:6px 12px">1st Pay · v0.7</div>
     </div></div>`;
 },
 contact(){
@@ -353,7 +398,34 @@ regDone(){
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font-size:18px;font-weight:700">${T.lvl1Title}</span><span style="font-size:13px;font-weight:700;padding:5px 12px;border-radius:99px;background:var(--goldSoft);color:var(--goldInk);white-space:nowrap">${T.recommended}</span></div>
       ${T.lvl.map(it => `<div style="display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--soft);line-height:1.5">${IC.tick}<span>${it}</span></div>`).join('')}</div>
     <div class="grow"></div>
-    <div style="display:flex;flex-direction:column;gap:8px"><button class="btn-g" data-act="soon">${T.verifyNow}</button><button class="btn-link" data-act="enterHome" style="height:52px;font-size:17px">${T.skip}</button></div></div>`;
+    <div style="display:flex;flex-direction:column;gap:8px"><button class="btn-g" data-act="goKyc">${T.verifyNow}</button><button class="btn-link" data-act="enterHome" style="height:52px;font-size:17px">${T.skip}</button></div></div>`;
+},
+kycUpload(){
+  const T = t(), m = S.user && S.user.account_type === 'merchant', f = S.kf, fl = S.kfiles;
+  const note = S.kyc && S.kyc.case && ['more', 'rejected'].includes(S.kyc.case.status) && S.kyc.case.note;
+  const tile = (slot, label, tap, cam, icon) => `<label style="display:flex;align-items:center;gap:16px;padding:18px;border-radius:20px;border:2px ${fl[slot] ? 'solid var(--ok)' : 'dashed var(--line)'};background:var(--card);cursor:pointer">
+      <input type="file" accept="image/*" ${cam ? 'capture="user"' : ''} data-file="${slot}" style="display:none">
+      <div style="width:56px;height:56px;border-radius:16px;background:var(--chip);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);overflow:hidden">${fl[slot] ? `<img src="${fl[slot].url}" alt="" style="width:100%;height:100%;object-fit:cover">` : icon}</div>
+      <div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-size:17px;font-weight:700">${label}</span><span style="font-size:14px;color:${fl[slot] ? 'var(--ok)' : 'var(--soft)'};font-weight:600">${fl[slot] ? '✓ ' + T.uploaded : tap}</span></div></label>`;
+  const idIcon = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="12" r="2.2" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 10h5M13.5 14h3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+  const faceIcon = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="3.6" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c1.2-3.6 4-5.4 7-5.4s5.8 1.8 7 5.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+  const shopIcon = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M4 9l1.5-5h13L20 9M4 9v11h16V9M4 9h16M9 20v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const inp = (k, label, extra = '') => `<label class="lbl" for="k-${k}">${label}</label><div class="field"><input id="k-${k}" data-input="kf" data-k="${k}" value="${esc(f[k] || '')}" ${extra}></div>`;
+  const fields = m ? inp('business_name', T.bizName) + inp('business_type', T.bizType) + inp('full_name', T.ownerName, 'autocomplete="name"')
+                   : inp('full_name', T.kycName, 'autocomplete="name"') + inp('dob', T.kycDob, 'type="date"') + inp('id_number', T.kycIdNo, 'autocapitalize="characters"');
+  const tiles = m ? tile('doc1', T.docReg, T.idTap, false, idIcon) + tile('doc2', T.docShop, T.idTap, false, shopIcon)
+                  : tile('doc1', T.idCard, T.idTap, false, idIcon) + tile('doc2', T.selfie, T.selfieTap, true, faceIcon);
+  return `<div class="screen" style="gap:12px"><div class="title" style="margin:0">${m ? T.kybTitle : T.uploadTitle}</div><div class="sub" style="margin:0 0 6px">${m ? T.kybSub : T.uploadSub}</div>
+    ${note ? `<div class="dev" style="margin:0;background:var(--errSoft);color:var(--err)">${esc(note)}</div>` : ''}
+    ${tiles}<div>${fields}</div><div class="err">${esc(S.err)}</div><div class="grow"></div>
+    <button class="btn-p" data-act="submitKyc" id="primary" ${kycReady() && !S.busy ? '' : 'disabled'} style="opacity:${kycReady() ? 1 : .4}">${btnLabel(T.submit)}</button></div>`;
+},
+kycPending(){
+  const T = t();
+  return `<div style="display:flex;flex-direction:column;flex:1;padding:48px 24px 28px"><div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+    <div style="width:96px;height:96px;border-radius:50%;background:var(--goldSoft);display:flex;align-items:center;justify-content:center;margin-bottom:8px"><svg width="42" height="42" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="var(--goldInk)" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="var(--goldInk)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div style="font-size:26px;font-weight:700">${T.pendingTitle}</div><div style="font-size:16px;color:var(--soft);line-height:1.6;max-width:340px;text-wrap:pretty">${T.pendingText}</div></div>
+    <div class="grow"></div><button class="btn-s" data-act="enterHome">${T.backHome}</button></div>`;
 },
 shell(){ return ''; }
 };
@@ -373,10 +445,10 @@ function shellView(){
   const nav = merchant
     ? [['home', T.home, 'home'], ['receive', T.receive, 'qr'], ['sales', T.sales, 'bills'], ['payouts', T.payouts, 'bank'], ['profile', T.shop, 'store']]
     : [['home', T.home, 'home'], ['scan', T.scan, 'scan'], ['myqr', T.myQr, 'qr'], ['history', T.history, 'hist'], ['profile', T.profile, 'prof']];
-  const name = u.full_name || (u.phone ? '+856 ' + u.phone.slice(4) : u.email) || '';
-  const initial = u.full_name ? esc(Array.from(u.full_name)[0].toUpperCase()) : svg(merchant ? 'store' : 'prof', 26);
+  const name = shopName() || u.full_name || (u.phone ? '+856 ' + u.phone.slice(4) : u.email) || '';
+  const initial = shopName() || u.full_name ? initialOf(shopName() || u.full_name) : svg(merchant ? 'store' : 'prof', 26);
   const titles = { scan: T.scan, myqr: T.myQr, history: T.history, profile: merchant ? T.shop : T.profile, receive: T.receive, sales: T.sales, payouts: T.payouts };
-  const home = S.tab === 'home';
+  const home = S.tab === 'home' && !S.sub;
   const sidebar = !S.wide ? '' : `<aside style="width:260px;flex-shrink:0;position:sticky;top:0;height:100vh;background:var(--card);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:28px 18px;gap:28px">
     <div style="display:flex;align-items:center;gap:12px;padding:0 8px">${logoBox(48, 36, 14, 'border:1px solid var(--line)')}<span class="sora" style="font-size:20px;font-weight:700">1st Pay</span></div>
     <nav style="display:flex;flex-direction:column;gap:6px">${nav.map(([k, l, i]) => `<button data-act="tab" data-arg="${k}" style="display:flex;align-items:center;gap:14px;height:54px;padding:0 16px;border-radius:14px;border:none;background:${S.tab === k ? 'var(--goldSoft)' : 'transparent'};color:${S.tab === k ? 'var(--ink)' : 'var(--soft)'};font-size:17px;font-weight:600;text-align:left">${svg(i)}<span>${l}</span></button>`).join('')}</nav>
@@ -385,70 +457,449 @@ function shellView(){
   const avatar = merchant
     ? `<button data-act="tab" data-arg="profile" style="width:52px;height:52px;border-radius:14px;border:2px solid var(--gold);background:var(--goldSoft);color:var(--goldInk);font-size:22px;font-weight:700;flex-shrink:0;display:flex;align-items:center;justify-content:center">${initial}</button>`
     : `<button data-act="tab" data-arg="profile" style="width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);padding:0;background:var(--goldSoft);color:var(--goldInk);font-size:22px;font-weight:700;flex-shrink:0;display:flex;align-items:center;justify-content:center">${initial}</button>`;
-  const headLeft = home
+  const headLeft = S.sub
+    ? `<button class="circle" data-act="subBack" aria-label="${T.back}" style="width:48px;height:48px">${IC.back}</button><div style="flex:1;min-width:0;font-size:20px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${subTitle()}</div>`
+    : home
     ? `${avatar}<div style="flex:1;min-width:0;display:flex;flex-direction:column">${merchant
         ? `<span style="font-size:20px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(name)}</span><span style="font-size:14px;color:var(--ok);font-weight:600;display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:var(--ok)"></span>${T.open}</span>`
         : `<span style="font-size:15px;color:var(--soft)">${T.hello}</span><span style="font-size:22px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(name)}</span>`}</div>`
     : `<div style="flex:1;min-width:0;font-size:20px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${titles[S.tab] || ''}</div>`;
-  const body = home ? (merchant ? merchantHome() : customerHome()) : S.tab === 'profile' ? profileView() : S.tab === 'history' || S.tab === 'sales' ? emptyList() : soonView();
-  const bottom = S.wide ? '' : `<nav style="position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--card);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(5,minmax(0,1fr))">${nav.map(([k, l, i]) => `<button data-act="tab" data-arg="${k}" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:60px;border:none;background:none;color:${S.tab === k ? 'var(--ink)' : 'var(--soft)'};padding:4px 2px"><div style="width:52px;height:30px;border-radius:15px;background:${S.tab === k ? 'var(--goldSoft)' : 'transparent'};display:flex;align-items:center;justify-content:center">${svg(i)}</div><span style="font-size:13px;font-weight:700;line-height:1.2;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">${l}</span></button>`).join('')}</nav>`;
+  const body = S.sub ? SUB[S.sub]() : home ? (merchant ? merchantHome() : customerHome()) : S.tab === 'profile' ? profileView() : S.tab === 'history' || S.tab === 'sales' ? historyView() : S.tab === 'scan' ? scanView() : S.tab === 'receive' ? receiveView() : soonView();
+  const bottom = S.wide || S.sub ? '' : `<nav style="position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--card);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(5,minmax(0,1fr))">${nav.map(([k, l, i]) => `<button data-act="tab" data-arg="${k}" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:60px;border:none;background:none;color:${S.tab === k ? 'var(--ink)' : 'var(--soft)'};padding:4px 2px"><div style="width:52px;height:30px;border-radius:15px;background:${S.tab === k ? 'var(--goldSoft)' : 'transparent'};display:flex;align-items:center;justify-content:center">${svg(i)}</div><span style="font-size:13px;font-weight:700;line-height:1.2;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">${l}</span></button>`).join('')}</nav>`;
   return `<div style="min-height:100vh;min-height:100dvh;display:flex;background:var(--bg);color:var(--ink)">${sidebar}
-    <div style="flex:1 1 0;min-width:0;display:flex;justify-content:center"><div style="width:100%;max-width:${S.wide ? '640px' : '100%'};min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;position:relative;padding-top:env(safe-area-inset-top,0px);padding-bottom:${S.wide ? '24px' : 'calc(88px + env(safe-area-inset-bottom,0px))'}">
+    <div style="flex:1 1 0;min-width:0;display:flex;justify-content:center"><div style="width:100%;max-width:${S.wide ? '640px' : '100%'};min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;position:relative;padding-top:env(safe-area-inset-top,0px);padding-bottom:${S.wide || S.sub ? '24px' : 'calc(88px + env(safe-area-inset-bottom,0px))'}">
     <div style="display:flex;align-items:center;gap:12px;padding:16px 20px 8px;min-height:76px">${headLeft}${headerBtns()}</div>${body}</div></div>${bottom}</div>`;
 }
+function kycCard(){
+  const T = t(), u = S.user, c = S.kyc && S.kyc.case;
+  if (!u || u.kyc_level >= 1) return '';
+  const merchant = u.account_type === 'merchant';
+  let title = merchant ? T.kybTitle : T.lvl1Title, sub = T.kycCardSub, bg = 'var(--goldSoft)', fg = 'var(--goldInk)', btn = T.verifyNow;
+  if (c && c.status === 'pending') { title = T.kycPendingCard; sub = T.kycPendingSub; btn = ''; }
+  if (c && c.status === 'more') { title = T.kycMore; sub = c.note || ''; btn = T.resubmit; }
+  if (c && c.status === 'rejected') { title = T.kycRejected; sub = c.note || ''; bg = 'var(--errSoft)'; fg = 'var(--err)'; btn = T.resubmit; }
+  return `<button data-act="${btn ? 'goKyc' : 'goKycPending'}" style="display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:20px;border:none;background:${bg};color:var(--ink);text-align:left">
+    <div style="width:48px;height:48px;border-radius:14px;background:var(--card);color:${fg};display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="12" r="2.2" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 10h5M13.5 14h3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:700;color:${fg}">${esc(title)}</span><span style="font-size:14px;color:var(--soft);line-height:1.4">${esc(sub)}</span></div>
+    ${btn ? `<span style="font-size:22px;color:var(--soft)">›</span>` : '<span class="spin" style="color:var(--goldInk);width:16px;height:16px"></span>'}</button>`;
+}
 function customerHome(){
-  const T = t(), u = S.user, max = 500000, used = 0;
-  const shortcuts = [['scan', T.scan, true], ['qr', T.receive], ['transfer', T.transfer], ['bills', T.bills], ['topup', T.topup], ['budget', T.budget], ['hist', T.history, false, 'history'], ['edit', T.customize, false, null, true]];
+  const T = t(), u = S.user, L = S.limits || {}, max = L.daily_max || 500000, used = L.used_today || 0;
+  const shortcuts = [['scan', T.scan, true, 'scan'], ['qr', T.receive], ['transfer', T.transfer], ['bills', T.bills], ['topup', T.topup], ['budget', T.budget], ['hist', T.history, false, 'history'], ['edit', T.customize, false, null, true]];
   return `<div style="display:flex;flex-direction:column;padding:8px 20px 28px;gap:24px">
     <div style="position:relative;border-radius:28px;overflow:hidden;background:#1E3358 var(--bgImg) center/cover;padding:24px;color:#FFFFFF;display:flex;flex-direction:column;gap:10px;box-shadow:0 14px 34px rgba(20,34,62,.22)">
       <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(18,30,55,.35) 0%,rgba(18,30,55,.85) 100%)"></div>
       <div style="position:relative;display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font-size:16px;font-weight:500;opacity:.92">${T.limitToday}</span><span style="font-size:13px;font-weight:700;background:rgba(255,255,255,.2);padding:5px 12px;border-radius:99px">Level ${u.kyc_level}</span></div>
-      <div style="position:relative;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span class="sora" style="font-size:36px;font-weight:700;letter-spacing:-.5px">${fmt(max - used)}</span><span style="font-size:18px;font-weight:600">${T.kip}</span></div>
-      <div style="position:relative;height:8px;border-radius:4px;background:rgba(255,255,255,.25);overflow:hidden"><div style="width:${Math.round((max - used) / max * 100)}%;height:100%;background:#D9B870;border-radius:4px"></div></div>
+      <div style="position:relative;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span class="sora" style="font-size:36px;font-weight:700;letter-spacing:-.5px">${fmt(Math.max(max - used, 0))}</span><span style="font-size:18px;font-weight:600">${T.kip}</span></div>
+      <div style="position:relative;height:8px;border-radius:4px;background:rgba(255,255,255,.25);overflow:hidden"><div style="width:${Math.max(0, Math.round((max - used) / max * 100))}%;height:100%;background:#D9B870;border-radius:4px"></div></div>
       <div style="position:relative;font-size:14px;opacity:.9">${T.limitOf.replace('{m}', fmt(max))}</div></div>
     <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 10px">${shortcuts.map(([i, l, primary, tab, dashed]) => `<button data-act="${tab ? 'tab' : 'soon'}" data-arg="${tab || ''}" style="display:flex;flex-direction:column;align-items:center;gap:10px;background:none;border:none;color:var(--ink);padding:0"><div style="width:100%;max-width:76px;aspect-ratio:1/1;border-radius:22px;background:${primary ? 'var(--primary)' : dashed ? 'transparent' : 'var(--card)'};border:${primary ? 'none' : dashed ? '2px dashed var(--line)' : '1.5px solid var(--line)'};color:${primary ? 'var(--onPrimary)' : 'var(--accent)'};display:flex;align-items:center;justify-content:center">${svg(i, 30)}</div><span style="font-size:15px;font-weight:600;text-align:center;line-height:1.3">${l}</span></button>`).join('')}</div>
-    ${recentBlock(T.recent, 'history')}</div>`;
+    ${kycCard()}${recentBlock(T.recent, 'history')}</div>`;
 }
 function merchantHome(){
-  const T = t();
+  const T = t(), sm = S.summary || { today_volume: 0, today_count: 0, avg_ticket: 0, pending_payout: 0 };
   return `<div style="display:flex;flex-direction:column;padding:8px 20px 28px;gap:18px">
     <div style="position:relative;border-radius:28px;overflow:hidden;background:#1E3358 var(--bgImg) center/cover;padding:24px;color:#FFFFFF;display:flex;flex-direction:column;gap:12px;box-shadow:0 14px 34px rgba(20,34,62,.22)">
       <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(18,30,55,.35) 0%,rgba(18,30,55,.85) 100%)"></div>
       <span style="position:relative;font-size:16px;font-weight:500;opacity:.92">${T.todaySales}</span>
-      <div style="position:relative;display:flex;align-items:baseline;gap:8px"><span class="sora" style="font-size:40px;font-weight:700;letter-spacing:-.5px">0</span><span style="font-size:18px;font-weight:600">${T.kip}</span></div>
-      <div style="position:relative;display:flex;gap:8px"><span style="font-size:13px;font-weight:700;background:rgba(255,255,255,.2);padding:6px 12px;border-radius:99px">${T.items.replace('{n}', 0)}</span></div></div>
-    <button data-act="soon" style="height:72px;border-radius:22px;border:none;background:var(--primary);color:var(--onPrimary);font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:14px">${svg('qr', 28)}${T.receiveBig}</button>
+      <div style="position:relative;display:flex;align-items:baseline;gap:8px"><span class="sora" style="font-size:40px;font-weight:700;letter-spacing:-.5px">${fmt(sm.today_volume)}</span><span style="font-size:18px;font-weight:600">${T.kip}</span></div>
+      <div style="position:relative;display:flex;gap:8px"><span style="font-size:13px;font-weight:700;background:rgba(255,255,255,.2);padding:6px 12px;border-radius:99px">${T.items.replace('{n}', sm.today_count)}</span></div></div>
+    <button data-act="goReceive" style="height:72px;border-radius:22px;border:none;background:var(--primary);color:var(--onPrimary);font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:14px">${svg('qr', 28)}${T.receiveBig}</button>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-      <div class="card" style="padding:16px 18px"><div style="font-size:14px;color:var(--soft)">${T.avgTicket}</div><div class="sora" style="font-size:24px;font-weight:700;margin-top:4px">0</div></div>
-      <div class="card" style="padding:16px 18px"><div style="font-size:14px;color:var(--soft)">${T.nextPayout}</div><div class="sora" style="font-size:24px;font-weight:700;margin-top:4px;color:var(--ok)">0</div></div></div>
-    ${recentBlock(T.recent, 'sales')}</div>`;
+      <div class="card" style="padding:16px 18px"><div style="font-size:14px;color:var(--soft)">${T.avgTicket}</div><div class="sora" style="font-size:24px;font-weight:700;margin-top:4px">${fmt(sm.avg_ticket)}</div></div>
+      <div class="card" style="padding:16px 18px"><div style="font-size:14px;color:var(--soft)">${T.nextPayout}</div><div class="sora" style="font-size:24px;font-weight:700;margin-top:4px;color:var(--ok)">${fmt(sm.pending_payout)}</div></div></div>
+    ${kycCard()}${recentBlock(T.recent, 'sales')}</div>`;
 }
-function recentBlock(title, tab){
-  return `<div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:19px;font-weight:700">${title}</span><button class="btn-link" data-act="tab" data-arg="${tab}" style="padding:8px 0">${t().seeAll}</button></div>
-    <div class="card" style="padding:28px 16px;text-align:center;color:var(--soft);font-size:15px">${t().noTx}</div></div>`;
-}
-function emptyList(){ return `<div style="padding:8px 20px 28px"><div class="card" style="padding:40px 16px;text-align:center;color:var(--soft)">${t().noTx}</div></div>`; }
 function soonView(){ return `<div style="padding:8px 20px 28px"><div style="border:2px dashed var(--line);border-radius:20px;padding:28px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px">${logoBox(72, 52, 20, 'border:1px solid var(--line)')}<div style="font-size:16px;color:var(--soft);line-height:1.6">${t().soon}</div></div></div>`; }
 function profileView(){
   const T = t(), u = S.user, merchant = u.account_type === 'merchant';
-  const name = u.full_name || (u.phone ? '+856 ' + u.phone.slice(4) : u.email);
-  const initial = u.full_name ? esc(Array.from(u.full_name)[0].toUpperCase()) : svg(merchant ? 'store' : 'prof', 44);
+  const name = shopName() || u.full_name || (u.phone ? '+856 ' + u.phone.slice(4) : u.email);
+  const initial = shopName() || u.full_name ? initialOf(shopName() || u.full_name) : svg(merchant ? 'store' : 'prof', 44);
   const missing = !u.email ? 'addEmail' : !u.phone ? 'addPhone' : null;
   const menu = [T.upgrade, T.security, T.limits, T.help];
   return `<div style="display:flex;flex-direction:column;padding:8px 20px 28px;gap:18px">
     <div class="card" style="border-radius:24px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center">
       <div style="width:96px;height:96px;border-radius:${merchant ? '26px' : '50%'};background:var(--goldSoft);color:var(--goldInk);display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:700;margin-bottom:6px">${initial}</div>
       <div style="font-size:21px;font-weight:700">${esc(name)}</div>
-      ${u.phone && u.full_name ? `<div class="sora" style="font-size:15px;color:var(--soft)">+856 ${esc(u.phone.slice(4))}</div>` : ''}
+      ${u.phone && (u.full_name || shopName()) ? `<div class="sora" style="font-size:15px;color:var(--soft)">+856 ${esc(u.phone.slice(4))}</div>` : ''}
       ${u.email && (u.full_name || u.phone) ? `<div style="font-size:15px;color:var(--soft)">${esc(u.email)}</div>` : ''}
-      <span style="margin-top:8px;font-size:14px;font-weight:700;padding:6px 14px;border-radius:99px;background:var(--goldSoft);color:var(--goldInk)">${T.kycLevel}: Level ${u.kyc_level}</span>
+      ${merchant && S.summary && S.summary.merchant ? `<div class="sora" style="font-size:14px;color:var(--soft);letter-spacing:.5px">${esc(S.summary.merchant.code)}</div>` : ''}<span style="margin-top:8px;font-size:14px;font-weight:700;padding:6px 14px;border-radius:99px;background:var(--goldSoft);color:var(--goldInk)">${T.kycLevel}: Level ${u.kyc_level}</span>
       ${missing ? `<button data-act="addContact" style="margin-top:10px;height:48px;padding:0 22px;border-radius:24px;border:2px solid var(--line);background:var(--card);color:var(--ink);font-size:16px;font-weight:700">+ ${T[missing]}</button>` : ''}</div>
+    ${merchant ? shopQrCard() : ''}
     <div class="card" style="overflow:hidden">
       <button class="rowbtn" data-act="openLang"><span style="flex:1">${T.language}</span><span class="v">${(LANGS.find(l => l.code === S.lang) || LANGS[0]).name}</span><span class="ch">›</span></button>
       <button class="rowbtn" data-act="toggleTheme"><span style="flex:1">${T.display}</span><span class="v">${S.theme === 'dark' ? T.dark : T.light}</span><div style="width:52px;height:32px;border-radius:16px;background:${S.theme === 'dark' ? 'var(--gold)' : 'var(--line)'};padding:3px;display:flex;justify-content:${S.theme === 'dark' ? 'flex-end' : 'flex-start'}"><div style="width:26px;height:26px;border-radius:50%;background:#FFFFFF"></div></div></button></div>
-    <div class="card" style="overflow:hidden">${menu.map(l => `<button class="rowbtn" data-act="soon"><span style="flex:1">${l}</span><span class="ch">›</span></button>`).join('')}</div>
+    <div class="card" style="overflow:hidden">${menu.map((l, i) => `<button class="rowbtn" data-act="${i === 0 && u.kyc_level < 1 ? 'goKyc' : 'soon'}"><span style="flex:1">${l}</span><span class="ch">›</span></button>`).join('')}</div>
     <button class="btn-s" data-act="logout" style="color:var(--err);font-size:18px">${T.logout}</button></div>`;
 }
+
+const ASSET = 'assets/';
+/* ============================================================ PAYMENTS (Part 4) — ตามหน้าต้นแบบ Scan / Amount / Pay PIN / Receipt / History · ร้านค้า Receive / Show QR / Received / Sales */
+const CATS = [
+  {k:'food',th:'ค่ากิน',en:'Food',lo:'ຄ່າກິນ',zh:'餐饮',color:'oklch(0.68 0.13 55)'},
+  {k:'shop',th:'ช้อปปิ้ง',en:'Shopping',lo:'ຊື້ເຄື່ອງ',zh:'购物',color:'oklch(0.68 0.13 340)'},
+  {k:'travel',th:'เดินทาง',en:'Travel',lo:'ເດີນທາງ',zh:'交通',color:'oklch(0.68 0.13 245)'},
+  {k:'bills',th:'บิล/ค่าบริการ',en:'Bills',lo:'ບິນ/ຄ່າບໍລິການ',zh:'账单',color:'oklch(0.68 0.13 150)'},
+  {k:'other',th:'อื่นๆ',en:'Other',lo:'ອື່ນໆ',zh:'其他',color:'oklch(0.68 0.05 260)'}];
+const catName = k => { const c = CATS.find(x => x.k === k); return c ? c[S.lang] : '—'; };
+const TST = { success: ['var(--okSoft)', 'var(--ok)', 'ok'], pending: ['var(--goldSoft)', 'var(--goldInk)', 'pending'], unknown: ['var(--goldSoft)', 'var(--goldInk)', 'pending'],
+  created: ['var(--goldSoft)', 'var(--goldInk)', 'pending'], failed: ['var(--errSoft)', 'var(--err)', 'fail'], expired: ['var(--chip)', 'var(--soft)', 'stExpired'], cancelled: ['var(--chip)', 'var(--soft)', 'cancelled'] };
+const stPill = st => { const [bg, c, k] = TST[st] || TST.pending; return `<span style="font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;background:${bg};color:${c};white-space:nowrap">${t()[k]}</span>`; };
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Array.from(crypto.getRandomValues(new Uint8Array(16)), b => b.toString(16).padStart(2, '0')).join(''));
+const isMerchant = () => S.user && S.user.account_type === 'merchant';
+const fmtDate = d => { if (!d) return '—'; const x = new Date(d); return x.toLocaleString(S.lang === 'zh' ? 'zh-CN' : S.lang === 'lo' ? 'lo-LA' : S.lang === 'en' ? 'en-GB' : 'th-TH', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }); };
+const clock = d => d ? new Date(d).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : '';
+const shopName = () => { const m = isMerchant() && S.summary && S.summary.merchant; return m && m.name !== m.code ? m.name : ''; };
+const initialOf = n => esc(Array.from(n || '?')[0].toUpperCase());
+
+/* ---------- QR image (qrcodejs → dataURL, cache ต่อข้อความ) */
+const QR_CACHE = {};
+function qrImg(text, size){
+  const key = size + '|' + text;
+  if (!QR_CACHE[key] && window.QRCode) {
+    const div = document.createElement('div');
+    new QRCode(div, { text, width: size * 2, height: size * 2, colorDark: '#14223E', colorLight: '#FFFFFF', correctLevel: QRCode.CorrectLevel.M });
+    const c = div.querySelector('canvas'); QR_CACHE[key] = c ? c.toDataURL('image/png') : '';
+  }
+  return `<img src="${QR_CACHE[key] || ''}" alt="QR" style="width:${size}px;height:${size}px;display:block;image-rendering:pixelated">`;
+}
+
+/* ---------- amount keypad (ต้นแบบ: 1–9, 000, 0, ลบ) */
+const amtKeypad = (act, h = 60) => `<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">${['1','2','3','4','5','6','7','8','9','000','0','del'].map(k => {
+  const del = k === 'del';
+  return `<button data-act="${act}" data-arg="${k}" aria-label="${del ? t().del : k}" style="height:${h}px;border-radius:18px;border:${del ? 'none' : '1.5px solid var(--line)'};background:${del ? 'transparent' : 'var(--card)'};color:var(--ink);font-family:${del ? 'inherit' : 'Sora,sans-serif'};font-size:${del ? '17px' : k === '000' ? '22px' : '26px'};font-weight:600">${del ? t().del : k}</button>`;
+}).join('')}</div>`;
+function pressAmt(k){
+  let v = S.amt || '0';
+  v = k === 'del' ? v.slice(0, -1) : (v === '0' ? '' : v) + k;
+  v = (v.replace(/^0+/, '') || '0').slice(0, 10);
+  S.amt = v; render();
+}
+
+/* ---------- data */
+async function loadHome(){
+  try {
+    if (isMerchant()) {
+      const [sm, tx] = await Promise.all([api('GET', '/v1/merchant/summary', null, true), api('GET', '/v1/transactions?limit=5', null, true)]);
+      S.summary = sm; S.recent = tx.items;
+    } else {
+      const [lm, tx] = await Promise.all([api('GET', '/v1/pay/limits', null, true), api('GET', '/v1/transactions?limit=5', null, true)]);
+      S.limits = lm; S.recent = tx.items;
+    }
+  } catch (e) {}
+}
+async function loadList(){
+  S.list = null; render();
+  try { S.list = (await api('GET', '/v1/transactions?limit=100&status=' + S.filter, null, true)).items; } catch (e) { S.list = []; }
+  render();
+}
+
+/* ---------- list rows (ต้นแบบ History / Sales) */
+function txRows(items){
+  const T = t();
+  if (!items) return `<div style="padding:36px 0;text-align:center;color:var(--soft)"><span class="spin"></span></div>`;
+  if (!items.length) return `<div style="padding:36px 0;text-align:center;color:var(--soft);font-size:16px">${S.tab === 'home' ? T.noTx : T.empty}</div>`;
+  return items.map((x, i, a) => {
+    const out = x.direction === 'out', ok = x.status === 'success';
+    const name = out ? x.merchant.name : (x.payer.name === 'SANDBOX' ? T.sandboxPayer : x.payer.name);
+    const amtColor = !ok ? 'var(--soft)' : out ? 'var(--ink)' : 'var(--ok)';
+    return `<button data-act="openTx" data-arg="${esc(x.ref)}" style="display:flex;align-items:center;gap:14px;width:100%;padding:14px 0;border:none;border-bottom:${i < a.length - 1 ? '1px solid var(--line)' : 'none'};background:none;text-align:left;color:var(--ink)">
+      <div style="width:48px;height:48px;border-radius:14px;background:${out ? 'var(--chip)' : 'var(--okSoft)'};color:${out ? 'var(--accent)' : 'var(--ok)'};display:flex;align-items:center;justify-content:center;flex-shrink:0">${out
+        ? '<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        : '<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 7L7 17M15 17H7V9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'}</div>
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(name)}</span><span style="font-size:14px;color:var(--soft)">${fmtDate(x.paid_at || x.created_at)}</span></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0"><span class="sora" style="font-size:16px;font-weight:600;color:${amtColor}">${out ? '−' : '+'}${fmt(x.amount)}</span>${stPill(x.status)}</div></button>`;
+  }).join('');
+}
+function recentBlock(title, tab){
+  return `<div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:19px;font-weight:700">${title}</span><button class="btn-link" data-act="tab" data-arg="${tab}" style="padding:8px 0">${t().seeAll}</button></div>
+    <div class="card" style="padding:4px 16px">${txRows(S.recent || [])}</div></div>`;
+}
+function historyView(){
+  const T = t();
+  const filters = [['all', T.all], ['ok', T.ok], ['pending', T.pending], ['fail', T.fail]].map(([k, l]) => { const a = S.filter === k;
+    return `<button data-act="filter" data-arg="${k}" style="height:46px;padding:0 18px;border-radius:23px;border:1.5px solid ${a ? 'var(--primary)' : 'var(--line)'};background:${a ? 'var(--primary)' : 'var(--card)'};color:${a ? 'var(--onPrimary)' : 'var(--ink)'};font-size:15px;font-weight:700">${l}</button>`; }).join('');
+  return `<div style="display:flex;flex-direction:column;padding:8px 20px 28px;gap:16px"><div style="display:flex;gap:8px;flex-wrap:wrap">${filters}</div>
+    <div class="card" style="padding:4px 16px">${txRows(S.list)}</div></div>`;
+}
+
+/* ---------- customer: scan (ต้นแบบ 02 Scan) */
+let camStream = null, camRAF = 0, detector = null;
+function scanView(){
+  const T = t();
+  return `<div style="display:flex;flex-direction:column;flex:1;padding:8px 20px 28px;gap:18px">
+    <div style="position:relative;aspect-ratio:1/1;max-height:360px;width:100%;border-radius:28px;background:#0F1A2E;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;overflow:hidden">
+      <video id="cam" playsinline muted style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:${camStream ? 'block' : 'none'}"></video>
+      <div style="position:relative;width:58%;aspect-ratio:1/1;border:4px solid #D9B870;border-radius:24px"></div>
+      <span style="position:relative;color:#FFFFFF;font-size:16px;text-align:center;padding:0 28px;line-height:1.5;text-shadow:0 1px 6px rgba(0,0,0,.5)">${S.camErr ? T.camOff : T.scanHint}</span>
+    </div>
+    <label class="btn-p" style="display:flex;align-items:center;justify-content:center;cursor:pointer">${S.busy ? '<span class="spin"></span>' : T.scanImage}<input type="file" accept="image/*" data-file="qrimg" style="display:none"></label>
+    <div style="display:flex;align-items:center;gap:12px;color:var(--soft);font-size:15px"><div style="flex:1;height:1px;background:var(--line)"></div>${T.or}<div style="flex:1;height:1px;background:var(--line)"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <label for="mcode" style="font-size:15px;font-weight:600;color:var(--soft)">${T.merchantCode}</label>
+      <div style="display:flex;gap:10px">
+        <input id="mcode" data-input="mcode" value="${esc(S.mcode)}" placeholder="MER-00000" autocapitalize="characters" style="flex:1;min-width:0;height:60px;border:2px solid var(--line);border-radius:18px;background:var(--card);padding:0 16px;font-family:Sora,sans-serif;font-size:19px;color:var(--ink);outline:none;text-transform:uppercase">
+        <button id="primary" data-act="resolveCode" ${S.mcode.trim().length < 4 || S.busy ? 'disabled' : ''} style="height:60px;padding:0 22px;border-radius:18px;border:2px solid var(--line);background:var(--card);color:var(--ink);font-size:17px;font-weight:700;opacity:${S.mcode.trim().length < 4 ? .4 : 1}">${T.next}</button>
+      </div></div>
+    <div class="err" style="margin:0">${esc(S.err)}</div></div>`;
+}
+async function startCam(){
+  if (camStream || S.camErr) return;
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { S.camErr = true; render(); return; }
+  try {
+    camStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+    if (S.tab !== 'scan' || S.sub) { stopCam(); return; }
+    if ('BarcodeDetector' in window) { try { detector = new BarcodeDetector({ formats: ['qr_code'] }); } catch (e) { detector = null; } }
+    if (!detector) await loadJsQR();
+    render(); scanLoop();
+  } catch (e) { S.camErr = true; render(); }
+}
+function stopCam(){ cancelAnimationFrame(camRAF); if (camStream) camStream.getTracks().forEach(tr => tr.stop()); camStream = null; }
+function attachCam(){ const v = document.getElementById('cam'); if (v && camStream && v.srcObject !== camStream) { v.srcObject = camStream; v.play().catch(() => {}); } }
+const scanCanvas = document.createElement('canvas');
+async function scanLoop(){
+  const v = document.getElementById('cam');
+  if (!camStream) return;
+  if (v && v.readyState >= 2 && !S.busy) {
+    let code = null;
+    try {
+      if (detector) { const r = await detector.detect(v); code = r[0] && r[0].rawValue; }
+      else if (window.jsQR) {
+        const w = scanCanvas.width = Math.min(v.videoWidth, 640), h = scanCanvas.height = Math.round(v.videoHeight * w / v.videoWidth);
+        const ctx = scanCanvas.getContext('2d', { willReadFrequently: true }); ctx.drawImage(v, 0, 0, w, h);
+        const r = jsQR(ctx.getImageData(0, 0, w, h).data, w, h, { inversionAttempts: 'dontInvert' }); code = r && r.data;
+      }
+    } catch (e) {}
+    if (code) { stopCam(); resolvePay({ payload: code }); return; }
+  }
+  camRAF = requestAnimationFrame(scanLoop);
+}
+function loadJsQR(){ return window.jsQR ? Promise.resolve() : new Promise(res => { const s = document.createElement('script'); s.src = ASSET + 'jsqr.min.js'; s.onload = res; s.onerror = res; document.head.appendChild(s); }); }
+async function decodeImage(file){
+  await loadJsQR();
+  const img = new Image(), url = URL.createObjectURL(file);
+  await new Promise(r => { img.onload = r; img.onerror = r; img.src = url; });
+  const k = Math.min(1, 1200 / Math.max(img.width || 1, img.height || 1));
+  const w = scanCanvas.width = Math.max(1, Math.round(img.width * k)), h = scanCanvas.height = Math.max(1, Math.round(img.height * k));
+  const ctx = scanCanvas.getContext('2d', { willReadFrequently: true }); ctx.drawImage(img, 0, 0, w, h); URL.revokeObjectURL(url);
+  const r = window.jsQR && jsQR(ctx.getImageData(0, 0, w, h).data, w, h);
+  return r && r.data;
+}
+async function resolvePay(body){
+  if (S.busy) return;
+  S.busy = true; S.err = ''; render();
+  try {
+    const d = await api('POST', '/v1/pay/resolve', body, true);
+    S.busy = false; S.pay = d; S.idem = uid(); S.ppin = ''; S.pinErr = ''; S.cat = 'food'; S.mcode = '';
+    if (d.mode === 'dynamic') { S.amt = String(d.amount); openSub('payPin'); }
+    else { S.amt = '0'; openSub('payAmount'); }
+  } catch (e) { S.busy = false; S.err = errMsg(e); render(); if (S.tab === 'scan') startCam(); }
+}
+
+/* ---------- customer: amount (ต้นแบบ 03 Amount) */
+function merchantCard(m){
+  return `<div style="display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px">
+    <div style="width:56px;height:56px;border-radius:16px;background:var(--goldSoft);color:var(--goldInk);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;flex-shrink:0">${initialOf(m.name)}</div>
+    <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:18px;font-weight:700;overflow-wrap:anywhere">${esc(m.name)}</span><span class="sora" style="font-size:14px;color:var(--soft)">${esc(m.code)}</span></div></div>`;
+}
+function payAmountView(){
+  const T = t(), a = +S.amt || 0;
+  return `<div style="display:flex;flex-direction:column;flex:1;padding:8px 20px 24px;gap:14px">${merchantCard(S.pay.merchant)}
+    <div style="text-align:center;padding:10px 0 2px"><div style="font-size:15px;color:var(--soft)">${T.enterAmount}</div><div class="sora" style="font-size:46px;font-weight:700;letter-spacing:-1px;line-height:1.3">${fmt(a)}</div><div style="font-size:17px;color:var(--soft);font-weight:600">${T.kip}</div></div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">${[10000, 50000, 100000].map(v => `<button data-act="addAmt" data-arg="${v}" style="height:44px;padding:0 16px;border-radius:22px;border:1.5px solid var(--line);background:var(--chip);color:var(--ink);font-family:Sora,sans-serif;font-size:15px;font-weight:600">+${fmt(v)}</button>`).join('')}</div>
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:15px;font-weight:600;color:var(--soft)">${T.category}</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">${CATS.map(c => { const on = S.cat === c.k; return `<button data-act="setCat" data-arg="${c.k}" style="height:44px;padding:0 14px;border-radius:22px;border:2px solid ${on ? 'var(--primary)' : 'var(--line)'};background:${on ? 'var(--goldSoft)' : 'var(--card)'};color:var(--ink);font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:50%;background:${c.color}"></span>${c[S.lang]}</button>`; }).join('')}</div></div>
+    <div style="flex:1;min-height:6px"></div>${amtKeypad('pressAmt')}
+    <button class="btn-p" id="primary" data-act="goPayPin" ${a < 1 ? 'disabled' : ''} style="opacity:${a < 1 ? .4 : 1}">${T.next}</button></div>`;
+}
+
+/* ---------- customer: PIN (ต้นแบบ 04 Pay PIN) */
+function payPinView(){
+  const T = t();
+  return `<div style="display:flex;flex-direction:column;flex:1;padding:12px 20px 24px">
+    <div style="text-align:center;font-size:16px;color:var(--soft)">${T.pinPayFor}</div>
+    <div class="sora" style="text-align:center;font-size:34px;font-weight:700;margin:4px 0 2px">${fmt(+S.amt)} <span style="font-size:18px;font-family:inherit">${T.kip}</span></div>
+    <div style="text-align:center;font-size:16px;font-weight:600;margin-bottom:26px">${esc(S.pay.merchant.name)}</div>
+    ${dots(S.ppin.length)}<div style="text-align:center;min-height:28px;margin-top:16px;font-size:15px;font-weight:600;color:var(--err)">${S.busy ? '<span class="spin" style="color:var(--soft)"></span>' : esc(S.pinErr)}</div>
+    <div style="flex:1;min-height:24px"></div>${keypad('pressPayPin')}</div>`;
+}
+function pressPayPin(k){
+  if (S.busy) return;
+  S.ppin = k === 'del' ? S.ppin.slice(0, -1) : (S.ppin + k).slice(0, 6); S.pinErr = ''; render();
+  if (S.ppin.length === 6) setTimeout(doPay, 200);
+}
+async function doPay(){
+  S.busy = true; render();
+  const body = S.pay.mode === 'dynamic' ? { ref: S.pay.ref, pin: S.ppin } : { merchant_code: S.pay.merchant.code, amount: +S.amt, pin: S.ppin, category: S.cat };
+  try {
+    const tx = await api('POST', '/v1/pay', body, true, { 'Idempotency-Key': S.idem });
+    S.busy = false; S.ppin = ''; S.rc = tx; S.idem = null; S.rcFresh = true;
+    S.sub = null; S.subStack = []; openSub('receipt'); loadHome();
+  } catch (e) {
+    S.busy = false; S.ppin = ''; S.pinErr = errMsg(e); render();
+    if (!['ERR_PIN_INVALID', 'NETWORK'].includes(e.code)) S.idem = uid();   // ข้อผิดพลาดอื่น: รอบใหม่ใช้ key ใหม่
+  }
+}
+
+/* ---------- receipt (ต้นแบบ 05 Receipt) */
+function receiptView(){
+  const T = t(), x = S.rc, u = S.user || {}, st = x.status;
+  const ok = st === 'success', fail = st === 'failed' || st === 'expired' || st === 'cancelled';
+  const head = ok ? T.paid : fail ? T.payFail : T.pending;
+  const iconBg = ok ? 'var(--okSoft)' : fail ? 'var(--errSoft)' : 'var(--goldSoft)', iconC = ok ? 'var(--ok)' : fail ? 'var(--err)' : 'var(--goldInk)';
+  const icon = ok ? '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    : fail ? '<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg>'
+    : '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.2"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
+  const me = u.full_name || (u.phone ? '+856 ' + u.phone.slice(4) : u.email);
+  const rows = [[T.ref, x.ref], [T.dateTime, fmtDate(x.paid_at || x.created_at)], [T.type, T.tScan], [T.category, catName(x.category)], [T.fee, x.fee ? fmt(x.fee) + ' ' + T.kip : T.free]];
+  if (fail && x.error_code) rows.push([T.status, (T.E[x.error_code] || x.error_code)]);
+  const fromSub = u.phone ? '+856 ' + u.phone.slice(4) : (u.email || '');
+  return `<div style="display:flex;flex-direction:column;flex:1;padding:8px 20px 28px;gap:18px">
+  <div style="background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 12px 32px rgba(20,34,62,.12)">
+    <div style="position:relative;background:#1E3358 var(--bgImg) center/cover;padding:18px 20px;display:flex;align-items:center;gap:12px;color:#FFFFFF">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,30,55,.55),rgba(18,30,55,.85))"></div>
+      <div style="position:relative;flex-shrink:0">${logoBox(44, 32, 12)}</div>
+      <div style="position:relative;flex:1;min-width:0;display:flex;flex-direction:column"><span class="sora" style="font-size:14px;font-weight:600;opacity:.85">1st Pay</span><span style="font-size:18px;font-weight:700" id="rcHead">${head}</span></div>
+      <div style="position:relative;width:44px;height:44px;border-radius:50%;background:${iconBg};color:${iconC};display:flex;align-items:center;justify-content:center;flex-shrink:0">${icon}</div></div>
+    <div style="padding:22px 20px 6px;text-align:center;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;color:var(--soft);font-weight:600">${T.amount}</span>
+      <span class="sora" style="font-size:48px;font-weight:700;letter-spacing:-1px;line-height:1.2;color:${ok ? 'var(--ink)' : 'var(--soft)'};overflow-wrap:anywhere;text-decoration:${fail ? 'line-through' : 'none'}">${fmt(x.amount)}</span><span style="font-size:18px;font-weight:700">${T.kip}</span></div>
+    <div style="margin:16px 20px 0;padding:16px;border-radius:20px;background:var(--chip);display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:44px;flex-shrink:0;font-size:14px;font-weight:700;color:var(--soft);padding-top:2px">${T.from}</span><div style="display:flex;flex-direction:column;min-width:0"><span style="font-size:17px;font-weight:700">${esc(me)}</span><span style="font-size:14px;color:var(--soft);overflow-wrap:anywhere">${esc(u.full_name ? fromSub : 'Level ' + u.kyc_level)}</span></div></div>
+      <div style="height:1px;background:var(--line)"></div>
+      <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:44px;flex-shrink:0;font-size:14px;font-weight:700;color:var(--soft);padding-top:2px">${T.to}</span><div style="display:flex;flex-direction:column;min-width:0"><span style="font-size:17px;font-weight:700">${esc(x.merchant.name)}</span><span class="sora" style="font-size:14px;color:var(--soft);overflow-wrap:anywhere">${esc(x.merchant.code || '')}</span></div></div></div>
+    <div style="padding:6px 20px">${rows.map(([k, v], i, a) => `<div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:${i < a.length - 1 ? '1px solid var(--line)' : 'none'};font-size:16px"><span style="color:var(--soft)">${k}</span><span style="font-weight:600;text-align:right;overflow-wrap:anywhere">${esc(v)}</span></div>`).join('')}</div>
+    <div style="position:relative;height:2px;margin:0 20px;border-top:2px dashed var(--line)"></div>
+    <div style="display:flex;align-items:center;gap:16px;padding:16px 20px 20px"><div style="background:#FFFFFF;border-radius:12px;padding:6px;border:1px solid var(--line);flex-shrink:0">${qrImg('1STPAY-SLIP:' + x.ref, 84)}</div>
+      <div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-size:15px;font-weight:600">${T.verify}</span><span class="sora" style="font-size:13px;color:var(--soft);overflow-wrap:anywhere">${esc(x.ref)}</span></div></div></div>
+  <div style="flex:1;min-height:4px"></div>
+  <div style="display:flex;flex-direction:column;gap:12px"><button class="btn-s" data-act="shareRc" style="font-size:18px">${T.share}</button>${S.rcFresh ? `<button class="btn-p" data-act="payHome">${T.backHome}</button>` : ''}</div></div>`;
+}
+async function shareRc(){
+  const T = t(), x = S.rc;
+  const text = `1st Pay · ${x.status === 'success' ? T.paid : T.status + ': ' + T[(TST[x.status] || TST.pending)[2]]}\n${fmt(x.amount)} ${T.kip} → ${x.merchant.name}\n${T.ref}: ${x.ref}\n${fmtDate(x.paid_at || x.created_at)}`;
+  try { if (navigator.share) { await navigator.share({ title: '1st Pay', text }); return; } } catch (e) { return; }
+  try { await navigator.clipboard.writeText(text); toast(T.copied); } catch (e) { toast(text); }
+}
+
+/* ---------- merchant: receive (ต้นแบบ 02 Receive amount) */
+function receiveView(){
+  const T = t(), a = +S.amt || 0;
+  if (S.summary && !S.summary.can_receive) return `<div style="padding:8px 20px 28px;display:flex;flex-direction:column;gap:16px">${kycCard()}<div class="card" style="padding:24px;text-align:center;color:var(--soft);line-height:1.6">${T.kybFirst}</div></div>`;
+  return `<div style="display:flex;flex-direction:column;flex:1;padding:8px 20px 24px;gap:14px">
+    <div style="text-align:center;padding:12px 0 4px"><div style="font-size:16px;color:var(--soft)">${T.enterAmount}</div><div class="sora" style="font-size:52px;font-weight:700;letter-spacing:-1px;line-height:1.25">${fmt(a)}</div><div style="font-size:18px;color:var(--soft);font-weight:600">${T.kip}</div></div>
+    <div class="err" style="margin:0;text-align:center">${esc(S.err)}</div>
+    <div style="flex:1;min-height:6px"></div>${amtKeypad('pressAmt', 64)}
+    <button id="primary" data-act="createQr" ${a < 1 || S.busy ? 'disabled' : ''} style="height:64px;border-radius:18px;border:none;background:var(--primary);color:var(--onPrimary);font-size:20px;font-weight:700;opacity:${a < 1 ? .4 : 1}">${btnLabel(T.createQr)}</button></div>`;
+}
+let pollT = null;
+function stopPoll(){ clearInterval(pollT); pollT = null; }
+async function createQr(){
+  if (S.busy || !(+S.amt > 0)) return;
+  S.busy = true; S.err = ''; render();
+  try {
+    S.sale = await api('POST', '/v1/merchant/qr', { amount: +S.amt }, true);
+    S.busy = false; openSub('mQr');
+    stopPoll(); pollT = setInterval(pollSale, 2000);
+  } catch (e) { S.busy = false; S.err = errMsg(e); render(); }
+}
+async function pollSale(){
+  if (!S.sale || S.sub !== 'mQr') { stopPoll(); return; }
+  try {
+    const x = await api('GET', '/v1/merchant/qr/' + S.sale.ref, null, true);
+    const qr = S.sale.qr; S.sale = Object.assign(x, { qr });
+    if (x.status !== 'created') { stopPoll(); if (x.status === 'success') { S.sub = null; S.subStack = []; openSub('mDone'); loadHome(); return; } }
+    render();
+  } catch (e) {}
+}
+function leftText(exp){
+  const s = Math.max(0, Math.floor((new Date(exp) - Date.now()) / 1000));
+  return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+}
+function mQrView(){
+  const T = t(), x = S.sale, waiting = x.status === 'created';
+  const pill = waiting
+    ? `<div style="display:flex;align-items:center;gap:10px;font-size:16px;color:var(--goldInk);font-weight:600;background:var(--goldSoft);padding:10px 16px;border-radius:99px"><span style="width:10px;height:10px;border-radius:50%;background:var(--gold)"></span>${T.waiting}</div>
+       <div style="font-size:14px;color:var(--soft)" id="qrLeft">${T.expiresIn.replace('{t}', leftText(x.expires_at))}</div>`
+    : `<div style="display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;padding:10px 16px;border-radius:99px;background:${(TST[x.status] || TST.failed)[0]};color:${(TST[x.status] || TST.failed)[1]}">${x.status === 'failed' ? T.payFail : T[(TST[x.status] || TST.failed)[2]]}</div>`;
+  return `<div style="display:flex;flex-direction:column;flex:1;padding:8px 20px 24px;gap:18px;align-items:center">
+    <div style="font-size:18px;font-weight:600;color:var(--soft);text-align:center">${T.showCustomer}</div>
+    <div style="width:100%;max-width:400px;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:14px">
+      <span style="font-size:17px;font-weight:700;text-align:center">${esc(x.merchant.name)}</span>
+      <div style="background:#FFFFFF;border-radius:20px;padding:14px;border:3px solid var(--gold);opacity:${waiting ? 1 : .25}">${qrImg(x.qr, 220)}</div>
+      <div style="display:flex;align-items:baseline;gap:8px"><span class="sora" style="font-size:40px;font-weight:700">${fmt(x.amount)}</span><span style="font-size:18px;font-weight:600">${T.kip}</span></div>
+      ${pill}
+      <div style="font-size:13px;color:var(--soft)">${T.refCode} <span class="sora" style="color:var(--ink);font-weight:600;letter-spacing:.5px" id="saleRef">${esc(x.ref)}</span></div></div>
+    <div style="flex:1;min-height:8px"></div>
+    <div style="width:100%;display:flex;flex-direction:column;gap:12px">
+      ${waiting && ENV !== 'prod' ? `<button class="btn-p" data-act="simulatePaid">${btnLabel(T.simulatePaid)}</button>` : ''}
+      ${waiting ? `<button class="btn-s" data-act="cancelQr" style="height:56px;font-size:18px">${T.cancel}</button>` : `<button class="btn-p" data-act="newSale">${T.newSale}</button>`}</div></div>`;
+}
+async function simulatePaid(){
+  if (S.busy) return; S.busy = true; render();
+  try { const x = await api('POST', '/v1/merchant/qr/' + S.sale.ref + '/simulate', null, true); S.busy = false; S.sale = Object.assign(x, { qr: S.sale.qr }); stopPoll();
+    if (x.status === 'success') { S.sub = null; S.subStack = []; openSub('mDone'); loadHome(); } else render(); }
+  catch (e) { S.busy = false; toast(errMsg(e)); }
+}
+async function cancelQr(){
+  stopPoll();
+  try { await api('POST', '/v1/merchant/qr/' + S.sale.ref + '/cancel', null, true); } catch (e) {}
+  S.sale = null; S.amt = '0'; closeSub();
+}
+function mDoneView(){
+  const T = t(), x = S.sale, payer = x.payer.name === 'SANDBOX' ? T.sandboxPayer : x.payer.name;
+  return `<div style="display:flex;flex-direction:column;flex:1;padding:32px 20px 24px;gap:14px;align-items:center;text-align:center">
+    <div style="width:120px;height:120px;border-radius:50%;background:var(--okSoft);color:var(--ok);display:flex;align-items:center;justify-content:center"><svg width="60" height="60" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div style="font-size:24px;font-weight:700;color:var(--ok)">${T.received}</div>
+    <div style="display:flex;align-items:baseline;gap:8px"><span class="sora" style="font-size:52px;font-weight:700;letter-spacing:-1px">${fmt(x.amount)}</span><span style="font-size:20px;font-weight:600">${T.kip}</span></div>
+    <div style="font-size:16px;color:var(--soft)">${T.from} <span class="sora" style="color:var(--ink);font-weight:600">${esc(payer)}</span></div>
+    <div class="sora" style="font-size:14px;color:var(--soft)">${esc(x.ref)} · ${clock(x.paid_at)}</div>
+    <div style="flex:1;min-height:16px"></div>
+    <div style="width:100%;display:flex;flex-direction:column;gap:12px"><button data-act="newSale" style="height:64px;border-radius:18px;border:none;background:var(--primary);color:var(--onPrimary);font-size:20px;font-weight:700">${T.newSale}</button><button class="btn-s" data-act="payHome" style="height:56px;font-size:18px">${T.backHome}</button></div></div>`;
+}
+
+/* ---------- merchant: sale detail (ต้นแบบ 06 Sale detail) */
+function saleView(){
+  const T = t(), x = S.rc, [bg, c, k] = TST[x.status] || TST.pending;
+  const payer = x.payer.name === 'SANDBOX' ? T.sandboxPayer : x.payer.name;
+  const rows = [[T.ref, x.ref], [T.dateTime, fmtDate(x.paid_at || x.created_at)], [T.payer, payer], [T.method, T.methodQr], [T.fee, x.fee ? fmt(x.fee) : T.free]];
+  if (x.status === 'failed' && x.error_code) rows.push([T.status, T.E[x.error_code] || x.error_code]);
+  return `<div style="display:flex;flex-direction:column;flex:1;padding:8px 20px 28px;gap:18px"><div style="background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden">
+    <div style="padding:24px 20px 12px;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center"><span style="font-size:13px;font-weight:700;padding:5px 12px;border-radius:99px;background:${bg};color:${c}">${T[k]}</span>
+      <span class="sora" style="font-size:46px;font-weight:700;letter-spacing:-1px;line-height:1.2;text-decoration:${x.status === 'failed' ? 'line-through' : 'none'}">${fmt(x.amount)}</span><span style="font-size:18px;font-weight:700">${T.kip}</span></div>
+    <div style="padding:6px 20px 12px">${rows.map(([kk, v], i, a) => `<div style="display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:${i < a.length - 1 ? '1px solid var(--line)' : 'none'};font-size:16px"><span style="color:var(--soft)">${kk}</span><span style="font-weight:600;text-align:right;overflow-wrap:anywhere">${esc(v)}</span></div>`).join('')}</div></div>
+    <div style="flex:1;min-height:8px"></div><button class="btn-s" data-act="shareRc" style="font-size:18px">${T.share}</button></div>`;
+}
+
+/* ---------- merchant: shop QR (ต้นแบบ 08 Shop) */
+function shopQrCard(){
+  const T = t(), st = S.staticQr;
+  if (!st) return '';
+  return `<div class="card" style="border-radius:24px;padding:22px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+    <span style="font-size:18px;font-weight:700">${T.shopQr}</span>
+    <div style="background:#FFFFFF;border-radius:18px;padding:12px;border:3px solid var(--gold)">${qrImg(st.qr, 180)}</div>
+    <span class="sora" style="font-size:15px;color:var(--soft);letter-spacing:1px">${esc(st.merchant.code)}</span>
+    <span style="font-size:15px;color:var(--soft);line-height:1.5;max-width:320px">${T.shopQrHint}</span>
+    <button class="btn-s" data-act="downloadQr" style="height:52px;font-size:16px">${T.download}</button></div>`;
+}
+function downloadQr(){
+  const st = S.staticQr; if (!st) return;
+  qrImg(st.qr, 512);
+  const a = document.createElement('a'); a.href = QR_CACHE['512|' + st.qr]; a.download = `1stpay-${st.merchant.code}.png`; document.body.appendChild(a); a.click(); a.remove();
+}
+
+/* ---------- sub-screen navigation (อยู่ใน shell) */
+S.subStack = [];
+function openSub(v){ if (S.sub) S.subStack.push(S.sub); S.sub = v; S.err = ''; render(); scrollTo(0, 0); }
+function closeSub(){ S.sub = S.subStack.pop() || null; if (!S.sub) { S.rcFresh = false; if (S.tab === 'scan') S.camErr = false; } S.ppin = ''; S.pinErr = ''; S.err = ''; stopPoll(); render(); scrollTo(0, 0); }
+const SUB = { payAmount: payAmountView, payPin: payPinView, receipt: receiptView, mQr: mQrView, mDone: mDoneView, sale: saleView };
+const subTitle = () => { const T = t(); return { payAmount: T.payTitle, payPin: T.confirmTitle, receipt: S.rcFresh ? T.payTitle : T.detail, mQr: T.receiveTitle, mDone: T.receiveTitle, sale: T.saleTitle }[S.sub] || ''; };
+
+function goHomeTab(){ stopPoll(); S.sub = null; S.subStack = []; S.rcFresh = false; S.sale = null; S.amt = '0'; S.tab = 'home'; render(); scrollTo(0, 0); loadHome().then(render); }
+async function openTx(ref){
+  try { S.rc = await api('GET', '/v1/transactions/' + encodeURIComponent(ref), null, true); S.rcFresh = false; openSub(isMerchant() ? 'sale' : 'receipt'); }
+  catch (e) { toast(errMsg(e)); }
+}
+async function loadStaticQr(){ try { S.staticQr = await api('GET', '/v1/merchant/static-qr', null, true); } catch (e) { S.staticQr = null; } render(); }
 
 /* ============================================================ render + events */
 const root = document.getElementById('root');
@@ -460,6 +911,8 @@ function render(){
   const caret = focusId && document.activeElement.selectionStart;
   root.innerHTML = (cur() === 'shell' ? shellView() : authView()) + langSheet() + toastEl() + sandbox();
   if (focusId) { const el = document.getElementById(focusId); if (el) { el.focus(); try { el.setSelectionRange(caret, caret); } catch (e) {} } }
+  const scanning = cur() === 'shell' && S.tab === 'scan' && !S.sub && S.user && !isMerchant();
+  if (scanning) { attachCam(); if (!camStream && !S.camErr) startCam(); } else if (camStream) stopCam();
 }
 const ACT = {
   back, toggleTheme, openLang: () => { S.langOpen = true; render(); }, closeLang: () => { S.langOpen = false; render(); }, setLang,
@@ -472,10 +925,30 @@ const ACT = {
   pressSet, pressLogin,
   goLoginPin: () => { S.loginId = destValue(); S.lpin = ''; S.pinErr = ''; go('loginPin'); },
   forgot: () => { S.flow = 'reset'; S.ch = 'sms'; S.dest = /^\d/.test(S.loginId) ? S.loginId : ''; S.err = ''; go('contact'); },
-  enterHome: () => { S.tab = 'home'; reset('shell'); },
+  enterHome: () => { S.tab = 'home'; S.sub = null; reset('shell'); Promise.all([loadKyc(), loadHome()]).then(render); },
   soon: () => toast(t().soon),
-  tab: k => { S.tab = k || 'home'; render(); scrollTo(0, 0); },
+  tab: k => { stopPoll(); S.sub = null; S.subStack = []; S.rcFresh = false; S.err = ''; S.tab = k || 'home';
+    if (S.tab === 'receive') S.amt = '0';
+    if (S.tab === 'scan') { S.camErr = false; S.mcode = ''; }
+    render(); scrollTo(0, 0);
+    if (S.tab === 'home' || S.tab === 'receive') loadHome().then(render);
+    if (S.tab === 'history' || S.tab === 'sales') { S.filter = 'all'; loadList(); }
+    if (S.tab === 'profile' && isMerchant() && S.summary && S.summary.can_receive) loadStaticQr(); },
+  subBack: () => { if (S.sub === 'mQr') { cancelQr(); return; } if (S.sub === 'receipt' && S.rcFresh || S.sub === 'mDone') { goHomeTab(); return; } closeSub(); },
+  filter: k => { S.filter = k; loadList(); },
+  openTx, resolveCode: () => resolvePay({ code: S.mcode.trim() }),
+  pressAmt, addAmt: v => { S.amt = String(Math.min((+S.amt || 0) + (+v), 9999999999)); render(); },
+  setCat: k => { S.cat = k; render(); },
+  goPayPin: () => { if (+S.amt > 0) { S.ppin = ''; S.pinErr = ''; openSub('payPin'); } },
+  pressPayPin, shareRc, payHome: goHomeTab,
+  goReceive: () => { if (S.summary && !S.summary.can_receive) { toast(t().kybFirst); return; } ACT.tab('receive'); },
+  createQr, simulatePaid, cancelQr, newSale: () => { stopPoll(); S.sale = null; S.sub = null; S.subStack = []; S.amt = '0'; S.tab = 'receive'; render(); },
+  downloadQr,
   addContact: () => startFlow('add'),
+  goKyc: () => { S.err = ''; if (S.kyc && S.kyc.case && S.kyc.case.status === 'pending') { go('kycPending'); return; }
+    if (!S.kf.full_name && S.user.full_name) S.kf.full_name = S.user.full_name; go('kycUpload'); },
+  goKycPending: () => go('kycPending'),
+  submitKyc,
   logout,
 };
 root.addEventListener('click', e => {
@@ -484,8 +957,18 @@ root.addEventListener('click', e => {
   if (b.disabled) return;
   const fn = ACT[b.dataset.act]; if (fn) fn(b.dataset.arg);
 });
+root.addEventListener('change', async e => {
+  const slot = e.target.dataset.file; if (!slot || !e.target.files || !e.target.files[0]) return;
+  if (slot === 'qrimg') { const f = e.target.files[0]; e.target.value = ''; S.busy = true; render(); const code = await decodeImage(f); S.busy = false;
+    if (code) resolvePay({ payload: code }); else { S.err = errMsg({ code: 'ERR_QR_INVALID' }); render(); } return; }
+  const blob = await compress(e.target.files[0]);
+  if (S.kfiles[slot]) URL.revokeObjectURL(S.kfiles[slot].url);
+  S.kfiles[slot] = { blob, url: URL.createObjectURL(blob) }; S.err = ''; render();
+});
 root.addEventListener('input', e => {
   const k = e.target.dataset.input; if (!k) return;
+  if (k === 'mcode') { S.mcode = e.target.value.toUpperCase().replace(/[^A-Z0-9-]/g, '').slice(0, 20); e.target.value = S.mcode; const p = document.getElementById('primary'); if (p) { const ok = S.mcode.length >= 4; p.disabled = !ok; p.style.opacity = ok ? 1 : .4; } return; }
+  if (k === 'kf') { S.kf[e.target.dataset.k] = e.target.value; const p = document.getElementById('primary'); if (p) { const ok = kycReady(); p.disabled = !ok; p.style.opacity = ok ? 1 : .4; } return; }
   if (k === 'dest') {
     S.dest = S.ch === 'sms' ? digits(e.target.value).slice(0, 11) : e.target.value.slice(0, 254);
     if (S.ch === 'sms' && e.target.value !== S.dest) e.target.value = S.dest;
@@ -503,12 +986,17 @@ root.addEventListener('keydown', e => {
   const p = document.getElementById('primary'); if (p && !p.disabled) p.click();
 });
 document.addEventListener('keydown', e => {   // พิมพ์ PIN ด้วยคีย์บอร์ดได้บนคอม
+  if (cur() === 'shell' && document.activeElement.tagName !== 'INPUT') {
+    const fn = S.sub === 'payPin' ? pressPayPin : (S.sub === 'payAmount' || (S.tab === 'receive' && !S.sub)) ? pressAmt : null;
+    if (fn) { if (/^\d$/.test(e.key)) fn(e.key); if (e.key === 'Backspace') fn('del'); if (e.key === 'Enter') { const p = document.getElementById('primary'); if (p && !p.disabled) p.click(); } return; }
+  }
   const v = cur(); if (v !== 'setPin' && v !== 'loginPin') return;
   if (/^\d$/.test(e.key)) (v === 'setPin' ? pressSet : pressLogin)(e.key);
   if (e.key === 'Backspace') (v === 'setPin' ? pressSet : pressLogin)('del');
 });
 addEventListener('resize', () => { const w = innerWidth >= 960; if (w !== S.wide) { S.wide = w; render(); } });
 setInterval(() => {
+  if (S.sub === 'mQr' && S.sale && S.sale.status === 'created') { const el = document.getElementById('qrLeft'); if (el) el.textContent = t().expiresIn.replace('{t}', leftText(S.sale.expires_at)); if (new Date(S.sale.expires_at) < Date.now()) pollSale(); }
   if (S.sec > 0) { S.sec--; if (cur() === 'otp') {
     const T = t(), el = document.getElementById('timer'), b = document.getElementById('resendBtn');
     if (el) el.textContent = S.sec > 0 ? `${T.resendIn} ${Math.floor(S.sec / 60)}:${String(S.sec % 60).padStart(2, '0')}` : T.expired;
@@ -518,7 +1006,7 @@ setInterval(() => {
 
 (async function boot(){
   if (S.refresh && await refresh()) {
-    try { S.user = await api('GET', '/v1/me', null, true); S.stack = ['shell']; } catch (e) { endSession(); }
+    try { S.user = await api('GET', '/v1/me', null, true); await Promise.all([loadKyc(), loadHome()]); S.stack = ['shell']; } catch (e) { endSession(); }
   }
   render();
 })();
